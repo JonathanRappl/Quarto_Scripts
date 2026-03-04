@@ -3,17 +3,17 @@ project:
   output-dir: docs
 
 website:
-  title: "CS Scripts"
+  title: "Informatik Skripte"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - href: programming/index.qmd
-        text: Programming
+        text: Programmieren
       - href: networking/index.qmd
-        text: Networking
+        text: Netzwerke
   page-footer:
-    center: "CS Scripts — Built with [Quarto](https://quarto.org)"
+    center: "Informatik Skripte — Built with [Quarto](https://quarto.org)"
 
 format:
   html:

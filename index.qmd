@@ -1,27 +1,27 @@
 ---
-title: "Computer Science Scripts"
-subtitle: "Teaching Materials & References"
+title: "Informatik Skripte"
+subtitle: "Lehrmaterialien & Referenzen"
 toc: false
 ---
 
-Welcome to the CS Scripts collection. Select a topic below to access the corresponding materials.
+Willkommen zur Sammlung von Informatik-Skripten. Wählen Sie ein Thema unten aus, um auf die entsprechenden Materialien zuzugreifen.
 
-## Topics
+## Themen
 
 ::: {.grid}
 
 ::: {.g-col-6}
-### [Programming](programming/index.qmd)
-Fundamentals of programming — variables, control flow, functions, data structures, OOP, and more.
+### [Programmierung](programming/index.qmd)
+Grundlagen der Programmierung — Variablen, Kontrollstrukturen, Funktionen, Datenstrukturen, OOP und mehr.
 :::
 
 ::: {.g-col-6}
-### [Networking](networking/index.qmd)
-Computer networking — OSI model, protocols, IP addressing, routing, and more.
+### [Netzwerke](networking/index.qmd)
+Computer-Netzwerke — OSI-Modell, Protokolle, IP-Adressierung, Routing und mehr.
 :::
 
 :::
 
 ---
 
-*More topics will be added over time.*
+*Weitere Themen werden im Laufe der Zeit hinzugefügt.*
