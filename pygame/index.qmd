@@ -6,6 +6,19 @@ toc-location: right
 toc-depth: 3
 number-sections: true
 smooth-scroll: true
+format:
+  html:
+    format-links: [pdf]
+  pdf:
+    documentclass: scrartcl
+    papersize: a4
+    fontsize: 11pt
+    colorlinks: true
+    lang: de
+    include-in-header:
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 ---
 
 # Auftrag {#sec-auftrag}
@@ -106,7 +119,53 @@ Um **pygame-ce** in VS Code zu installieren, gehen Sie wie folgt vor:
    ```
    Dieser Code sollte, sofern `pygame-ce` korrekt installiert ist, die Versionsnummer von `pygame-ce` ausgeben. Damit ist `pygame-ce` einsatzbereit und Sie können mit den unten stehenden Übungen starten.
 
+::: {.callout-note collapse="true"}
+## Gesamter Code: Einführung und Installation
 
+```python
+import random # Für Aufgabe 2.3
+
+# Beispiel 2.1
+import pygame as pg
+pg.init() # Pygame initialisieren (starten)
+HEIGHT = 600 # Höhe des Fensters
+WIDTH = 800 # Breite des Fensters
+WINDOW = (WIDTH, HEIGHT) # Fenstergrösse (als Tuple gespeichert)
+screen = pg.display.set_mode(WINDOW) # Fenster erstellen
+
+# Challenge 2.2 ----------------
+# icon = pg.image.load("path/to/icon.png")
+# pg.display.set_icon(icon)
+# ------------------------------
+
+pg.display.set_caption("Mein erstes Game") # Fenstertitel setzen
+clock = pg.time.Clock() # Clock für Zeitsteuerung erstellen
+
+running = True # Hauptschleife
+while running:
+    # --- Events ---
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+    # --- Update --- (Spielzustand aktualisieren)
+
+
+    # --- render (zeichnen) ---
+    # Aufgabe 2.3 ------------------
+    # r = random.randint(0, 255)
+    # g = random.randint(0, 255)
+    # b = random.randint(0, 255)
+    # ------------------------------
+    # Aufgabe 2.4 ------------------
+    # Rechtecke, Kreise, Linien zeichnen
+    # ------------------------------
+    screen.fill((255,255,255))
+    pg.display.flip()
+    # --- Zeitsteuerung ---
+    clock.tick(60) # 60 FPS
+pg.quit()
+```
+:::
 ::: {.callout-tip icon=false}
 ## 💡 Beispiel: Minimale Game-Schleife
 Folgender Code zeigt den minimalen Aufbau eines Pygame-Programms mit Fenster, Game-Schleife und Ereignisverarbeitung. Kopieren Sie den Code in eine Datei `game_intro.py` und führen Sie ihn in VS Code aus.
