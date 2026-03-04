@@ -1,0 +1,27 @@
+---
+title: "Computer Science Scripts"
+subtitle: "Teaching Materials & References"
+toc: false
+---
+
+Welcome to the CS Scripts collection. Select a topic below to access the corresponding materials.
+
+## Topics
+
+::: {.grid}
+
+::: {.g-col-6}
+### [Programming](programming/index.qmd)
+Fundamentals of programming — variables, control flow, functions, data structures, OOP, and more.
+:::
+
+::: {.g-col-6}
+### [Networking](networking/index.qmd)
+Computer networking — OSI model, protocols, IP addressing, routing, and more.
+:::
+
+:::
+
+---
+
+*More topics will be added over time.*

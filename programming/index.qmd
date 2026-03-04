@@ -1,0 +1,86 @@
+---
+title: "Programming"
+subtitle: "Fundamentals of Programming"
+toc: true
+toc-location: right
+toc-depth: 3
+number-sections: true
+smooth-scroll: true
+---
+
+# Introduction
+
+This script covers the fundamentals of programming. Topics include variables, control flow, functions, data structures, and object-oriented programming.
+
+::: {.callout-note}
+Code examples are primarily in Python. Use the code-fold toggles to show/hide code blocks.
+:::
+
+# Variables & Data Types
+
+## What is a Variable?
+
+A variable is a named storage location in memory that holds a value.
+
+```{python}
+# Basic variable assignments
+name = "Alice"
+age = 25
+height = 1.75
+is_student = True
+
+print(f"Name: {name}, Age: {age}, Height: {height}m, Student: {is_student}")
+```
+
+## Common Data Types
+
+| Type | Python Keyword | Example |
+|------|---------------|---------|
+| Integer | `int` | `42` |
+| Float | `float` | `3.14` |
+| String | `str` | `"hello"` |
+| Boolean | `bool` | `True` |
+
+# Control Flow
+
+## Conditional Statements
+
+```{python}
+temperature = 22
+
+if temperature > 30:
+    print("It's hot!")
+elif temperature > 20:
+    print("It's pleasant.")
+else:
+    print("It's cold.")
+```
+
+## Loops
+
+```{python}
+# For loop
+for i in range(5):
+    print(f"Iteration {i}")
+```
+
+# Functions
+
+## Defining Functions
+
+```{python}
+def greet(name: str, greeting: str = "Hello") -> str:
+    """Return a greeting string."""
+    return f"{greeting}, {name}!"
+
+print(greet("World"))
+print(greet("Alice", "Good morning"))
+```
+
+# Data Structures
+
+*Section to be expanded: lists, tuples, dictionaries, sets.*
+
+# Object-Oriented Programming
+
+*Section to be expanded: classes, inheritance, polymorphism.*

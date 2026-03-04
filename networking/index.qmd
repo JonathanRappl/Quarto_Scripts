@@ -1,0 +1,86 @@
+---
+title: "Networking"
+subtitle: "Computer Networking Fundamentals"
+toc: true
+toc-location: right
+toc-depth: 3
+number-sections: true
+smooth-scroll: true
+---
+
+# Introduction
+
+This script covers the fundamentals of computer networking. Topics include the OSI model, protocols, IP addressing, and routing.
+
+# The OSI Model
+
+The Open Systems Interconnection (OSI) model structures network communication into seven layers.
+
+| Layer | Name | Function | Example Protocols |
+|-------|------|----------|-------------------|
+| 7 | Application | User-facing services | HTTP, FTP, DNS |
+| 6 | Presentation | Data formatting & encryption | SSL/TLS, JPEG |
+| 5 | Session | Session management | NetBIOS, RPC |
+| 4 | Transport | Reliable delivery | TCP, UDP |
+| 3 | Network | Logical addressing & routing | IP, ICMP |
+| 2 | Data Link | Physical addressing | Ethernet, Wi-Fi |
+| 1 | Physical | Bit transmission | Cables, Signals |
+
+## Encapsulation
+
+Data is wrapped with headers as it moves down the stack:
+
+$$
+\text{Data} \xrightarrow{L7-L5} \text{Segment} \xrightarrow{L4} \text{Packet} \xrightarrow{L3} \text{Frame} \xrightarrow{L2} \text{Bits}
+$$
+
+# IP Addressing
+
+## IPv4
+
+An IPv4 address is a 32-bit number, typically written in dotted-decimal notation:
+
+$$
+\underbrace{192.168.1.0}_{\text{Network}} \;/\; \underbrace{24}_{\text{Prefix Length}}
+$$
+
+```{python}
+import ipaddress
+
+network = ipaddress.ip_network("192.168.1.0/24")
+print(f"Network: {network.network_address}")
+print(f"Broadcast: {network.broadcast_address}")
+print(f"Hosts: {network.num_addresses - 2}")
+```
+
+## Subnetting
+
+Subnetting divides a network into smaller sub-networks.
+
+```{python}
+network = ipaddress.ip_network("10.0.0.0/16")
+subnets = list(network.subnets(prefixlen_diff=4))
+for subnet in subnets[:4]:
+    print(f"Subnet: {subnet}, Hosts: {subnet.num_addresses - 2}")
+print(f"... ({len(subnets)} subnets total)")
+```
+
+# Transport Layer
+
+## TCP vs UDP
+
+| Feature | TCP | UDP |
+|---------|-----|-----|
+| Connection | Connection-oriented | Connectionless |
+| Reliability | Guaranteed delivery | Best-effort |
+| Ordering | Ordered | Unordered |
+| Overhead | Higher | Lower |
+| Use case | Web, Email | Streaming, DNS |
+
+# Routing
+
+*Section to be expanded: static routing, dynamic routing, routing protocols (OSPF, BGP).*
+
+# Application Layer Protocols
+
+*Section to be expanded: HTTP, DNS, DHCP.*
