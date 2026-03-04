@@ -20,6 +20,11 @@ Grundlagen der Programmierung — Variablen, Kontrollstrukturen, Funktionen, Dat
 Computer-Netzwerke — OSI-Modell, Protokolle, IP-Adressierung, Routing und mehr.
 :::
 
+::: {.g-col-6}
+### [Pygame](pygame/index.qmd)
+Spieleprogrammierung mit Python und Pygame — Game-Schleife, Bewegung, Kollisionen und mehr.
+:::
+
 :::
 
 ---

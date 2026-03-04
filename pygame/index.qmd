@@ -1,0 +1,686 @@
+---
+title: "Pygame"
+subtitle: "Spieleprogrammierung mit Python und Pygame"
+toc: true
+toc-location: right
+toc-depth: 3
+number-sections: true
+smooth-scroll: true
+---
+
+# Auftrag {#sec-auftrag}
+
+Wir wollen ein einfaches Spiel mit **Pygame** erstellen. Pygame ist eine Bibliothek für Python, die es uns ermöglicht, Spiele zu programmieren. In diesem Kapitel wird der Auftrag für unser erstes Pygame-Projekt beschrieben und welche Spiele zur Auswahl stehen.
+
+## Rahmenbedingungen
+
+- Das Spiel soll in Python mit der Pygame-Bibliothek erstellt werden.
+- Es wird in Gruppen von 2 Personen gearbeitet.
+- Der Code muss komplett selbst erarbeitet werden.
+
+## Abgabe und Zeitplan
+
+- Mitteilung der Gruppenmitglieder bis zum 13.02.2026.
+- Abgabe des Projekts: 18.04.2026 um 23:59 Uhr (Ende Frühlingsferien) über den ILIAS-Abgabeordner oder per E-Mail.
+- Besprechung des Projekts ab 20.04.2026 (zufällige Reihenfolge).
+
+## Spielauswahl
+
+Die folgenden Spiele stehen zur Auswahl. Es ist auch möglich, ein eigenes Spiel zu entwickeln, solange ein klares Spielkonzept bis zum 13.02.2026 eingereicht wird und von der Lehrperson genehmigt wird.
+
+### Breakout
+
+![Arcade Version von Breakout](figures/Breakout_game_screenshot.png){width=40%}
+
+Breakout ist ein klassisches Arcade-Spiel, bei dem der Spieler eine Plattform steuert, um einen Ball zu treffen und Blöcke zu zerstören. Ziel ist es, alle Blöcke zu zerstören, ohne den Ball fallen zu lassen.
+
+### Space Invaders
+
+![Arcade Version von Space Invaders](figures/frame_1.png){width=40%}
+
+Space Invaders ist ein klassisches Arcade-Spiel, bei dem der Spieler ein Raumschiff steuert, um Wellen von angreifenden Aliens zu zerstören. Ziel ist es, alle Aliens zu besiegen, bevor sie die Erde erreichen.
+
+### Frogger
+
+![Arcade Version von Frogger](figures/Frogger_game_arcade.png){width=40%}
+
+Frogger ist ein klassisches Arcade-Spiel, bei dem der Spieler einen Frosch steuert, um eine Strasse und einen Fluss zu überqueren, ohne von Autos oder anderen Hindernissen getroffen zu werden. Ziel ist es, den Frosch sicher auf die andere Seite zu bringen.
+
+## Anforderungen und Bewertungskriterien
+
+Die Bewertung des Source-Codes erfolgt anhand der folgenden Kriterien:
+
+- **Programm läuft:** Startet und stoppt ohne Fehler.
+- **Spielersteuerung:** Der Spieler kann die Spielfigur mit der Tastatur oder Maus steuern.
+- **Mehrere Objekte:** Es gibt mehrere Blöcke, Aliens oder Hindernisse, die gleichzeitig auf dem Bildschirm sind und mit Listen verwaltet werden.
+- **Nicht Spieler gesteuerte Objekte:** Es gibt Objekte, die sich automatisch und konsistent bewegen (z.B. Ball, Aliens, Autos).
+- **Kollisionserkennung:** Es gibt eine Logik, die erkennt, wenn Objekte miteinander kollidieren (z.B. Ball trifft Block, Alien trifft Spieler) und entsprechend reagiert (z.B. Block wird zerstört, Spieler verliert ein Leben).
+- **Spielziel:** Es gibt ein klares Ziel, das der Spieler erreichen muss, welches auch überprüft wird und das Spiel entsprechend beendet (z.B. Alle Blöcke zerstört, Alle Aliens besiegt, Frosch sicher auf der anderen Seite).
+
+Zum Source-Code wird zusätzlich eine kurze Dokumentation eingereicht, die die Struktur des Codes erklärt, wie die verschiedenen Teile des Spiels implementiert wurden und welche Herausforderungen es gab. Dieser Bericht kann sehr kurz sein, sollte aber die folgenden Fragen beantworten:
+
+- Wie funktioniert die Spielersteuerung?
+- Wie werden die Objekte verwaltet und bewegt?
+- Was lief gut? Was lief schlecht? Was würden Sie beim nächsten Mal anders machen?
+- Wie hat die Zusammenarbeit in der Gruppe funktioniert? **Weisen Sie klar aus, wer für welche Teile des Codes verantwortlich ist.** Jede Zeile Code muss mindestens einer Person zugeordnet sein!
+
+Im Anschluss an Ihre Abgabe findet eine Besprechung Ihres Spiels in Gruppen mit der Lehrperson statt (ca. 15 Minuten pro Gruppe). Dabei werden Ihnen Fragen zu Ihrem Spiel gestellt, um Ihr Verständnis und Ihre Reflexion zu überprüfen. Achten Sie darauf, in Ihrem Schlussbericht zu erwähnen, wer für welche Teile zuständig war — das Verständnis von jedem Gruppenmitglied wird speziell überprüft. Die Besprechung resultiert in einer **individuellen** Bewertung, welche mit Ihrer Endnote kombiniert wird.
+
+::: {.callout-warning}
+## KI-Tools
+Es wird von Ihnen erwartet, dass Sie sich aktiv an der Entwicklung des Spiels beteiligen und die geforderten Python-Konzepte verstehen und anwenden können. ChatGPT oder andere KI-Tools dürfen Sie verwenden, **solange Sie Ihren gesamten Code verstehen und erklären können**. Ihre Note kann durch mangelndes Verständnis stark beeinträchtigt werden (bis zur Note 1). Falls Sie ChatGPT oder andere KI-Tools verwenden, müssen Sie dies im Code klar dokumentieren (z.B. mit Kommentaren oder in der Dokumentation). Jede Zeile Code muss mindestens einer Person zugeordnet sein!
+:::
+
+Die Empfehlung ist, dass Sie KI-Tools benutzen, wenn Sie bei einem spezifischen Schritt oder Problem nicht weiterkommen, um sich Erklärungen oder Beispiele zu holen. Daraufhin sollten Sie versuchen, den Code selbst zu schreiben und zu verstehen. Versuchen Sie aber zuerst selbstständig vorwärts zu kommen, Sie werden sich überraschen!
+
+---
+
+# Einführung und Installation {#sec-einfuehrung}
+
+In diesem Kapitel entwickeln wir Schritt für Schritt ein eigenes 2D-Game mit `pygame-ce`. `pygame-ce` ist eine moderne, Community-gepflegte Variante von Pygame und wird genau gleich importiert mit `import pygame as pg`. Sie eignet sich hervorragend, um in Python Grafiken, Animationen, Sound und Interaktionen umzusetzen.
+
+Essentielle Bausteine eines Games sind:
+
+- Fenster (Auflösung, Titel) und Zeichenfläche («screen»)
+- Game-Schleife mit **Ereignissen** (Tastatur, Maus) und **Zeitsteuerung** (FPS / «refresh rate»)
+- Zeichnen: Hintergrund, Farben, geometrische Figuren, Bilder («Sprites»)
+- **Zustände** und **Objekte** (z.B. Spieler als `Rect`), **Bewegungen** und **Kollisionen**
+- **Medien**: Bilder, Icon, Schrift, Sound / Musik
+
+::: {.callout-note}
+## Game-Schleife
+Ein Game läuft in einer Endlosschleife, bis das Programm beendet wird. In jeder Runde werden der Eingabestatus gelesen («Events»), der interne Zustand aktualisiert («Update») und die Szene gezeichnet («Render»). Eine **Clock** (= Uhr) begrenzt die Bildwiederholrate (FPS), sodass das Game stabil und gleichmässig läuft.
+:::
+
+Um **pygame-ce** in VS Code zu installieren, gehen Sie wie folgt vor:
+
+1. Öffnen Sie ein Terminal-Fenster in VS Code («Terminal» → «New Terminal»).
+2. Installieren Sie pygame-ce mit pip:
+   ```bash
+   pip install pygame-ce
+   ```
+3. Überprüfen Sie die Installation, indem Sie eine neue Python-Datei `game_test.py` mit folgendem Code ausführen:
+   ```python
+   import pygame as pg
+   print(pg.ver)
+   ```
+   Dieser Code sollte, sofern `pygame-ce` korrekt installiert ist, die Versionsnummer von `pygame-ce` ausgeben. Damit ist `pygame-ce` einsatzbereit und Sie können mit den unten stehenden Übungen starten.
+
+
+::: {.callout-tip icon=false}
+## 💡 Beispiel: Minimale Game-Schleife
+Folgender Code zeigt den minimalen Aufbau eines Pygame-Programms mit Fenster, Game-Schleife und Ereignisverarbeitung. Kopieren Sie den Code in eine Datei `game_intro.py` und führen Sie ihn in VS Code aus.
+
+```python
+import pygame as pg
+
+pg.init()  # Pygame initialisieren (starten)
+HEIGHT = 600  # Höhe des Fensters
+WIDTH = 800  # Breite des Fensters
+WINDOW = (WIDTH, HEIGHT)  # Fenstergrösse (als Tuple gespeichert)
+screen = pg.display.set_mode(WINDOW)  # Fenster erstellen
+pg.display.set_caption("Mein erstes Game")  # Fenstertitel setzen
+clock = pg.time.Clock()  # Clock für Zeitsteuerung erstellen
+
+running = True  # Hauptschleife
+while running:
+    # --- Events ---
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+
+    # --- Update --- (Spielzustand aktualisieren)
+
+    # --- render (zeichnen) ---
+    screen.fill((30, 30, 40))
+    pg.display.flip()
+
+    # --- Zeitsteuerung ---
+    clock.tick(60)  # 60 FPS
+
+pg.quit()
+```
+
+Ein schwarzes Fenster sollte erscheinen, das Sie mit dem Schliessen-Knopf beenden können.
+:::
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Fenster-Titel setzen
+Setzen Sie einen passenden Fenstertitel, indem Sie folgende Zeile abändern:
+
+```python
+pg.display.set_caption("IHR TITEL HIER...")
+```
+:::
+
+
+::: {.callout-caution icon=false}
+## 🏆 Challenge: Fenster-Icon setzen
+Laden Sie ein Fenster-Icon (`.png` oder `.jpg`):
+Laden Sie ein beliebiges Bild aus dem Internet herunter, speichern Sie es unter den Downloads und ziehen Sie es in Ihren Projektordner in VS Code (dort wo auch Ihre Python-Datei ist). Fügen Sie nun diese beiden Zeilen nach `pg.display.set_mode(...)` ein:
+
+```python
+icon = pg.image.load("path/to/icon.png")
+pg.display.set_icon(icon)
+```
+
+Wenn Ihr Ordner beispielsweise `Informatik/` heisst und das Bild unter `Informatik/Game/icon.png` gespeichert ist, dann verwenden Sie `pg.image.load("Game/icon.png")`.
+
+Bei Windows ändert sich nur das Fenster-Icon, bei macOS wird das Icon nur im Dock angezeigt.
+
+::: {.callout-note collapse="true"}
+## Lösung
+
+```python
+import pygame as pg
+
+pg.init()
+WINDOW = (800, 600)
+screen = pg.display.set_mode(WINDOW)
+icon = pg.image.load("icon.png")
+pg.display.set_caption("Mein erstes Game")
+pg.display.set_icon(icon)
+clock = pg.time.Clock()
+
+running = True
+while running:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+
+    screen.fill((30, 30, 40))
+    pg.display.flip()
+
+    clock.tick(60)
+
+pg.quit()
+```
+:::
+:::
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Hintergrund zeichnen
+Füllen Sie den Hintergrund pro Frame mit einer Farbe mittels `screen.fill((R,G,B))`. Experimentieren Sie mit zufällig generierten Farbtönen:
+
+```python
+import random
+# ...
+# In der Game-Schleife, im Render-Abschnitt:
+r = random.randint(0, 255)
+g = random.randint(0, 255)
+b = random.randint(0, 255)
+screen.fill((r, g, b))
+```
+
+Die Farbe muss in der Hauptschleife, aber noch vor `pg.display.flip()`, gesetzt werden.
+
+- Was ändert sich, wenn Sie die drei Zeilen für die Farbwerte `r, g, b` vor die Hauptschleife setzen?
+- Schreiben Sie den Code so um, dass die Farbe nur alle 10 Frames geändert wird.
+
+::: {.callout-note collapse="true"}
+## Lösung
+
+```python
+import pygame as pg
+import random
+
+pg.init()
+WINDOW = (800, 600)
+screen = pg.display.set_mode(WINDOW)
+pg.display.set_caption("Mein erstes Game")
+clock = pg.time.Clock()
+
+running = True
+while running:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+
+    # --- Render ---
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    background_color = (r, g, b)
+    screen.fill(background_color)
+
+    pg.display.flip()
+
+    clock.tick(10)  # 10 FPS
+
+pg.quit()
+```
+:::
+:::
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Geometrische Figuren
+Zeichnen Sie geometrische Formen: Rechteck, Kreis, Linie. Nutzen Sie dafür `pg.draw.rect`, `pg.draw.circle` und `pg.draw.line`. Achten Sie darauf, **nach** dem Zeichnen `pg.display.flip()` aufzurufen. Versuchen Sie, mittels folgender Befehle einen Apfel zu zeichnen:
+
+```python
+pg.draw.rect(screen, rect_color, pg.Rect(rect_x, rect_y, rect_width, rect_height))
+pg.draw.circle(screen, circle_color, (circle_x, circle_y), circle_radius)
+pg.draw.line(screen, line_color, (start_x, start_y), (end_x, end_y), line_width)
+```
+
+Dabei bezeichnen die Parameter Folgendes:
+
+- `screen`: die Zeichenfläche
+- `rect_color, circle_color, line_color`: Farbe als RGB-Tupel, z.B. `(255, 0, 0)` für Rot
+- `pg.Rect(...)`: Rechteck-Objekt mit Position (x, y) und Grösse (width, height)
+- `(circle_x, circle_y)`: Mittelpunkt des Kreises
+- `circle_radius`: Radius des Kreises
+- `(start_x, start_y), (end_x, end_y)`: Start- und Endpunkt der Linie
+- `line_width`: Dicke der Linie in Pixeln (optional)
+:::
+
+---
+
+# Kollisionen und Bewegung {#sec-kollisionen}
+
+In diesem Kapitel erweitern wir unser Game um Bewegung und Kollisionen. Wir werden lernen, wie man ein Objekt (z.B. einen Spieler) mit der Tastatur steuert und wie man Kollisionen zwischen Objekten erkennt und darauf reagiert. Diese Konzepte sind zentral für die meisten Spiele, da sie die Interaktion zwischen dem Spieler und der Spielwelt ermöglichen.
+
+::: {.callout-tip icon=false}
+## 💡 Beispiel: Game-Schleife mit Rect
+Folgender Code zeigt wieder eine minimale Game-Schleife. Diesmal haben wir zusätzlich noch eine Variable `mein_rechteck` definiert, die ein `Rect`-Objekt speichert. Ein `Rect` ist ein Rechteck, das durch seine obere linke Ecke (x, y) und seine Breite und Höhe definiert ist. In diesem Beispiel ist unser Rechteck 100×50 Pixel gross und startet bei (100, 100). Weiter unten im Code wird das Rechteck gezeichnet mit:
+
+```python
+pg.draw.rect(screen, (255, 0, 0), mein_rechteck)
+```
+
+Wir können diese Zeile folgendermassen interpretieren:
+«Zeichne ein rotes Rechteck auf der Zeichenfläche `screen` an der Position und mit der Grösse, die durch `mein_rechteck` definiert ist.»
+
+```python
+import pygame as pg
+
+pg.init()
+HEIGHT = 600
+WIDTH = 800
+WINDOW = (WIDTH, HEIGHT)
+screen = pg.display.set_mode(WINDOW)
+
+mein_rechteck = pg.Rect(100, 100, 100, 50)
+
+pg.display.set_caption("Bouncing Rectangle")
+clock = pg.time.Clock()
+
+running = True
+while running:
+    # --- Events ---
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+
+    # --- Update ---
+
+    # --- Render ---
+    screen.fill((255, 255, 255))
+    pg.draw.rect(screen, (255, 0, 0), mein_rechteck)
+
+    # ------------------------------
+    pg.display.flip()
+
+    clock.tick(60)
+
+pg.quit()
+```
+:::
+
+Wir können die Eigenschaften eines `Rect`-Objekts wie folgt abfragen und ändern:
+
+```python
+# Abfrage der Position und Grösse
+x = mein_rechteck.x
+y = mein_rechteck.y
+width = mein_rechteck.width
+height = mein_rechteck.height
+# Änderung der Position
+mein_rechteck.x += 5  # Bewegt das Rechteck 5 Pixel nach rechts
+mein_rechteck.y += 5  # Bewegt das Rechteck 5 Pixel nach unten
+```
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Bewegen des Rechtecks
+Kopieren Sie den obigen Code in eine neue Datei. Definieren Sie dann zwei neue Variablen (am gleichen Ort wie `mein_rechteck`) `vx` und `vy`, die die Geschwindigkeit des Rechtecks in x- und y-Richtung speichern.
+
+Benutzen Sie dann `vx` und `vy`, um die Position des Rechtecks in der Hauptschleife zu aktualisieren.
+:::
+
+Das Rechteck bewegt sich jetzt automatisch, wandert aber aus dem Fenster heraus. Um das zu verhindern, können wir die Position des Rechtecks überprüfen und anpassen, wenn es den Rand des Fensters erreicht.
+
+Wir können die obere und untere Grenze sowie die linke und rechte Grenze des Rechtecks mit den Eigenschaften `top`, `bottom`, `left` und `right` abfragen. Zum Beispiel:
+
+```python
+linke_grenze = mein_rechteck.left
+rechte_grenze = mein_rechteck.right
+obere_grenze = mein_rechteck.top
+untere_grenze = mein_rechteck.bottom
+```
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Kollision mit dem Fensterrand
+Fügen Sie in der Hauptschleife eine Überprüfung hinzu, ob das Rechteck den Rand des Fensters erreicht hat. Wenn ja, soll die Richtung der Bewegung umgekehrt werden (was heisst das mathematisch?).
+
+Benutzen Sie dafür die Eigenschaften `top`, `bottom`, `left` und `right` des Rechtecks und die Fenstergrösse (die Sie in `pg.display.set_mode(...)` definiert haben).
+:::
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Farbe ändern bei Kollision
+Ändern Sie die Farbe des Rechtecks, wenn es den Rand des Fensters berührt. Zum Beispiel könnte es rot sein, wenn es sich frei bewegt, und grün, wenn es den Rand berührt.
+
+Benutzen Sie dafür eine Variable `farbe`, die die aktuelle Farbe des Rechtecks speichert. Z.B.:
+
+```python
+farbe = (255, 0, 0)  # Rot
+```
+
+Aktualisieren Sie diese Variable entsprechend, wenn eine Kollision mit dem Rand erkannt wird, und verwenden Sie sie dann im `pg.draw.rect(…)`-Befehl.
+
+Benutzen Sie die zufällige Farbengenerierung aus dem vorherigen Kapitel, um die Farbe bei jeder Kollision zu ändern.
+:::
+
+---
+
+# Tastatursteuerung und Kollisionen {#sec-steuerung}
+
+In diesem Kapitel lernen wir, wie man ein Spielerobjekt mit der Tastatur steuert und wie man Kollisionen zwischen mehreren Objekten erkennt.
+
+## Tastatureingaben verarbeiten
+
+Im Gegensatz zur automatischen Bewegung aus dem vorherigen Kapitel wollen wir nun, dass der Spieler das Objekt direkt mit der Tastatur steuern kann. Dafür gibt es in Pygame zwei Hauptansätze:
+
+::: {.callout-note}
+## Event-basierte Tastaturabfrage
+Bei der **event-basierten** Abfrage werden Tastaturereignisse in der Event-Schleife verarbeitet. Ein `pg.KEYDOWN`-Event wird ausgelöst, wenn eine Taste *gedrückt* wird, und ein `pg.KEYUP`-Event, wenn sie *losgelassen* wird. Dieser Ansatz eignet sich für einmalige Aktionen wie Springen oder Schiessen.
+:::
+
+::: {.callout-note}
+## Zustandsbasierte Tastaturabfrage
+Bei der **zustandsbasierten** Abfrage wird mit `pg.key.get_pressed()` abgefragt, welche Tasten aktuell gedrückt sind. Dies liefert kontinuierliche Bewegung und eignet sich besser für Spielersteuerung, bei der eine Taste gedrückt gehalten wird.
+:::
+
+### Event-basierte Tastaturabfrage
+
+Folgende Code-Zeilen zeigen, wie man auf einzelne Tastendruck-Events reagiert:
+
+```python
+# --- Events ---
+for event in pg.event.get():
+    if event.type == pg.QUIT:
+        running = False
+
+    if event.type == pg.KEYDOWN:
+        if event.key == pg.K_UP:
+            print("Pfeiltaste HOCH gedrückt")
+        if event.key == pg.K_DOWN:
+            print("Pfeiltaste RUNTER gedrückt")
+        if event.key == pg.K_LEFT:
+            print("Pfeiltaste LINKS gedrückt")
+        if event.key == pg.K_RIGHT:
+            print("Pfeiltaste RECHTS gedrückt")
+        if event.key == pg.K_SPACE:
+            print("LEERTASTE gedrückt")
+```
+
+Weitere wichtige Tastencodes:
+
+- Buchstaben: `pg.K_a`, `pg.K_b`, `pg.K_c`, ..., `pg.K_z`
+- Ziffern: `pg.K_0`, `pg.K_1`, ..., `pg.K_9`
+- Escape: `pg.K_ESCAPE`
+- Enter: `pg.K_RETURN`
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Event-basierte Bewegung
+Kopieren Sie den Code aus dem vorherigen Kapitel.
+
+1. Entfernen Sie die automatische Bewegung (die Variablen `vx` und `vy`).
+2. Fügen Sie in der Event-Schleife Code hinzu, der das Rechteck bei jedem Tastendruck um 10 Pixel in die entsprechende Richtung bewegt.
+3. Testen Sie das Programm. Was fällt Ihnen auf? Wie unterscheidet sich diese Steuerung von typischen Spielen?
+:::
+
+### Zustandsbasierte Tastaturabfrage (empfohlen)
+
+Für eine flüssigere Spielersteuerung ist die zustandsbasierte Abfrage besser geeignet:
+
+```python
+# --- Update ---
+keys = pg.key.get_pressed()
+
+# Spielergeschwindigkeit
+speed = 5
+
+# Bewegung basierend auf gedrückten Tasten
+if keys[pg.K_UP]:
+    spieler_rechteck.y -= speed
+if keys[pg.K_DOWN]:
+    spieler_rechteck.y += speed
+if keys[pg.K_LEFT]:
+    spieler_rechteck.x -= speed
+if keys[pg.K_RIGHT]:
+    spieler_rechteck.x += speed
+```
+
+::: {.callout-tip}
+## Funktionsweise
+Die Funktion `pg.key.get_pressed()` gibt eine Liste zurück, in der für jede Taste angegeben ist, ob sie gerade gedrückt ist (`True`) oder nicht (`False`). Die Variablen `pg.K_UP`, `pg.K_DOWN`, `pg.K_LEFT` und `pg.K_RIGHT` entsprechen den Indizes für die Pfeiltasten in dieser Liste.
+
+Die for-Schleife mit `pg.event.get()` funktioniert nach dem gleichen Prinzip.
+:::
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Flüssige Tastatursteuerung
+Erstellen Sie ein neues Programm mit folgenden Eigenschaften:
+
+1. Erstellen Sie ein `spieler_rechteck` mit Grösse 40×40 in der Mitte des Fensters.
+2. Implementieren Sie die zustandsbasierte Tastaturabfrage wie oben gezeigt.
+3. Zeichnen Sie den Spieler in einer Farbe Ihrer Wahl.
+4. Testen Sie die Steuerung. Fühlt sich diese besser an als die event-basierte Variante?
+:::
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Fenster-Grenzen
+Der Spieler kann aktuell aus dem Fenster herauslaufen. Fügen Sie Code hinzu, der verhindert, dass der Spieler den Fensterrand überschreitet. Benutzen Sie dafür die Eigenschaften `left`, `right`, `top` und `bottom` des Rechtecks sowie die Konstanten `WIDTH` und `HEIGHT`.
+
+**Tipp:** Überprüfen Sie nach jeder Bewegung die Position und korrigieren Sie sie, falls nötig:
+
+```python
+if spieler_rechteck.left < 0:
+    spieler_rechteck.left = 0
+# ... weitere Grenzen
+```
+:::
+
+## Kollisionserkennung
+
+Pygame bietet eingebaute Kollisionserkennungs-Methoden für `Rect`-Objekte:
+
+::: {.callout-note}
+## Kollisionsmethoden
+
+- `rect1.colliderect(rect2)`: Gibt `True` zurück, wenn sich zwei Rechtecke überschneiden.
+- `rect.collidepoint(x, y)`: Gibt `True` zurück, wenn ein Punkt innerhalb des Rechtecks liegt.
+- `rect.collidelist(liste_von_rects)`: Gibt den Index des ersten Rechtecks in der Liste zurück, mit dem eine Kollision vorliegt, sonst `-1`.
+- `rect.collidelistall(liste_von_rects)`: Gibt eine Liste aller Indizes zurück, mit denen Kollisionen vorliegen.
+:::
+
+### Einfache Kollision zwischen zwei Objekten
+
+Folgendes Code-Beispiel zeigt, wie man eine Kollision zwischen zwei Rechtecken erkennt:
+
+```python
+# Vor der Game-Schleife: Objekte definieren
+spieler = pg.Rect(100, 100, 40, 40)
+hindernis = pg.Rect(400, 300, 80, 80)
+
+# In der Update-Sektion der Game-Schleife
+if spieler.colliderect(hindernis):
+    print("Kollision erkannt!")
+    # Hier kann man z.B. die Farbe ändern oder Game Over auslösen
+```
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Hinderniskurs
+Erweitern Sie Ihr Programm aus der vorherigen Übung:
+
+1. Erstellen Sie 3–5 Hindernisse (Rechtecke) an verschiedenen Positionen.
+2. Zeichnen Sie diese Hindernisse in einer anderen Farbe als den Spieler.
+3. Überprüfen Sie in jedem Frame, ob der Spieler mit einem der Hindernisse kollidiert.
+4. Wenn eine Kollision erkannt wird, ändern Sie die Farbe des Spielers.
+5. **Bonus:** Setzen Sie den Spieler bei einer Kollision zurück zur Startposition.
+:::
+
+### Kollision mit mehreren Objekten
+
+Wenn wir viele Objekte haben, ist es praktischer, sie in einer Liste zu speichern:
+
+```python
+# Vor der Game-Schleife
+spieler = pg.Rect(100, 100, 40, 40)
+hindernisse = [
+    pg.Rect(200, 150, 50, 50),
+    pg.Rect(400, 300, 60, 60),
+    pg.Rect(600, 200, 70, 30),
+    pg.Rect(300, 450, 80, 40)
+]
+
+# In der Update-Sektion
+kollisionsindex = spieler.collidelist(hindernisse)
+if kollisionsindex != -1:
+    print(f"Kollision mit Hindernis {kollisionsindex}")
+    # Reagiere auf Kollision
+
+# Im Render-Teil: Alle Hindernisse zeichnen
+for hindernis in hindernisse:
+    pg.draw.rect(screen, (100, 100, 100), hindernis)
+```
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Sammelobjekte
+Erstellen Sie ein kleines Sammel-Spiel:
+
+1. Erstellen Sie eine Liste mit 5–10 kleinen Rechtecken, die Münzen oder Sammelobjekte darstellen.
+2. Verteilen Sie diese zufällig im Fenster (benutzen Sie `random.randint(...)`).
+3. Zeichnen Sie die Sammelobjekte in gelb oder gold.
+4. Wenn der Spieler ein Objekt berührt, entfernen Sie es aus der Liste mit `liste.pop(index)`.
+5. Zählen Sie, wie viele Objekte gesammelt wurden, und geben Sie dies in der Konsole aus.
+
+**Hinweis:** Um ein Objekt nach Kollision zu entfernen:
+
+```python
+if kollisionsindex != -1:
+    sammelobjekte.pop(kollisionsindex)
+    anzahl_gesammelt += 1
+```
+:::
+
+### Kollisionsvermeidung
+
+Manchmal wollen wir nicht nur erkennen, dass eine Kollision stattgefunden hat, sondern auch verhindern, dass der Spieler durch Hindernisse hindurchgeht:
+
+```python
+# Speichere alte Position vor der Bewegung
+alte_x = spieler.x
+alte_y = spieler.y
+
+# Bewege den Spieler basierend auf Tastatureingaben
+keys = pg.key.get_pressed()
+if keys[pg.K_UP]:
+    spieler.y -= speed
+if keys[pg.K_DOWN]:
+    spieler.y += speed
+if keys[pg.K_LEFT]:
+    spieler.x -= speed
+if keys[pg.K_RIGHT]:
+    spieler.x += speed
+
+# Überprüfe Kollision
+if spieler.collidelist(hindernisse) != -1:
+    # Setze Position zurück
+    spieler.x = alte_x
+    spieler.y = alte_y
+```
+
+
+::: {.callout-caution icon=false}
+## ✏️ Übung: Labyrinth
+Erstellen Sie ein einfaches Labyrinth:
+
+1. Erstellen Sie mehrere Wandrechtecke, die ein Labyrinth bilden.
+2. Implementieren Sie Kollisionsvermeidung, sodass der Spieler nicht durch Wände gehen kann.
+3. Erstellen Sie ein Zielrechteck (z.B. in grün).
+4. Wenn der Spieler das Ziel erreicht, geben Sie eine Erfolgsmeldung aus.
+:::
+
+## Bonus: Maussteuerung
+
+Zusätzlich zur Tastatur können wir auch die Maus zur Steuerung verwenden:
+
+```python
+# Mausposition abfragen
+maus_x, maus_y = pg.mouse.get_pos()
+
+# Spieler zur Mausposition bewegen (sanft)
+spieler.x += (maus_x - spieler.centerx) * 0.1
+spieler.y += (maus_y - spieler.centery) * 0.1
+```
+
+Für Mausklicks verwenden wir Events:
+
+```python
+# In der Event-Schleife
+for event in pg.event.get():
+    if event.type == pg.QUIT:
+        running = False
+
+    if event.type == pg.MOUSEBUTTONDOWN:
+        if event.button == 1:  # Linksklick
+            print("Linke Maustaste gedrückt")
+        if event.button == 3:  # Rechtsklick
+            print("Rechte Maustaste gedrückt")
+```
+
+Oder wir fragen den aktuellen Zustand ab:
+
+```python
+# Zustand aller Maustasten abfragen
+maus_tasten = pg.mouse.get_pressed()
+if maus_tasten[0]:  # Linke Maustaste
+    print("Linke Maustaste ist gedrückt")
+```
+
+
+::: {.callout-caution icon=false}
+## 🏆 Challenge: Maussteuerung
+Erstellen Sie ein Programm, bei dem der Spieler der Maus folgt:
+
+1. Der Spieler bewegt sich kontinuierlich in Richtung der Mausposition.
+2. Die Bewegungsgeschwindigkeit soll konstant sein (verwenden Sie Trigonometrie oder normalisieren Sie den Vektor).
+3. Bei Linksklick soll ein Projektil in Richtung Mausposition abgefeuert werden.
+4. Optional: Fügen Sie Hindernisse hinzu, die das Projektil zerstören.
+
+**Tipp für konstante Geschwindigkeit:**
+
+```python
+import math
+
+dx = maus_x - spieler.centerx
+dy = maus_y - spieler.centery
+distanz = math.sqrt(dx**2 + dy**2)
+if distanz > 0:  # Verhindere Division durch 0
+    dx = dx / distanz * speed
+    dy = dy / distanz * speed
+    spieler.x += dx
+    spieler.y += dy
+```
+:::
