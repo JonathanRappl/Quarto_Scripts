@@ -31,11 +31,11 @@ Bevor wir uns mit dem Internet als spezielles Netzwerk befassen, wollen wir allg
 - **Shopping-Netzwerke**: Aliexpress, Uber, etc.
 - **Computer-Netzwerke**: **Das Internet**, Firmen-Netzwerke etc.
 
-All diese Netzwerke können als Graphen visualisiert und veranschaulicht werden. Gemeinsam ist allen Netzwerken, dass die einzelnen Knoten ihren «Wert» (ihren Nutzen) erst durch die Verbindung mit anderen Knoten erhalten. Anders gesagt, mit den Worten des «Erfinders des Internets», Tim Berners-Lee:
+All diese Netzwerke können als Graphen visualisiert und veranschaulicht werden. Gemeinsam ist allen Netzwerken, dass die einzelnen Knoten ihren "Wert" (ihren Nutzen) erst durch die Verbindung mit anderen Knoten erhalten. Anders gesagt, mit den Worten des "Erfinders des Internets", Tim Berners-Lee:
 
 > *The web is more a social creation than a technical one.*
 
-Häufig werden die Begriffe «Internet» und «Computer-Netze», bzw. «Rechner-Netze» austauschbar verwendet. Dabei ist es jedoch wichtig zu verstehen, dass dies zwei unterschiedliche Konzepte sind: während dem mit dem *Internet* ein höchst komplexes, den gesamten Globus umspannendes Netzwerk von Computern gemeint ist, können lediglich zwei miteinander verbundene Computer bereits ein Rechnernetz bilden. Das Internet wird häufig auch als *Netz von (Rechner-)Netzen* bezeichnet. Es ist daher wichtig, dass wir uns zuerst mit einfacheren Rechnernetzen befassen, da diese die Grundbausteine für das Internet bilden.
+Häufig werden die Begriffe "Internet" und "Computer-Netze", bzw. "Rechner-Netze" austauschbar verwendet. Dabei ist es jedoch wichtig zu verstehen, dass dies zwei unterschiedliche Konzepte sind: während dem mit dem *Internet* ein höchst komplexes, den gesamten Globus umspannendes Netzwerk von Computern gemeint ist, können lediglich zwei miteinander verbundene Computer bereits ein Rechnernetz bilden. Das Internet wird häufig auch als *Netz von (Rechner-)Netzen* bezeichnet. Es ist daher wichtig, dass wir uns zuerst mit einfacheren Rechnernetzen befassen, da diese die Grundbausteine für das Internet bilden.
 
 Wir verwenden dazu das Simulationsprogramm [**Filius**](https://www.lernsoftware-filius.de/Herunterladen) (siehe [Anhang: Installation Filius](#anhang-installation-filius)).
 
@@ -137,20 +137,13 @@ Die Kommunikation über das Internet verläuft in unterschiedlichen Teilschritte
 2. Dazu übermittelt Chef 1 dem Sekretariat ihre Nachricht an Chef 2. Das Sekretariat schreibt die Nachricht nieder und übermittelt der lokalen Post den Brief an Chef 2.
 3. Die lokale Post kümmert sich nun um den Transport zur asiatischen Post, wo der Brief an das Sekretariat von Firma 2 übergeben und schlussendlich an Chef 2 gelangt.
 
-![Schichtenmodell-Analogie: Kommunikation zwischen zwei Firmen](figures/schichtenmodell_analogie.png){fig-align="center" width=75%}
-
-<!-- TikZ source (pre-rendered to figures/schichtenmodell_analogie.png):
-To regenerate, compile networking/figures/schichtenmodell_analogie.tex with pdflatex,
-then convert: pdftoppm -png -r 300 schichtenmodell_analogie.pdf schichtenmodell_analogie
--->
-
-![](figures/schichtenmodell_analogie.tex){fig-align="center" width=75%}
+![Schichtenmodell-Analogie: Kommunikation zwischen zwei Firmen](figures/schichtenmodell_analogie.png){fig-align="center" width=50%}
 
 Dieser Kommunikationsablauf kann in Schichten mit jeweiligen dazugehörigen Prozessen aufgeteilt werden:
 
-1. **Schicht «Chefs»**: damit die beiden Chefs miteinander sinnvolle Gespräche führen können, verfügen Sie über gemeinsame Standards (Sprache, Wissen etc.) sowie Protokolle (standardisierte Abläufe der Begrüssung etc.).
-2. **Schicht «Sekretariat»**: Damit die Sekretariate miteinander kommunizieren können, benötigen auch sie standardisierte Abläufe oder Protokolle, etwa, wie man einen Brief korrekt verfasst, datiert und adressiert.
-3. **Schicht «Post»**: Die Post verfügt ebenfalls über standardisierte Protokolle (wie werden Briefe und Pakete von A nach B transportiert? Mit welchen Transportmitteln, über welche Routen?)
+1. **Schicht "Chefs"**: damit die beiden Chefs miteinander sinnvolle Gespräche führen können, verfügen Sie über gemeinsame Standards (Sprache, Wissen etc.) sowie Protokolle (standardisierte Abläufe der Begrüssung etc.).
+2. **Schicht "Sekretariat"**: Damit die Sekretariate miteinander kommunizieren können, benötigen auch sie standardisierte Abläufe oder Protokolle, etwa, wie man einen Brief korrekt verfasst, datiert und adressiert.
+3. **Schicht "Post"**: Die Post verfügt ebenfalls über standardisierte Protokolle (wie werden Briefe und Pakete von A nach B transportiert? Mit welchen Transportmitteln, über welche Routen?)
 
 
 Die Vorteile des Schichtenmodells scheinen offensichtlich:
@@ -162,38 +155,13 @@ Die Vorteile des Schichtenmodells scheinen offensichtlich:
 
 Im Zusammenhang mit dem Internet werden häufig zwei Schichtenmodelle gegenübergestellt: Das vollständige, detaillierte **OSI**-Modell (Open Systems Interconnection) mit 7 Schichten sowie das etwas vereinfachte **TCP/IP**-Modell mit 4 Schichten.
 
-| # | Schicht (OSI) | Schicht (TCP/IP) | Aufgabe | Informationsform | Begriffe / Protokolle |
-|---|---|---|---|---|---|
-| 7 | Anwendung (*Application*) | Anwendung | Hilft bei der Identifizierung des Clients und synchronisiert die Kommunikation. | Nachricht | HTTP, HTTPS, DNS, SMTP, FTP |
-| 6 | Darstellung (*Presentation*) | Anwendung | Daten werden extrahiert und für die Übertragung in das erforderliche Format gebracht. | Nachricht | TLS, SSL, ASCII, UTF-8 |
-| 5 | Sitzung (*Session*) | Anwendung | Stellt Verbindung her, hält diese aufrecht, gewährleistet Authentifizierung und Sicherheit. | Nachricht | TLS Handshake |
-| 4 | Transport | Transport | Nimmt Dienst von der Vermittlungsschicht und stellt ihn der Anwendungsschicht zur Verfügung. | Segment | TCP, UDP, Ports |
-| 3 | Vermittlung (*Network*) | Internet | Übertragung von Daten von einem Host zu einem anderen in unterschiedlichen Netzwerken. | Paket | IPv4, IPv6, ICMP, Router, Gateway |
-| 2 | Sicherung (*Data Link*) | Netzzugriff | Übermittlung von Nachrichten von Knoten zu Knoten. | Frame | ARP, MAC, Switch, Ethernet, WiFi |
-| 1 | Bitübertragung (*Physical*) | Netzzugriff | Herstellung physischer Verbindungen zwischen Geräten. | Bits | Hub, Repeater, Modem, Kabel |
-
-: Internet-Schichten-Modelle OSI und TCP/IP sowie deren wichtigste Aufgaben, Informationsformen, Geräte und Protokolle {#tbl-osi-layers}
+![Internet-Schichten-Modelle OSI und TCP/IP sowie deren wichtigste Aufgaben, Informationsformen, Geräte und Protokolle](figures/osi_tcp_table.png){#tbl-osi-layers width=100%}
 
 Im Folgenden verwenden wir hauptsächlich das etwas vereinfachte TCP/IP-Modell und gehen kurz auf jede Schicht ein.
 
 Im echten Internet werden Daten häufig als **Frame** (Paket) verschickt. Jedes Paket besteht dabei aus einem **Header** (Kopfteil) und einem **Payload** (Nutzteil). Der Header enthält dabei wichtige Informationen über das Paket, wie zum Beispiel die Quell- und Zieladresse, die Sequenznummer und andere Metadaten. Der Payload enthält die eigentlichen Daten, die übertragen werden sollen (z.B. eine Nachricht, ein Bild, ein Video etc.). Jede Schicht fügt dabei ihren eigenen Header hinzu, bevor das Paket an die nächste Schicht weitergegeben wird. Beim Empfänger werden die Header in umgekehrter Reihenfolge entfernt, um die ursprünglichen Daten wiederherzustellen.
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│ Netzzugriff (MAC zu MAC)                                              │
-│  ┌───────────────────────────────────────────────────────────────┐     │
-│  │ Vermittlung (IP zu IP)                                       │     │
-│  │  ┌─────────────────────────────────────────────────────┐     │     │
-│  │  │ Transport (Port zu Port)                            │     │     │
-│  │  │  ┌───────────────────────────────────────────┐      │     │     │
-│  │  │  │ Anwendung (Client zu Server)              │      │     │     │
-│  │  │  │              Nutzdaten                    │      │     │     │
-│  │  │  └───────────────────────────────────────────┘      │     │     │
-│  │  └─────────────────────────────────────────────────────┘     │     │
-│  └───────────────────────────────────────────────────────────────┘     │
-└─────────────────────────────────────────────────────────────────────────┘
- ◄──────── Header (Kopfteil) ────────►◄──── Payload (Nutzteil) ────►
-```
+![Illustration eines Datenpakets durch die verschiedenen Schichten des TCP/IP-Modells](figures/schichtenmodell_envelope.png){fig-align="center" width=75%}
 
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: Schichtenmodell anwenden — Bestellung bei Digitec
@@ -204,7 +172,7 @@ a) Skizzieren Sie den Ablauf als **Schichtenmodell** mit **4 Schichten**. Geben 
 
 b) Für **jede** Schicht:
 
-   - Notieren Sie **wer mit wem** kommuniziert (z.B. *Kunde ↔ Digitec*, *Digitec ↔ Logistikpartner*, *Lager ↔ Zusteller*, ...).
+   - Notieren Sie **wer mit wem** kommuniziert (z.B. *Kunde ↔ Digitec-Website*, *Portmonaie ↔ Zahlungsanbieter*, ...).
    - Beschreiben Sie in **1–2 Sätzen**, **worüber** auf dieser Ebene gesprochen wird (welche Information / welches Ziel).
 
 c) Beschreiben Sie zwei Situationen, in denen etwas schiefgeht (z.B. falsche Lieferadresse, Paket kommt nicht an, Zahlung klappt nicht, Bestellung doppelt, ...). Ordnen Sie **jeweils** zu, **auf welcher Schicht** das Problem am sinnvollsten erkannt oder behoben wird, und begründen Sie kurz.
@@ -219,9 +187,9 @@ d) (Optional) Ändern Sie **eine** Sache am Prozess (z.B. anderes Zahlungsmittel
 
 Je nach Rolle der Computer in einem Rechner-Netz ist häufig von **Client**, **Server** oder **Host** die Rede.
 
-- Der **Client** (von en. *client* = «Kunde») bezeichnet den Computer (genauer gesagt ein Programm auf einem Computer), der etwas von einem anderen Computer will. Beispiel: Ihr Browser, der eine Webseite anfordert.
-- Der **Server** (von en. *to serve* = «dienen») bezeichnet den Computer (genauer gesagt das Computer-Programm), das dem Client gibt, was er will. Der Server kann Verbindungsanfragen von anderen Computern akzeptieren oder ablehnen.
-- Bei einem **Host** (von en. *host* = «Wirt» / «Gastgeber») ist im allgemeinen ein Computer in einem Netzwerk gemeint, der je nach Situation die Rolle des Servers oder Clients einnehmen kann. Der Name eines Computers in einem Netzwerk wird häufig als **Host Name** bezeichnet.
+- Der **Client** (von en. *client* = "Kunde") bezeichnet den Computer (genauer gesagt ein Programm auf einem Computer), der etwas von einem anderen Computer will. Beispiel: Ihr Browser, der eine Webseite anfordert.
+- Der **Server** (von en. *to serve* = "dienen") bezeichnet den Computer (genauer gesagt das Computer-Programm), das dem Client gibt, was er will. Der Server kann Verbindungsanfragen von anderen Computern akzeptieren oder ablehnen.
+- Bei einem **Host** (von en. *host* = "Wirt" / "Gastgeber") ist im allgemeinen ein Computer in einem Netzwerk gemeint, der je nach Situation die Rolle des Servers oder Clients einnehmen kann. Der Name eines Computers in einem Netzwerk wird häufig als **Host Name** bezeichnet.
 :::
 
 # Netzzugriff-Schicht
@@ -233,7 +201,7 @@ Eine IP-Adresse (welche wir im nächsten Kapitel noch genauer betrachten werden)
 ::: {.callout-note}
 ## Definition: MAC-Adresse
 
-Die **MAC-Adresse** (Media Access Control) ist die physische Adresse der Netzwerkkarte in einem Computer, also sozusagen der «Fingerabdruck» der Netzwerkkarte. Sie wird normalerweise mit **48 Bit** (= 6 Bytes) angegeben, welche der Kürze wegen in hexadezimaler Schreibweise notiert werden. Ein Beispiel einer MAC-Adresse: `48-2C-6A-1E-59-3D`.
+Die **MAC-Adresse** (Media Access Control) ist die physische Adresse der Netzwerkkarte in einem Computer, also sozusagen der "Fingerabdruck" der Netzwerkkarte. Sie wird normalerweise mit **48 Bit** (= 6 Bytes) angegeben, welche der Kürze wegen in hexadezimaler Schreibweise notiert werden. Ein Beispiel einer MAC-Adresse: `48-2C-6A-1E-59-3D`.
 :::
 
 ## ARP — Address Resolution Protocol
@@ -243,31 +211,35 @@ Damit ein Gerät innerhalb eines lokalen Netzwerks eine Nachricht an ein anderes
 Dieses wird jedes Mal ausgeführt, wenn ein Computer eine Nachricht an eine bestimmte IP-Adresse senden will, aber die MAC-Adresse des nächsten Empfängers (*Gateway*) noch *nicht* kennt. Ein Beispiel:
 
 - Computer `192.168.0.33` will Nachricht senden an `192.168.0.34` im selben Subnetz (Subnetz-Maske: `255.255.255.0`)
-- `192.168.0.33` sendet daher eine Nachricht an alle Computer in `192.168.0.x` (*Broadcast*): «Wer hat die IP `192.168.0.34`?»
-- Computer `192.168.0.34` antwortet (*Unicast*): «Ich! Meine MAC ist `60:4E:46:F5:08:09`.»
-- Nun kann der Computer seine Nachricht direkt an den nächsten Empfänger (*Gateway*) übergeben.
+- `192.168.0.33` sendet daher eine Nachricht an alle Computer in `192.168.0.x`: "Wer hat die IP `192.168.0.34`?"
+- Computer `192.168.0.34` antwortet: "Ich! Meine MAC ist `60:4E:46:F5:08:09`."
+- Nun kann der Computer seine Nachricht direkt an den nächsten Empfänger übergeben.
 
-Die Resultate aller ARP-Anfragen werden in einer sogenannten **ARP-Tabelle** gespeichert, damit nicht jedes Mal eine neue Anfrage gesendet werden muss. Diese Tabelle wird periodisch aktualisiert. Um die ARP-Tabelle auf einem Computer anzuzeigen, kann der Befehl `arp -a` im Terminal (MacOS, UNIX) bzw. `cmd` (Windows) verwendet werden.
+Die Resultate aller ARP-Anfragen werden in einer sogenannten **ARP-Tabelle** gespeichert, damit nicht jedes Mal eine neue Anfrage gesendet werden muss. Diese Tabelle wird periodisch aktualisiert. Um die ARP-Tabelle auf einem Computer anzuzeigen, kann der Befehl `arp -a` im Terminal (MacOS, UNIX) bzw. `cmd` oder PowerShell (Windows) verwendet werden.
 
 ## Ping
 
-Mit dem Befehl `ping` kann überprüft werden, ob ein Rechner im Netzwerk erreichbar ist. Dabei wird eine minimale, inhaltslose Nachricht an einen anderen Rechner (= IP-Adresse) geschickt. Ziel ist es zu überprüfen, ob eine gewisse IP-Adresse im Netzwerk existiert. Der Befehl «ping» ist vergleichbar mit einem Ping-Pong-Spiel: Der Absender-Rechner, der eine «ping»-Nachricht schickt, erhält vom Ziel-Rechner, sofern dieser erreicht wird, viermal eine «pong»-Nachricht zurückgeschickt.
+Mit dem Befehl `ping` kann überprüft werden, ob ein Rechner im Netzwerk erreichbar ist. Dabei wird eine minimale, inhaltslose Nachricht an einen anderen Rechner (= IP-Adresse) geschickt. Ziel ist es zu überprüfen, ob eine gewisse IP-Adresse im Netzwerk existiert. Der Befehl "ping" ist vergleichbar mit einem Ping-Pong-Spiel: Der Absender-Rechner, der eine "ping"-Nachricht schickt, erhält vom Ziel-Rechner, sofern dieser erreicht wird, viermal eine "pong"-Nachricht zurückgeschickt.
 
-Der `ping`-Befehl kann im Terminal (MacOS, UNIX) bzw. `cmd` (Windows) wie folgt ausgeführt werden:
+Der `ping`-Befehl kann im Terminal (MacOS, UNIX) bzw. `cmd` oder PowerShell (Windows) wie folgt ausgeführt werden:
 
 ```bash
 ping [ip-adresse]
-# z.B.
-ping 159.233.1.22
+```
+
+z.B.
+
+```bash
+ping 8.8.8.8
 ```
 
 Der Ping-Befehl verwendet das ICMP (Internet Control Message Protocol) der Internetschicht, um die Nachrichten zu verschicken.
 
-::: {.callout-warning}
+<!-- ::: {.callout-warning}
 ## Ping of Death ☠️
 
 Eine Spezial-Variante des `ping`-Befehls ist der sogenannte **Ping of Death**, bei dem ein bösartiger Computer ein zu grosses Datenpaket an einen anderen Computer schickte, das beim Zusammensetzen zum Absturz des Zielrechners führte. Dies ist seit Ende der 90er-Jahre auf den meisten Computern nicht mehr möglich: Die Sicherheitslücke wurde behoben, indem beispielsweise die Paketgrösse vor dem Zusammensetzen überprüft wurde.
-:::
+::: -->
 
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: Filius-Anwendung — ARP beobachten
@@ -283,7 +255,7 @@ Die Minimalversion der digitalen Kommunikation besteht darin, dass zwei direkt d
 7. Den ARP-Cache kann man mit dem Befehl `arp` anzeigen lassen. Führen Sie diesen Befehl in der Befehlszeile aus und notieren Sie die angezeigten Informationen.
 8. Testen Sie noch die anderen verfügbaren Befehle in der Befehlszeile (mit `help` werden alle Befehle angezeigt).
 
-Der `ping`-Befehl lässt sich auch ausserhalb von Filius in der Befehlszeile (Windows: `cmd`, MacOS: Terminal) verwenden. Probieren Sie es aus, indem Sie eine bekannte Webseite anpingen, z.B. `ping www.google.ch`. Versuchen Sie, eine Website zu finden, die eine möglichst langsame Antwortzeit hat (z.B. eine Webseite, die weit weg gehostet wird) und notieren Sie diese.
+Der `ping`-Befehl lässt sich auch ausserhalb von Filius in der Befehlszeile (Windows: `cmd` oder PowerShell, MacOS: Terminal) verwenden. Probieren Sie es aus, indem Sie eine bekannte Webseite anpingen, z.B. `ping www.google.ch`. Versuchen Sie, eine Website zu finden, die eine möglichst langsame Antwortzeit hat (z.B. eine Webseite, die weit weg gehostet wird) und notieren Sie diese.
 :::
 
 ## Switches
@@ -295,13 +267,13 @@ Jede Netzwerkkarte kann nur mit genau einem anderen Gerät in einem lokalen Netz
 
 Üblicherweise sind in einem Subnetz mehr als nur zwei Geräte miteinander verbunden. Weil aber normale Computer nur einen Ethernet-Eingang haben, braucht es für die physische Verbindung noch ein zentrales Gerät, an das alle Computer angeschlossen werden.
 
-1. Verbinden Sie in Filius drei Rechner physisch mithilfe eines Switches. Stellen Sie IPs und Netzmasken so ein, dass die Geräte auch logisch in ein Subnetz passen, z.B. `1.2.3.x`. Überprüfen Sie mithilfe von Pings, dass die Einstellungen funktionieren.
+1. Verbinden Sie in Filius drei Rechner physisch mithilfe eines Switches. Stellen Sie IPs und Netzmasken so ein, dass die Geräte auch logisch in ein Subnetz passen, das heisst die IP-Adressen fangen mit den gleichen drei Zahlen an, z.B. `192.168.1.x`. Überprüfen Sie mithilfe von Pings, dass die Einstellungen funktionieren.
 2. Installieren Sie einen Echo-Server auf einem der Geräte, einen einfachen Client auf einem anderen. Öffnen Sie die beiden zugehörigen Benutzeroberflächen, starten Sie den Server und testen Sie den Dienst.
 3. Auf welcher Schicht ist das Echo-Protokoll angesiedelt? (Tipp: Schauen Sie sich den Datenaustausch an)
 4. Wie die Oberfläche des Clients schon sagt, wird hier eine Verbindung aufgebaut. Erläutern Sie, was das in Bezug auf den Datenaustausch bedeutet.
 :::
 
-## Topologie
+<!-- ## Topologie
 
 Beim Erstellen eines Netzwerks stellt sich als Erstes die Frage, welche Computer man mit welchen anderen Computern verbinden soll. Die Struktur der Verbindungen in einem Netzwerk kann als Graphen-Problem formuliert werden: Welche Knoten eines Graphen sollen über Kanten verbunden werden? In den folgenden Graphen bezeichnen Knoten die Computer und Kanten die Verbindungen (Kabel). Die verschiedenen möglichen Strukturen eines Netzwerks werden als **Topologie** bezeichnet.
 
@@ -451,7 +423,7 @@ Welche Art der Datenübertragung verwenden die folgenden Alltagssituationen?
 - Info-Box im Intranet: **Broadcast** (an alle Nutzer des Intranets)
 - Frage an eine Gruppe der Klasse: **Multicast** (an eine bestimmte Gruppe)
 - Email der Schulleitung an alle Eltern: **Multicast** (an eine definierte Empfängergruppe)
-:::
+::: -->
 
 # Vermittlungsschicht / Internetschicht
 
@@ -459,22 +431,14 @@ Welche Art der Datenübertragung verwenden die folgenden Alltagssituationen?
 
 Eine **IP-Adresse** (Internet Protocol) ist eine Netzwerk-Adresse eines Computers. Somit ist sie in gewisser Weise der Wohnadresse einer Person ähnlich. Häufig werden IP-Adressen noch im **IPv4**-Format angegeben: Dieses besteht aus 4 Bytes, also 4 Zahlen von 0 bis 255 (von `0x00` bis `0xFF`). Die IPv4-Adresse wird meist dezimal angegeben. Beispiel der Adresse `192.168.2.101`:
 
-```
-       192    .    168    .     2      .    101
-    ┌──────────┬──────────┬──────────┬──────────┐
-    │ 11000000 │ 10101000 │ 00000010 │ 01100101 │
-    └──────────┴──────────┴──────────┴──────────┘
-       8 Bit      8 Bit      8 Bit      8 Bit
-    ◄──────────────── 32 Bit (4 Bytes) ────────────────►
-```
+![](figures/ip_address.png){fig-align="center" width=75%}
 
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: IPv4 binär → dezimal
 
 Bringen Sie folgende IPv4-Adresse in die dezimale Schreibweise:
 
-`10101100.00010000.00000001.00011111`
-:::
+`10101100000100000000000100011111`
 
 ::: {.callout-note collapse="true"}
 ## Lösung
@@ -487,20 +451,25 @@ Bringen Sie folgende IPv4-Adresse in die dezimale Schreibweise:
 → Dezimale Schreibweise: `172.16.1.31`
 :::
 
+:::
+
+
+
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: Anzahl IPv4-Adressen
 
 Wie viele IPv4-Adressen gibt es?
-:::
 
 ::: {.callout-note collapse="true"}
 ## Lösung
 
 $4 \cdot 1 \text{ Byte} = 4 \cdot 8 \text{ Bits} = 32 \text{ Bits}$
 
-$2^{32} \approx 4 \text{ Milliarden Adressen}$
+$2^{32} \approx 4.3 \text{ Milliarden Adressen}$
 
 → Zu wenig, da es heute deutlich mehr als 4 Milliarden Geräte gibt!
+:::
+
 :::
 
 ::: {.callout-caution icon=false}
@@ -529,13 +498,16 @@ Doppelte Doppelpunkt-Kürzungen sind jedoch nicht erlaubt (z.B. `2001::85a3::8a2
 ## ✏️ Übung: Anzahl IPv6-Adressen
 
 Wie viele Adressen gibt es bei IPv6?
-:::
 
 ::: {.callout-note collapse="true"}
 ## Lösung
 
 $$2^{128} \approx 3.4 \cdot 10^{38}$$
 :::
+
+:::
+
+
 
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: Gültige IP-Adressen
@@ -550,7 +522,6 @@ Entscheiden Sie für jede der folgenden Adressen, ob es sich um eine gültige IP
 - `1234:5678:9abc:def0:1234:5678:9abc:def0`
 - `2001:db8:::1`
 - `192.168.1.1.1`
-:::
 
 ::: {.callout-note collapse="true"}
 ## Lösung
@@ -561,15 +532,18 @@ Entscheiden Sie für jede der folgenden Adressen, ob es sich um eine gültige IP
 - `2001:0db8:85a3:0000:0000:8a2e:0370:7334` — ✅ Gültige IPv6-Adresse
 - `2001:db8::1` — ✅ Gültige IPv6-Adresse
 - `1234:5678:9abc:def0:1234:5678:9abc:def0` — ✅ Gültige IPv6-Adresse
-- `2001:db8:::1` — ❌ Keine gültige IP-Adresse (mehrfache Verwendung von `::`)
-- `192.168.1.1.1` — ❌ Keine gültige IP-Adresse (zu viele Oktette)
+- `2001:db8:::1` — ❌ Keine gültige IP-Adresse
+- `192.168.1.1.1` — ❌ Keine gültige IP-Adresse (zu viele Bytes für IPv4)
 :::
+
+:::
+
+
 
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: Grösste IP-Adressen
 
 Was ist die grösste mögliche IPv4-Adresse in dezimaler Schreibweise? Was ist die grösste mögliche IPv6-Adresse in hexadezimaler Schreibweise?
-:::
 
 ::: {.callout-note collapse="true"}
 ## Lösung
@@ -578,10 +552,13 @@ Was ist die grösste mögliche IPv4-Adresse in dezimaler Schreibweise? Was ist d
 - Grösste mögliche IPv6-Adresse: `ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff`
 :::
 
+:::
+
 ::: {.callout-tip icon=false}
 ## 💡 Bemerkung: IPv4 vs. IPv6
 
-In der Praxis werden IPv4-Adressen immer noch am häufigsten verwendet, da viele ältere Geräte und Netzwerke nur IPv4 unterstützen. Allerdings wird IPv6 zunehmend wichtiger, da die Anzahl der Geräte im Internet stetig zunimmt und der Adressraum von IPv4 nicht mehr ausreicht. Um den Mangel an IPv4-Adressen zu beheben, werden auch Techniken wie **NAT** (Network Address Translation) eingesetzt, die es ermöglichen, mehrere Geräte hinter einer einzigen öffentlichen IP-Adresse zu betreiben.
+In der Praxis werden IPv4-Adressen immer noch am häufigsten verwendet, da viele ältere Geräte und Netzwerke nur IPv4 unterstützen. Allerdings wird IPv6 zunehmend wichtiger, da die Anzahl der Geräte im Internet stetig zunimmt und der Adressraum von IPv4 nicht mehr ausreicht. Um den Mangel an IPv4-Adressen zu beheben, werden auch Techniken wie **NAT** (Network Address Translation) eingesetzt (dazu später mehr), die es ermöglichen, mehrere Geräte hinter einer einzigen öffentlichen IP-Adresse zu betreiben.
+
 :::
 
 ## Netzmasken & Subnetze
@@ -604,7 +581,7 @@ Gegeben sei folgende Subnetzmaske:
 | IP-Adresse Computer 2 | `159.233.1.1` | `10011111.11101001.00000001.00000001` |
 | Subnetzmaske | `255.255.255.0` | `11111111.11111111.11111111.00000000` |
 
-Um herauszufinden, ob die IP-Adressen von Computer 1 und Computer 2 zum selben Netzwerk gehören, muss überprüft werden, ob die binäre IP-Adresse an all denjenigen Stellen gleich ist, wo die Subnetzmaske = «1» ist. In diesem Beispiel bedeutet dies, dass alle IP-Adressen, welche mit `159.233.1.[...]` beginnen, zum selben Netzwerk dazugehören.
+Um herauszufinden, ob die IP-Adressen von Computer 1 und Computer 2 zum selben Netzwerk gehören, muss überprüft werden, ob die binäre IP-Adresse an all denjenigen Stellen gleich ist, wo die Subnetzmaske = "1" ist. In diesem Beispiel bedeutet dies, dass alle IP-Adressen, welche mit `159.233.1._` beginnen, zum selben Netzwerk dazugehören.
 :::
 
 ::: {.callout-caution icon=false}
@@ -624,7 +601,6 @@ Umrechner dezimal → binär: [https://oinf.ch/interactive/ips-und-netzmaske/](h
 | 88.100.11.17 | 0.0.0.0 | 213.45.19.89 | ? |
 | 10.0.0.0 | 255.255.255.252 | 10.0.0.1 | ? |
 | 1.2.3.0 | 255.255.255.252 | 1.2.3.5 | ? |
-:::
 
 ::: {.callout-note collapse="true"}
 ## Lösung
@@ -635,9 +611,13 @@ Umrechner dezimal → binär: [https://oinf.ch/interactive/ips-und-netzmaske/](h
 | 213.45.19.89 | 255.255.0.0 | 213.45.17.89 | Ja |
 | 88.100.11.17 | 255.255.255.0 | 88.100.11.254 | Ja |
 | 88.100.11.17 | 0.0.0.0 | 213.45.19.89 | Ja (alles ✓) |
-| 10.0.0.0 | 255.255.255.252 | 10.0.0.1 | Ja ($252_{10}=11111100_2$) |
-| 1.2.3.0 | 255.255.255.252 | 1.2.3.5 | Nein ($252_{10}=11111100_2$) |
+| 10.0.0.0 | 255.255.255.252 | 10.0.0.1 | Ja <br> `11111100`$_2$ = $252_{10}$ <br> `00000011`$_2$ = $3_{10}$ <br> `00000000`$_2$ = $0_{10}$ |
+| 1.2.3.0 | 255.255.255.252 | 1.2.3.5 | Nein <br> `11111100`$_2$ = $252_{10}$ <br> `00000011`$_2$ = $3_{10}$ <br> `00000101`$_2$ = $5_{10}$ |
 :::
+
+:::
+
+
 
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: Subnetzgrösse berechnen
@@ -786,7 +766,7 @@ Dank NAT können Millionen von Geräten mit derselben privaten IP-Adresse gleich
 ## ✏️ Übung: Private vs. öffentliche IP-Adresse herausfinden
 
 1. Finden Sie die **private IP-Adresse** Ihres Computers heraus:
-   - **Windows**: Eingabeaufforderung (`cmd`) → `ipconfig` → suchen Sie die «IPv4-Adresse»
+   - **Windows**: Eingabeaufforderung (`cmd`) → `ipconfig` → suchen Sie die "IPv4-Adresse"
    - **MacOS**: Terminal → `ifconfig`, oder Systemeinstellungen → Netzwerk
 2. Überprüfen Sie, ob Ihre private IP-Adresse in einem der privaten Adressbereiche liegt.
 3. Finden Sie die **öffentliche IP-Adresse** Ihres Routers heraus:
@@ -820,7 +800,7 @@ Bis anhin haben wir gesehen, wie wir einzelne Rechner mittels einer IP adressier
 Wie ein Bahnhof verbindet ein Router ein Subnetz (= Stadt) mit der Aussenwelt. Über die **Routing-Tabelle** kann ein Router entscheiden, auf welchem Weg ein Datenpaket an die Aussenwelt verschickt werden kann. Eine typische Routing-Tabelle enthält:
 
 - **Ziel-IP und Netzmaske**: Welche Subnetze dem Router bekannt sind.
-- **Gateway** (= Tor, Ein-/Ausfahrt): Der nächstgelegene Zielort, an den ein Paket geschickt werden muss. Das Gateway kann als «Tor zur Aussenwelt» angeschaut werden.
+- **Gateway** (= Tor, Ein-/Ausfahrt): Der nächstgelegene Zielort, an den ein Paket geschickt werden muss. Das Gateway kann als "Tor zur Aussenwelt" angeschaut werden.
 - **Interface** (= Schnittstelle): Die physikalische Schnittstelle am Router (z.B. `eth0`, `wlan0`), über die eine Ziel-Adresse erreichbar ist.
 
 Beispiel einer minimalen Routing-Tabelle:
@@ -865,10 +845,10 @@ Ein DHCP-Server verwaltet einen Pool von verfügbaren IP-Adressen und weist dies
 
 Benutzen Sie das Netzwerk aus der [Router-Übung](#ex-router-gateway) und richten Sie auf einem der Computer in LAN A einen DHCP-Server ein, der automatisch IP-Adressen im Bereich `192.168.1.3` bis `192.168.1.127` vergibt. Die IP-Adresse des DHCP-Servers sollen Sie manuell auf `192.168.1.2` einstellen.
 
-1. Im Konfigurationsmodus können Sie auf einen Computer klicken und unten im Fenster auf «DHCP-Server einrichten» klicken.
+1. Im Konfigurationsmodus können Sie auf einen Computer klicken und unten im Fenster auf "DHCP-Server einrichten" klicken.
 2. Setzen Sie die Unter- und Obergrenze des Adressbereichs.
-3. Klicken Sie auf das Kästchen neben «DHCP aktivieren».
-4. Bei allen **anderen** Computern in LAN A setzen Sie ein Häkchen bei «DHCP zur Konfiguration verwenden» und «IP-Adresse als Name verwenden».
+3. Klicken Sie auf das Kästchen neben "DHCP aktivieren".
+4. Bei allen **anderen** Computern in LAN A setzen Sie ein Häkchen bei "DHCP zur Konfiguration verwenden" und "IP-Adresse als Name verwenden".
 5. Starten Sie die Simulation und beobachten Sie, wie die Computer automatisch eine IP-Adresse erhalten. Überprüfen Sie mit `ping`.
 6. Machen Sie das gleiche für LAN B.
 :::
@@ -888,7 +868,7 @@ Falls ein gewisses Gerät immer dieselbe lokale IP-Adresse benötigt (z.B. ein D
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: DHCP-Server mit IP-Reservierung
 
-Fügen Sie in LAN A aus der [DHCP-Übung](#ex-dhcp-server) einen neuen Computer hinzu, der zukünftig als DNS-Server fungieren soll. Richten Sie für diesen Computer eine IP-Reservierung ein, so dass er immer die IP-Adresse `192.168.1.3` erhält. Die Einstellungen dazu finden Sie im DHCP-Server unter «Statische Adresszuweisung».
+Fügen Sie in LAN A aus der [DHCP-Übung](#ex-dhcp-server) einen neuen Computer hinzu, der zukünftig als DNS-Server fungieren soll. Richten Sie für diesen Computer eine IP-Reservierung ein, so dass er immer die IP-Adresse `192.168.1.3` erhält. Die Einstellungen dazu finden Sie im DHCP-Server unter "Statische Adresszuweisung".
 
 Starten Sie die Simulation mehrmals neu und überprüfen Sie, ob der neue Computer tatsächlich immer die gleiche IP-Adresse erhält.
 :::
@@ -899,7 +879,7 @@ Wie können wir den genauen Weg nachvollziehen, den ein Datenpaket durch das Net
 
 ### Funktionsweise {.unnumbered}
 
-Traceroute nutzt das **TTL**-Feld (*Time To Live*) im IP-Header. Dieses Feld gibt an, wie viele «Hops» (Sprünge über Router) ein Paket maximal durchlaufen darf, bevor es verworfen wird.
+Traceroute nutzt das **TTL**-Feld (*Time To Live*) im IP-Header. Dieses Feld gibt an, wie viele "Hops" (Sprünge über Router) ein Paket maximal durchlaufen darf, bevor es verworfen wird.
 
 1. Traceroute sendet ein Paket mit `TTL=1` an die Zieladresse.
 2. Der erste Router reduziert den TTL-Wert auf 0 und verwirft das Paket. Er sendet eine ICMP-Fehlermeldung (*Time Exceeded*) zurück.
@@ -1077,7 +1057,7 @@ Die Sequenznummern werden im Folgenden nach dieser Logik erhöht:
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: Warum nicht 2 Schritte? (Teil 1)
 
-Bob fragt Alice: «Treffen wir uns morgen um 20:00 im Kino?» (SYN). Alice hat die Nachricht aber nie erhalten. Erklären Sie, weshalb es nicht sinnvoll wäre, dass Bob morgen einfach ins Kino geht.
+Bob fragt Alice: "Treffen wir uns morgen um 20:00 im Kino?" (SYN). Alice hat die Nachricht aber nie erhalten. Erklären Sie, weshalb es nicht sinnvoll wäre, dass Bob morgen einfach ins Kino geht.
 :::
 
 ::: {.callout-note collapse="true"}
@@ -1089,7 +1069,7 @@ Bob sollte nicht einfach ins Kino gehen, weil er keine Bestätigung von Alice er
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: Warum nicht 2 Schritte? (Teil 2)
 
-Bob fragt Alice: «Treffen wir uns morgen um 20:00 im Kino?» (SYN). Alice antwortet: «Ja, gerne.» (SYN+ACK). Bob hat Alices Antwort aber nie erhalten. Erklären Sie, weshalb es nicht sinnvoll wäre, dass Alice morgen einfach ins Kino geht.
+Bob fragt Alice: "Treffen wir uns morgen um 20:00 im Kino?" (SYN). Alice antwortet: "Ja, gerne." (SYN+ACK). Bob hat Alices Antwort aber nie erhalten. Erklären Sie, weshalb es nicht sinnvoll wäre, dass Alice morgen einfach ins Kino geht.
 :::
 
 ::: {.callout-note collapse="true"}
@@ -1129,7 +1109,7 @@ Typischer Ablauf:
 3. **TCP**: Client startet den Drei-Wege-Handschlag mit einem SYN-Paket.
 4. **TCP**: Server antwortet mit SYN+ACK.
 5. **TCP**: Client sendet ACK — TCP-Verbindung ist etabliert.
-6. **Anwendung**: Client sendet Nachricht (z.B. «hello!»).
+6. **Anwendung**: Client sendet Nachricht (z.B. "hello!").
 7. **TCP**: Server bestätigt den Empfang mit ACK.
 8. **Anwendung**: Echo-Server sendet Nachricht unverändert zurück.
 9. **TCP**: Client bestätigt den Empfang mit ACK.
@@ -1150,7 +1130,7 @@ Weshalb braucht es überhaupt einen Email-Server? Ohne einen Email-Server müsst
 ::: {.callout-caution icon=false}
 ## 🏆 Challenge: Filius-Anwendung — Email-Server
 
-Erstellen Sie in Filius eine Client-Server-Architektur. Der Server soll als Email-Server fungieren und sowohl SMTP als auch POP3 unterstützen. Installieren Sie auf dem Server einen «E-Mail-Server» und auf den Clients je einen «E-Mail-Client».
+Erstellen Sie in Filius eine Client-Server-Architektur. Der Server soll als Email-Server fungieren und sowohl SMTP als auch POP3 unterstützen. Installieren Sie auf dem Server einen "E-Mail-Server" und auf den Clients je einen "E-Mail-Client".
 
 Zunächst müssen Sie auf dem Server alle Konten anlegen und die Maildomain festlegen (z.B. `filius.ch`, sodass alle Email-Adressen auf `@filius.ch` enden). Auf der Client-Seite muss ebenfalls ein Konto eingerichtet werden. Testen Sie die Konfiguration.
 :::
@@ -1191,7 +1171,7 @@ Der schematische Ablauf eines Webseiten-Abrufs:
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: Filius-Anwendung — Web-Server
 
-Erstellen Sie in Filius eine Client-Server-Architektur, ähnlich derjenigen aus [Filius-Video Nummer 6](https://www.youtube.com/watch?v=Kn8v_HrckUM&list=PLUfZiVdJui-57k0VcRecHX0JTEhOMgiKP). Der Server soll als Web-Server fungieren. Installieren Sie auf dem Server einen «Webserver» und auf dem Client einen «Webbrowser». Installieren Sie auf dem Server zusätzlich die Software «Text-Editor» und öffnen Sie die Datei `index.html` im Ordner `webserver`, um den Inhalt anzupassen. Fügen Sie einen neuen Titel und Text hinzu und testen Sie von einem Client aus, ob die Änderungen korrekt angezeigt werden.
+Erstellen Sie in Filius eine Client-Server-Architektur, ähnlich derjenigen aus [Filius-Video Nummer 6](https://www.youtube.com/watch?v=Kn8v_HrckUM&list=PLUfZiVdJui-57k0VcRecHX0JTEhOMgiKP). Der Server soll als Web-Server fungieren. Installieren Sie auf dem Server einen "Webserver" und auf dem Client einen "Webbrowser". Installieren Sie auf dem Server zusätzlich die Software "Text-Editor" und öffnen Sie die Datei `index.html` im Ordner `webserver`, um den Inhalt anzupassen. Fügen Sie einen neuen Titel und Text hinzu und testen Sie von einem Client aus, ob die Änderungen korrekt angezeigt werden.
 :::
 
 ::: {.callout-caution icon=false}
@@ -1201,9 +1181,9 @@ Besuchen Sie [https://www.w3schools.com/html](https://www.w3schools.com/html) un
 :::
 
 ::: {.callout-caution icon=false}
-## 🏆 Challenge: «Echter» Webserver via Modem (zu zweit)
+## 🏆 Challenge: "Echter" Webserver via Modem (zu zweit)
 
-In Filius können Sie auch einen «echten» Webserver einrichten, der über ein Modem den anderen Rechnern im gleichen LAN zur Verfügung steht.
+In Filius können Sie auch einen "echten" Webserver einrichten, der über ein Modem den anderen Rechnern im gleichen LAN zur Verfügung steht.
 
 Diese Aufgabe funktioniert nur im gleichen Subnetz. Erstellen Sie daher einen persönlichen Hotspot (z.B. via Mobiltelefon).
 
@@ -1274,7 +1254,7 @@ Die IP-Adresse von `sbb.ch` kann mit `nslookup sbb.ch` ermittelt werden (z.B. `1
 
 Erstellen Sie in Filius eine Client-Server-Architektur gemäss [Filius-Video Nummer 7](https://www.youtube.com/watch?v=Kn8v_HrckUM&list=PLUfZiVdJui-57k0VcRecHX0JTEhOMgiKP). Ihre Konfiguration sollte aus 2 Servern bestehen: ein DNS-Server und ein Web-Server. Der DNS-Server soll dem Client die IP-Adresse des Web-Servers bereitstellen.
 
-Vergessen Sie nicht, den DNS-Server zu starten sowie dessen IP-Adresse bei jedem Client unter «DNS-Server» einzutragen!
+Vergessen Sie nicht, den DNS-Server zu starten sowie dessen IP-Adresse bei jedem Client unter "DNS-Server" einzutragen!
 :::
 
 # Weitere Aufgaben
@@ -1300,11 +1280,11 @@ Notieren Sie sich dabei Ihre Antworten auf folgende Fragen:
 Tauschen Sie sich in 3er- bis 4er-Gruppen aus und tragen Sie Ihre Notizen zusammen. Beantworten Sie danach folgende Fragen:
 
 - Was ist eine URL?
-- Was macht «Mr. IP»?
+- Was macht "Mr. IP"?
 - Was macht der Router?
 - Was macht die Firewall?
 - Was macht der Proxy Server?
-- Was macht der «Ping of Death»? ☠️
+- Was macht der "Ping of Death"? ☠️
 :::
 
 ::: {.callout-caution icon=false}
@@ -1350,7 +1330,7 @@ Lesen Sie zur Vertiefung des Schichtenmodells folgende Webseite (ohne Übungen):
 
 Laden Sie folgende Datei herunter und installieren Sie das Programm: [https://www.lernsoftware-filius.de/Herunterladen](https://www.lernsoftware-filius.de/Herunterladen).
 
-Falls Sie dazu aufgefordert werden, klicken Sie immer auf «erlauben» bzw. «weiter». Danach:
+Falls Sie dazu aufgefordert werden, klicken Sie immer auf "erlauben" bzw. "weiter". Danach:
 
 1. Das heruntergeladene Installationsprogramm (`.exe`) löschen
 2. Auf der Tastatur: ⊞ Win + `Filius` eingeben
@@ -1367,14 +1347,14 @@ Falls Probleme beim Ausführen der unten stehenden Schritte auftreten, schauen S
 Damit Filius ausgeführt werden kann, muss zuerst Java SDK in der neusten Version installiert werden.
 
 1. Laden Sie Java als DMG-Installer herunter: [https://www.oracle.com/java/technologies/downloads/](https://www.oracle.com/java/technologies/downloads/)
-   - Überprüfen Sie, ob Sie über einen Mac mit Apple- oder Intel-Chip verfügen: 🍎-Zeichen → «Über diesen Mac» → Chip-Beschreibung lesen.
+   - Überprüfen Sie, ob Sie über einen Mac mit Apple- oder Intel-Chip verfügen: 🍎-Zeichen → "Über diesen Mac" → Chip-Beschreibung lesen.
    - Bei neuerem Mac mit Apple-Silicon-Chip (M1, M2, M3...): **ARM**-Version als `.dmg` herunterladen.
    - Bei Mac mit Intel-Chip: **x64**-Version herunterladen.
 2. Installieren Sie Java SDK, indem Sie auf die heruntergeladene Datei klicken.
-3. Gegebenenfalls in den Systemeinstellungen unter «Sicherheit» erlauben.
+3. Gegebenenfalls in den Systemeinstellungen unter "Sicherheit" erlauben.
 
 ### Installation Filius {.unnumbered}
 
 - Laden Sie Filius in der neusten Version **als `.zip`-Datei** herunter: [https://www.lernsoftware-filius.de/Herunterladen](https://www.lernsoftware-filius.de/Herunterladen)
 - Verschieben Sie den Ordner in Ihren Anwendungs-Ordner.
-- Öffnen Sie den Ordner und starten Sie `filius.jar` mit Rechtsklick (⌥ Alt + Klick) → «Öffnen». Dies müssen Sie nur beim ersten Mal machen.
+- Öffnen Sie den Ordner und starten Sie `filius.jar` mit Rechtsklick (⌥ Alt + Klick) → "Öffnen". Dies müssen Sie nur beim ersten Mal machen.
