@@ -51,6 +51,9 @@ Die Motivation für die Entwicklung des ARPANET (Advanced Research Projects Agen
 - 1972: Die erste E-Mail wird verschickt.
 - 1973: ARPANET wird international, erste Verbindungen nach Norwegen und Grossbritannien.
 
+![Ausbreitung des ARPANET von 1969 bis 1977](figures/arpanet.png){width=75%}
+
+
 ### Die Entwicklung von Protokollen: TCP/IP {.unnumbered}
 
 Ein entscheidender Schritt in der Geschichte des Internets war die Entwicklung von Kommunikationsprotokollen, die es verschiedenen Netzwerken ermöglichten, miteinander zu kommunizieren. Insbesondere das TCP/IP-Protokoll, das 1983 als Standard eingeführt wurde, bildete die Grundlage für das moderne Internet.
@@ -66,7 +69,7 @@ Die Erfindung des ersten Browsers namens WWW (World Wide Web) durch Tim Berners-
 https://www.beispielseite.ch/unterseite.html
 ```
 
-Eine URL ist eine eindeutige Adresse, die auf eine Ressource (meistens eine Datei) im Internet verweist. Sie besteht aus mehreren Teilen, darunter das Protokoll (`http://` oder `https://`), der Domain-Name (`www.beispielseite.ch`) und der Pfad zur Datei (`/unterseite.html`).
+Eine URL (Uniform Resource Locator) ist eine eindeutige Adresse, die auf eine Ressource (meistens eine Datei) im Internet verweist. Sie besteht aus mehreren Teilen, darunter das Protokoll (`http://` oder `https://`), der Domain-Name (`www.beispielseite.ch`) und der Pfad zur Datei (`/unterseite.html`).
 
 Der Domain-Name steht für einen Computer im Internet, auf dem die Webseite gespeichert ist. Dieser Computer wird auch als **Webserver** bezeichnet.
 
@@ -81,7 +84,7 @@ Jede Webseite ist dabei als einfache Textdatei gespeichert, mit der Dateiendung 
 <body>
     <h1>Willkommen auf der Beispielseite</h1>
     <p>Dies ist ein einfacher Textabschnitt.</p>
-    <a href="https://www.andereseite.ch/start.html">Andere Webseite</a>
+    <a href="https://www.example.com">Andere Webseite</a>
 </body>
 ```
 
@@ -98,7 +101,14 @@ Ein Browser kann den HTML-Code benutzerfreundlich anzeigen und Verweise auf ande
 
 1. Öffnen Sie einen Texteditor (z.B. Notepad, TextEdit, VSCode, etc.) und kopieren Sie den obigen HTML-Code hinein.
 2. Speichern Sie die Datei mit dem Namen `beispielseite.html` auf Ihrem Desktop.
-3. Öffnen Sie die Datei in einem Webbrowser (z.B. Chrome, Firefox, Safari, etc.) durch Doppelklick.
+
+::: {.callout-warning icon=false}
+## Achtung: Dateiendung
+
+Die Dateiendung muss unbedingt `.html` sein, damit der Browser die Datei als Webseite erkennen kann. Falls Sie die Datei mit einer anderen Endung speichern, könnte es sein, dass sie nicht korrekt angezeigt wird.
+:::
+
+3. Öffnen Sie die Datei in einem Webbrowser (z.B. Chrome, Firefox, Safari, etc.) durch Doppelklick oder Rechtsklick → Öffnen mit → Browser auswählen.
 :::
 
 ### Das Internet im 21. Jahrhundert {.unnumbered}
@@ -112,6 +122,11 @@ Eine der wichtigsten Erfindungen, um das Internet jederzeit und überall verfüg
 - 2010er: Mobile Internetnutzung, Smartphones, IoT (Internet of Things).
 - Heute: Künstliche Intelligenz, 5G, weltweite Vernetzung.
 
+![Entwicklung der weltweiten Internetnutzung nach Einkommensklasse (Quelle: [Weltbank-Daten](https://data.worldbank.org/indicator/IT.NET.USER.ZS))](figures/internet_use_by_income_class.png){width=75%}
+
+![Internetnutzung nach Land, 2024 (Quelle: [Weltbank-Daten](https://data.worldbank.org/indicator/IT.NET.USER.ZS))](figures/internet_use_map_2024.png){width=75%}
+
+
 # TCP/IP und das Schichtenmodell
 
 ## Schichtenmodell: Analogie
@@ -122,26 +137,21 @@ Die Kommunikation über das Internet verläuft in unterschiedlichen Teilschritte
 2. Dazu übermittelt Chef 1 dem Sekretariat ihre Nachricht an Chef 2. Das Sekretariat schreibt die Nachricht nieder und übermittelt der lokalen Post den Brief an Chef 2.
 3. Die lokale Post kümmert sich nun um den Transport zur asiatischen Post, wo der Brief an das Sekretariat von Firma 2 übergeben und schlussendlich an Chef 2 gelangt.
 
-```
-┌──────────────────┐                      ┌──────────────────┐
-│  Firma 1, Europa │                      │  Firma 2, Asien  │
-│                  │                      │                  │
-│   👩 Chef       │· · · · · · · · · · · │   👨 Chef        │
-│       │          │                      │       │          │
-│       ▼          │                      │       ▼          │
-│   📞 Sekretariat│· · · · · · · · · · · │   📞 Sekretariat │
-│       │          │                      │       │          │
-│       ▼          │                      │       ▼          │
-│   📬 Post       │───── 🚗 🚢 ✈️ ──────│   📬 Post        │
-│                  │                      │                  │
-└──────────────────┘                      └──────────────────┘
-```
+![Schichtenmodell-Analogie: Kommunikation zwischen zwei Firmen](figures/schichtenmodell_analogie.png){fig-align="center" width=75%}
+
+<!-- TikZ source (pre-rendered to figures/schichtenmodell_analogie.png):
+To regenerate, compile networking/figures/schichtenmodell_analogie.tex with pdflatex,
+then convert: pdftoppm -png -r 300 schichtenmodell_analogie.pdf schichtenmodell_analogie
+-->
+
+![](figures/schichtenmodell_analogie.tex){fig-align="center" width=75%}
 
 Dieser Kommunikationsablauf kann in Schichten mit jeweiligen dazugehörigen Prozessen aufgeteilt werden:
 
 1. **Schicht «Chefs»**: damit die beiden Chefs miteinander sinnvolle Gespräche führen können, verfügen Sie über gemeinsame Standards (Sprache, Wissen etc.) sowie Protokolle (standardisierte Abläufe der Begrüssung etc.).
 2. **Schicht «Sekretariat»**: Damit die Sekretariate miteinander kommunizieren können, benötigen auch sie standardisierte Abläufe oder Protokolle, etwa, wie man einen Brief korrekt verfasst, datiert und adressiert.
 3. **Schicht «Post»**: Die Post verfügt ebenfalls über standardisierte Protokolle (wie werden Briefe und Pakete von A nach B transportiert? Mit welchen Transportmitteln, über welche Routen?)
+
 
 Die Vorteile des Schichtenmodells scheinen offensichtlich:
 
