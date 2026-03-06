@@ -11,11 +11,6 @@ Willkommen zur Sammlung von Informatik-Skripten. Wählen Sie ein Thema unten aus
 ::: {.grid}
 
 ::: {.g-col-6}
-### [Programmierung](programming/index.qmd)
-Grundlagen der Programmierung — Variablen, Kontrollstrukturen, Funktionen, Datenstrukturen, OOP und mehr.
-:::
-
-::: {.g-col-6}
 ### [Netzwerke](networking/index.qmd)
 Computer-Netzwerke — OSI-Modell, Protokolle, IP-Adressierung, Routing und mehr.
 :::
