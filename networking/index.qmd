@@ -96,13 +96,13 @@ Ein Browser kann den HTML-Code benutzerfreundlich anzeigen und Verweise auf ande
 - 1993: Der erste grafische Webbrowser (Mosaic) erscheint.
 - 1995: Kommerzielle Nutzung des Internets wird möglich, Gründung von Unternehmen wie Amazon und eBay.
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Website als Datei
 
 1. Öffnen Sie einen Texteditor (z.B. Notepad, TextEdit, VSCode, etc.) und kopieren Sie den obigen HTML-Code hinein.
 2. Speichern Sie die Datei mit dem Namen `beispielseite.html` auf Ihrem Desktop.
 
-::: {.callout-warning icon=false}
+::: {.callout-important icon=false}
 ## Achtung: Dateiendung
 
 Die Dateiendung muss unbedingt `.html` sein, damit der Browser die Datei als Webseite erkennen kann. Falls Sie die Datei mit einer anderen Endung speichern, könnte es sein, dass sie nicht korrekt angezeigt wird.
@@ -163,7 +163,7 @@ Im echten Internet werden Daten häufig als **Frame** (Paket) verschickt. Jedes 
 
 ![Illustration eines Datenpakets durch die verschiedenen Schichten des TCP/IP-Modells](figures/schichtenmodell_envelope.png){fig-align="center" width=75%}
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Schichtenmodell anwenden — Bestellung bei Digitec
 
 Sie bestellen bei Digitec ein Produkt. Von der Produktauswahl bis zur Lieferung laufen mehrere Kommunikationsschritte ab. Übertragen Sie das **Schichtenprinzip** auf diesen Prozess.
@@ -182,7 +182,7 @@ d) (Optional) Ändern Sie **eine** Sache am Prozess (z.B. anderes Zahlungsmittel
 
 ## Begriffe: Client, Server und Host
 
-::: {.callout-note}
+::: {.callout-warning icon=false appearance="simple"}
 ## Definition: Client, Server und Host
 
 Je nach Rolle der Computer in einem Rechner-Netz ist häufig von **Client**, **Server** oder **Host** die Rede.
@@ -198,7 +198,7 @@ Je nach Rolle der Computer in einem Rechner-Netz ist häufig von **Client**, **S
 
 Eine IP-Adresse (welche wir im nächsten Kapitel noch genauer betrachten werden) kann mit der Adresse eines Hauses verglichen werden. Allerdings legt der Briefträger die Briefe und Pakete nicht an einer Adresse ab, sondern in einem Briefkasten, also einem konkreten Objekt. Falls sich der Briefkasten oder sogar das ganze Haus ändert, so bleibt die Adresse doch dieselbe. Ähnlich dieser Analogie kann in einem Computer die gesamte Hardware ausgetauscht werden, inklusive der Netzwerkkarte, und trotzdem sollte der Datentransport zum Computer weiterhin funktionieren. Damit dies klappt, benötigen wir ein weiteres Protokoll, welches die IP-Adresse in eine sogenannte MAC-Adresse umwandelt.
 
-::: {.callout-note}
+::: {.callout-warning icon=false appearance="simple"}
 ## Definition: MAC-Adresse
 
 Die **MAC-Adresse** (Media Access Control) ist die physische Adresse der Netzwerkkarte in einem Computer, also sozusagen der "Fingerabdruck" der Netzwerkkarte. Sie wird normalerweise mit **48 Bit** (= 6 Bytes) angegeben, welche der Kürze wegen in hexadezimaler Schreibweise notiert werden. Ein Beispiel einer MAC-Adresse: `48-2C-6A-1E-59-3D`.
@@ -235,13 +235,13 @@ ping 8.8.8.8
 
 Der Ping-Befehl verwendet das ICMP (Internet Control Message Protocol) der Internetschicht, um die Nachrichten zu verschicken.
 
-<!-- ::: {.callout-warning}
+<!-- ::: {.callout-warning icon=false}
 ## Ping of Death ☠️
 
 Eine Spezial-Variante des `ping`-Befehls ist der sogenannte **Ping of Death**, bei dem ein bösartiger Computer ein zu grosses Datenpaket an einen anderen Computer schickte, das beim Zusammensetzen zum Absturz des Zielrechners führte. Dies ist seit Ende der 90er-Jahre auf den meisten Computern nicht mehr möglich: Die Sicherheitslücke wurde behoben, indem beispielsweise die Paketgrösse vor dem Zusammensetzen überprüft wurde.
 ::: -->
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Filius-Anwendung — ARP beobachten
 
 Die Minimalversion der digitalen Kommunikation besteht darin, dass zwei direkt durch ein Kabel verbundene Computer miteinander Daten austauschen können. Erstellen Sie in Filius ein Netzwerk mit zwei Computern, die direkt durch ein Kabel verbunden sind. Ändern Sie die letzte Zahl der IP-Adresse auf einem der Computer, sonst würden die Computer sich einfach selbst eine Nachricht schicken.
@@ -262,7 +262,7 @@ Der `ping`-Befehl lässt sich auch ausserhalb von Filius in der Befehlszeile (Wi
 
 Jede Netzwerkkarte kann nur mit genau einem anderen Gerät in einem lokalen Netzwerk kommunizieren. Damit mehrere Geräte in einem lokalen Netzwerk miteinander kommunizieren können, werden sogenannte **Switches** verwendet. Ein Switch ist ein Gerät, das mehrere Netzwerkkarten miteinander verbindet und es ihnen ermöglicht, Datenpakete direkt aneinander zu senden. Der Switch lernt dabei die MAC-Adressen der angeschlossenen Geräte und leitet die Datenpakete nur an das Gerät weiter, für das sie bestimmt sind. Dadurch wird der Datenverkehr im Netzwerk effizienter gestaltet, da nicht alle Geräte jedes Datenpaket empfangen müssen.
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Filius-Anwendung — Switch beobachten
 
 Üblicherweise sind in einem Subnetz mehr als nur zwei Geräte miteinander verbunden. Weil aber normale Computer nur einen Ethernet-Eingang haben, braucht es für die physische Verbindung noch ein zentrales Gerät, an das alle Computer angeschlossen werden.
@@ -337,7 +337,7 @@ Hierarchische Struktur mit Verzweigungen:
     ● ●   ● ●
 ```
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Topologien vergleichen
 
 Vergleichen Sie die Stern-Topologie mit der Vollvermascht-Topologie:
@@ -347,7 +347,7 @@ Vergleichen Sie die Stern-Topologie mit der Vollvermascht-Topologie:
 - In welcher Topologie müssen mehr Kabel gekauft werden?
 :::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 - In der **Stern-Topologie** ist es einfacher, ein neues Gerät anzuschliessen, da nur ein Kabel zum zentralen Switch benötigt wird.
@@ -355,7 +355,7 @@ Vergleichen Sie die Stern-Topologie mit der Vollvermascht-Topologie:
 - In der **Vollvermaschten Topologie** müssen mehr Kabel gekauft werden.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Kabelanzahl in Stern-Topologien
 
 Wie viele Kabel müssen in der Stern-Topologie gekauft werden...
@@ -365,7 +365,7 @@ Wie viele Kabel müssen in der Stern-Topologie gekauft werden...
 - Allgemeine Formel?
 :::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 - Für 6 Geräte: 5 Kabel
@@ -373,7 +373,7 @@ Wie viele Kabel müssen in der Stern-Topologie gekauft werden...
 - Allgemeine Formel: $n - 1$ Kabel, wobei $n$ die Anzahl der Geräte ist.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Kabelanzahl in Vollvermascht-Topologien
 
 Wie viele Kabel müssen in der Vollvermascht-Topologie gekauft werden...
@@ -383,7 +383,7 @@ Wie viele Kabel müssen in der Vollvermascht-Topologie gekauft werden...
 - Allgemeine Formel?
 :::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 - Für 6 Geräte: 15 Kabel
@@ -401,7 +401,7 @@ Je nachdem, für wie viele Teilnehmer eines Netzwerks eine Sendung bestimmt ist,
 | **Multicast** | Nachricht an **eine Gruppe** von Empfängern | 1:n (Gruppe) |
 | **Broadcast** | Nachricht an **alle** Geräte im Netzwerk | 1:alle |
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Alltagsbeispiele für Übertragungsarten
 
 Welche Art der Datenübertragung verwenden die folgenden Alltagssituationen?
@@ -414,7 +414,7 @@ Welche Art der Datenübertragung verwenden die folgenden Alltagssituationen?
 - Email der Schulleitung an alle Eltern
 :::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 - Whatsapp-Nachricht: **Unicast** (1:1)
@@ -433,14 +433,14 @@ Eine **IP-Adresse** (Internet Protocol) ist eine Netzwerk-Adresse eines Computer
 
 ![](figures/ip_address.png){fig-align="center" width=75%}
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: IPv4 binär → dezimal
 
 Bringen Sie folgende IPv4-Adresse in die dezimale Schreibweise:
 
 `10101100000100000000000100011111`
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 - $10101100_2 = 172_{10}$
@@ -455,12 +455,12 @@ Bringen Sie folgende IPv4-Adresse in die dezimale Schreibweise:
 
 
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Anzahl IPv4-Adressen
 
 Wie viele IPv4-Adressen gibt es?
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 $4 \cdot 1 \text{ Byte} = 4 \cdot 8 \text{ Bits} = 32 \text{ Bits}$
@@ -472,7 +472,7 @@ $2^{32} \approx 4.3 \text{ Milliarden Adressen}$
 
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: IP-Adresse einer Website
 
 Finden Sie die IPv4-Adresse einer Website heraus, z.B. `www.google.com`.
@@ -480,7 +480,7 @@ Finden Sie die IPv4-Adresse einer Website heraus, z.B. `www.google.com`.
 
 Wie wir gesehen haben, gibt es zu wenige Adressen bei IPv4. Daher wird IPv4 graduell durch einen neuen Standard abgelöst, **IPv6**, in welchem jede Adresse über 128 Bits verfügt, womit fast unendlich viele Geräte adressiert werden können.
 
-::: {.callout-note}
+::: {.callout-warning icon=false appearance="simple"}
 ## Definition: IPv6-Adressen
 
 Eine IPv6-Adresse besteht aus **128 Bits**, wobei die 128 Bits in 8 Gruppen zu je 16 Bits aufgeteilt werden, welche durch Doppelpunkte getrennt sind. Zur einfacheren Lesbarkeit werden IPv6-Adressen in hexadezimaler Schreibweise angegeben. Beispiel:
@@ -494,12 +494,12 @@ Zur Vereinfachung können führende Nullen in einer Gruppe weggelassen werden, s
 Doppelte Doppelpunkt-Kürzungen sind jedoch nicht erlaubt (z.B. `2001::85a3::8a2e:370:7334` ist ungültig).
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Anzahl IPv6-Adressen
 
 Wie viele Adressen gibt es bei IPv6?
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 $$2^{128} \approx 3.4 \cdot 10^{38}$$
@@ -509,7 +509,7 @@ $$2^{128} \approx 3.4 \cdot 10^{38}$$
 
 
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Gültige IP-Adressen
 
 Entscheiden Sie für jede der folgenden Adressen, ob es sich um eine gültige IPv4-Adresse, eine gültige IPv6-Adresse oder keine gültige IP-Adresse handelt:
@@ -523,7 +523,7 @@ Entscheiden Sie für jede der folgenden Adressen, ob es sich um eine gültige IP
 - `2001:db8:::1`
 - `192.168.1.1.1`
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 - `256.100.50.25` — ❌ Keine gültige IP-Adresse (erstes Byte > 255)
@@ -540,12 +540,12 @@ Entscheiden Sie für jede der folgenden Adressen, ob es sich um eine gültige IP
 
 
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Grösste IP-Adressen
 
 Was ist die grösste mögliche IPv4-Adresse in dezimaler Schreibweise? Was ist die grösste mögliche IPv6-Adresse in hexadezimaler Schreibweise?
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 - Grösste mögliche IPv4-Adresse: `255.255.255.255`
@@ -554,8 +554,8 @@ Was ist die grösste mögliche IPv4-Adresse in dezimaler Schreibweise? Was ist d
 
 :::
 
-::: {.callout-tip icon=false}
-## 💡 Bemerkung: IPv4 vs. IPv6
+::: {.callout-caution icon=false appearance="simple"}
+## Bemerkung: IPv4 vs. IPv6
 
 In der Praxis werden IPv4-Adressen immer noch am häufigsten verwendet, da viele ältere Geräte und Netzwerke nur IPv4 unterstützen. Allerdings wird IPv6 zunehmend wichtiger, da die Anzahl der Geräte im Internet stetig zunimmt und der Adressraum von IPv4 nicht mehr ausreicht. Um den Mangel an IPv4-Adressen zu beheben, werden auch Techniken wie **NAT** (Network Address Translation) eingesetzt (dazu später mehr), die es ermöglichen, mehrere Geräte hinter einer einzigen öffentlichen IP-Adresse zu betreiben.
 
@@ -570,7 +570,7 @@ In der Praxis werden IPv4-Adressen immer noch am häufigsten verwendet, da viele
 
 Eine (Sub-)Netzmaske hat fast dasselbe Format wie eine IP-Adresse und fasst mehrere IPs zu einer Gruppe, d.h. einem Subnetz zusammen. Die Subnetzmaske gibt an, wie viele Stellen einer IP-Adresse innerhalb eines Subnetzes gleich sein müssen.
 
-::: {.callout-tip icon=false}
+::: {.callout-warning icon=false appearance="simple"}
 ## 💡 Beispiel: Subnetzmasken {#example-subnet}
 
 Gegeben sei folgende Subnetzmaske:
@@ -584,7 +584,7 @@ Gegeben sei folgende Subnetzmaske:
 Um herauszufinden, ob die IP-Adressen von Computer 1 und Computer 2 zum selben Netzwerk gehören, muss überprüft werden, ob die binäre IP-Adresse an all denjenigen Stellen gleich ist, wo die Subnetzmaske = "1" ist. In diesem Beispiel bedeutet dies, dass alle IP-Adressen, welche mit `159.233.1._` beginnen, zum selben Netzwerk dazugehören.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Geräte zu Subnetzen zuordnen
 
 Bestimmen Sie, ob sich die eigene IP und die Ziel-IP jeweils im gleichen Subnetz befinden.
@@ -602,7 +602,7 @@ Umrechner dezimal → binär: [https://oinf.ch/interactive/ips-und-netzmaske/](h
 | 10.0.0.0 | 255.255.255.252 | 10.0.0.1 | ? |
 | 1.2.3.0 | 255.255.255.252 | 1.2.3.5 | ? |
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 | Eigene IP | Netzmaske | Ziel-IP | Gleiches Subnetz? |
@@ -619,19 +619,20 @@ Umrechner dezimal → binär: [https://oinf.ch/interactive/ips-und-netzmaske/](h
 
 
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Subnetzgrösse berechnen
 
 Typischerweise beginnen alle IP-Adressen auf das lokale Netzwerk mit `192.168.xxx.xxx`. Die Subnetzmaske lautet also `255.255.0.0`. Wie viele Hosts haben in so einem Netzwerk Platz? Schreiben Sie die Subnetzmaske binär auf und rechnen Sie aus, wie viele unterschiedliche Geräte sich in diesem lokalen Netzwerk befinden können.
-:::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 Zwei Bytes (die zwei letzten Byte-Gruppen) der Subnetzmaske sind reserviert für unterschiedliche Kombinationen von IP-Adressen. Es können sich daher bis zu $2^{16} = 65\,536$ Hosts in einem solchen lokalen Netzwerk befinden.
 :::
 
-::: {.callout-caution icon=false}
+:::
+
+::: {.callout-note icon=false}
 ## ✏️ Übung: Subnetzmasken zuordnen
 
 Sechs Subnetze sind gegeben durch je eine Netzmaske und eine IP eines sich darin befindenden Rechners. Entscheiden Sie für jede links aufgeführte IP, zu welchen Subnetzen der Rechner gehört.
@@ -647,37 +648,40 @@ Sechs Subnetze sind gegeben durch je eine Netzmaske und eine IP eines sich darin
 | **3.3.3.17** | ? | ? | ? | ? | ? | ? |
 
 Überprüfen: [https://oinf.ch/interactive/ips-und-netzmaske/](https://oinf.ch/interactive/ips-und-netzmaske/)
-:::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 | Netzmaske | 255.255.255.0 | 255.255.255.0 | 255.255.0.0 | 255.255.0.0 | 255.255.255.240 | 255.255.255.240 |
 |---|---|---|---|---|---|---|
 | Subnetz-IP | 3.4.5.6 | 3.3.3.3 | 3.4.5.6 | 3.3.3.3 | 3.4.5.6 | 3.3.3.3 |
-| **3.3.3.4** | Nein | Ja | Nein | Ja | Nein | Ja |
-| **4.4.4.3** | Nein | Nein | Nein | Nein | Nein | Nein |
-| **3.4.5.99** | Ja | Nein | Ja | Nein | Nein | Nein |
-| **3.3.4.4** | Nein | Nein | Nein | Ja | Nein | Nein |
-| **3.4.7.7** | Nein | Nein | Ja | Nein | Nein | Nein |
-| **3.3.3.17** | Nein | Ja | Nein | Ja | Nein | Nein |
+| **3.3.3.4** | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ |
+| **4.4.4.3** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **3.4.5.99** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ |
+| **3.3.4.4** | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| **3.4.7.7** | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ |
+| **3.3.3.17** | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 :::
+
+:::
+
+
 
 ### CIDR-Notation
 
-::: {.callout-note}
+::: {.callout-warning icon=false appearance="simple"}
 ## Definition: CIDR-Notation
 
 Das Netzwerk aus dem [Beispiel oben](#example-subnet) könnte dezimal angegeben werden als: `159.233.1.0/255.255.255.0`
 
-Die Subnetzmaske wird häufig verkürzt in der sogenannten **CIDR**-Schreibweise (Classless Inter-Domain Routing) angegeben. Dabei wird die Subnetzmaske als IP-Adresse gefolgt von einem Schrägstrich und der **Anzahl der Einsen** in der Subnetzmaske geschrieben.
+Die Subnetzmaske wird häufig verkürzt in der sogenannten **CIDR**-Schreibweise (Classless Inter-Domain Routing) angegeben. Dabei wird die Subnetzmaske als IP-Adresse gefolgt von einem Schrägstrich und der **Anzahl der Einsen** in der Subnetzmaske geschrieben. Die Anzahl der Einsen in definiert die Netzmaske eindeutig, da die Einsen immer von links nach rechts kommen.
 
 Die Subnetzmaske aus dem Beispiel könnte somit auch als `159.233.1.0/24` geschrieben werden, da die Subnetzmaske 24 Einsen hat.
 
 Durch diese Schreibweise wird zudem schnell ersichtlich, wie gross das Netzwerk maximal sein darf. Die ersten 24 Bits der IP-Adresse müssen immer gleich sein, daher bietet dieses Netzwerk Platz für maximal $2^{32-24} = 256$ unterschiedliche Hosts.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: CIDR-Notation
 
 Geben Sie die folgenden Subnetzmasken in CIDR-Notation an und notieren Sie die möglichen Adressbereiche sowie die Anzahl Hosts.
@@ -689,9 +693,8 @@ Geben Sie die folgenden Subnetzmasken in CIDR-Notation an und notieren Sie die m
 | **Netz 3**: `10.0.0.0`, Maske `255.128.0.0` | ? | ? | ? | ? |
 
 Zur Berechnung: [https://oinf.ch/interactive/ips-und-netzmaske/](https://oinf.ch/interactive/ips-und-netzmaske/)
-:::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 |  | CIDR | Hosts | Start | Ende |
@@ -701,15 +704,17 @@ Zur Berechnung: [https://oinf.ch/interactive/ips-und-netzmaske/](https://oinf.ch
 | Netz 3 | `10.0.0.0/9` | $2^{23} = 8\,388\,608$ | `10.0.0.0` | `10.127.255.255` |
 :::
 
+:::
+
 ## Private und öffentliche IP-Adressen
 
 Bis jetzt haben wir IP-Adressen hauptsächlich im Kontext von lokalen Netzwerken betrachtet. In der Praxis gibt es jedoch einen fundamentalen Unterschied zwischen **privaten** (lokalen) und **öffentlichen** (globalen) IP-Adressen.
 
-### Private IP-Adressbereiche {.unnumbered}
+### Private IP-Adressbereiche
 
 Aufgrund der begrenzten Anzahl verfügbarer IPv4-Adressen (etwa 4.3 Milliarden) wurden spezielle IP-Adressbereiche als **privat** definiert. Diese Adressen sind ausschliesslich für die Verwendung in lokalen Netzwerken gedacht und werden *nicht* im globalen Internet geroutet.
 
-::: {.callout-note}
+::: {.callout-warning icon=false appearance="simple"}
 ## Definition: Private IP-Adressbereiche
 
 Die Internet Assigned Numbers Authority (IANA) hat folgende IP-Adressbereiche als privat definiert (siehe RFC 1918):
@@ -725,11 +730,11 @@ Alle anderen IPv4-Adressen gelten grundsätzlich als **öffentlich** und müssen
 
 Der am häufigsten verwendete Bereich für Heimnetzwerke ist `192.168.0.0/16`. Ihr Computer zu Hause hat wahrscheinlich eine IP-Adresse wie `192.168.1.5` oder `192.168.0.12` — genau wie Millionen andere Computer weltweit. Dies ist kein Problem, da diese Adressen nur innerhalb des jeweiligen lokalen Netzwerks gültig sind.
 
-### Öffentliche IP-Adressen {.unnumbered}
+### Öffentliche IP-Adressen
 
 Im Gegensatz zu privaten IP-Adressen sind **öffentliche IP-Adressen** global eindeutig und im gesamten Internet erreichbar. Öffentliche IP-Adressen werden von Internet Service Providern (ISPs) vergeben und sind eine begrenzte Ressource. In der Regel erhält Ihr Heimrouter vom ISP genau *eine* öffentliche IP-Adresse. Alle Geräte hinter diesem Router teilen sich diese eine öffentliche Adresse.
 
-::: {.callout-tip icon=false}
+::: {.callout-warning icon=false appearance="simple"}
 ## 💡 Beispiel: Öffentliche IP-Adressen
 
 Sie können die IP-Adresse einer Website mit dem Befehl `nslookup [domain]` herausfinden, zum Beispiel:
@@ -738,31 +743,23 @@ Sie können die IP-Adresse einer Website mit dem Befehl `nslookup [domain]` hera
 - `nslookup www.ethz.ch`
 :::
 
-### Warum private IP-Adressen? {.unnumbered}
+### Warum private IP-Adressen?
 
 1. **Adressknappheit**: IPv4 bietet nur etwa 4.3 Milliarden eindeutige Adressen — das reicht nicht für alle Geräte weltweit.
 2. **Sicherheit**: Geräte mit privaten IP-Adressen sind vom Internet aus nicht direkt erreichbar.
 3. **Flexibilität**: Unternehmen und Privatpersonen können ihre internen Netzwerke unabhängig strukturieren.
 
-### Network Address Translation (NAT) {.unnumbered}
+### Network Address Translation (NAT)
 
 Wie können Geräte mit privaten IP-Adressen (z.B. `192.168.1.5`) mit Servern im Internet (z.B. `142.250.185.46`) kommunizieren? Die Antwort: **NAT** (Network Address Translation).
 
 Ihr Heimrouter führt NAT durch: Wenn Ihr Computer eine Anfrage an einen Server im Internet sendet, ersetzt der Router die private Quell-IP-Adresse durch seine eigene öffentliche IP-Adresse. Wenn die Antwort zurückkommt, übersetzt der Router die öffentliche Ziel-IP-Adresse wieder zurück in die private IP-Adresse Ihres Computers.
 
-```
-                                   Anfrage                  Anfrage (übersetzt)
-   ┌──────────────┐      Von: 192.168.1.5       Von: 85.5.12.34
-   │   Computer   │──────────────►┌──────────┐──────────────►┌──────────────┐
-   │ 192.168.1.5  │               │  Router  │               │  Webserver   │
-   │              │◄──────────────┤  (NAT)   │◄──────────────┤142.250.185.46│
-   └──────────────┘      An: 192.168.1.5      An: 85.5.12.34 └──────────────┘
-                                   Antwort (übersetzt)        Antwort
-```
+![](figures/nat.png){fig-align="center" width=75%}
 
 Dank NAT können Millionen von Geräten mit derselben privaten IP-Adresse gleichzeitig im Internet surfen, ohne dass es zu Konflikten kommt.
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Private vs. öffentliche IP-Adresse herausfinden
 
 1. Finden Sie die **private IP-Adresse** Ihres Computers heraus:
@@ -777,8 +774,8 @@ Dank NAT können Millionen von Geräten mit derselben privaten IP-Adresse gleich
    - Falls in unterschiedlichen Netzwerken: Sind die öffentlichen IPs unterschiedlich?
 :::
 
-::: {.callout-tip icon=false}
-## 💡 Bemerkung: IPv6 und die Zukunft
+::: {.callout-caution icon=false appearance="simple"}
+## Bemerkung: IPv6 und die Zukunft
 
 Mit der Einführung von IPv6, das $2^{128}$ (etwa $3{,}4 \times 10^{38}$) Adressen bietet, könnte theoretisch jedes Gerät eine global eindeutige öffentliche IP-Adresse erhalten. In der Praxis werden jedoch auch bei IPv6 oft private Adressbereiche und NAT verwendet, hauptsächlich aus Sicherheitsgründen.
 :::
@@ -787,15 +784,7 @@ Mit der Einführung von IPv6, das $2^{128}$ (etwa $3{,}4 \times 10^{38}$) Adress
 
 Bis anhin haben wir gesehen, wie wir einzelne Rechner mittels einer IP adressieren und wie wir diese mittels Subnetzen und Switches zu einem lokalen Netzwerk (LAN) verbinden. Was, wenn wir jedoch zwei Subnetze zu einem grossen Netzwerk (WAN) verbinden wollen? Genau dies geschieht im Internet, welches im Wesentlichen aus einem Netzwerk von Netzwerken besteht. Um mehrere Netzwerke miteinander zu verbinden, verwenden wir einen **Router**.
 
-```
-┌─ LAN A: 192.168.1.0/24 ─────────────┐    ┌─ LAN B: 192.168.2.0/24 ─────────────┐
-│                                      │    │                                      │
-│ 💻 192.168.1.10 ─┐                  │    │                  ┌─ 💻 192.168.2.10 │
-│ 💻 192.168.1.11 ─┤── Switch ── Router ──── Switch ──┤─ 💻 192.168.2.11 │
-│ 💻 192.168.1.12 ─┘    eth0: 192.168.1.1 │ │ eth1: 192.168.2.1    └─ 💻 192.168.2.12 │
-│                                      │    │                                      │
-└──────────────────────────────────────┘    └──────────────────────────────────────┘
-```
+![Zwei Subnetze (LAN A und LAN B) verbunden durch einen Router](figures/subnets.png){fig-align="center" width=100%}
 
 Wie ein Bahnhof verbindet ein Router ein Subnetz (= Stadt) mit der Aussenwelt. Über die **Routing-Tabelle** kann ein Router entscheiden, auf welchem Weg ein Datenpaket an die Aussenwelt verschickt werden kann. Eine typische Routing-Tabelle enthält:
 
@@ -813,7 +802,7 @@ Beispiel einer minimalen Routing-Tabelle:
 
 Beim sogenannten *Default Gateway* handelt es sich um die Standardroute, die verwendet wird, wenn keine spezifischere Route in der Routing-Tabelle gefunden werden kann.
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Filius-Anwendung — Router & Gateway {#ex-router-gateway}
 
 Bauen Sie ein Netzwerk mit zwei Subnetzen in Filius nach. Gehen Sie folgendermassen vor:
@@ -832,15 +821,15 @@ Beantworten Sie folgende Fragen:
 - Wie viele ARPs sind für ein Ping nötig? (Erst überlegen, dann mithilfe des Datenaustauschs nachvollziehen — in beiden Subnetzen!)
 :::
 
-::: {.callout-tip icon=false}
-## 💡 Bemerkung: Automatische IP-Zuweisung via DHCP
+::: {.callout-caution icon=false appearance="simple"}
+## Bemerkung: Automatische IP-Zuweisung via DHCP
 
 In der Praxis ist es unpraktisch, wenn jeder Computer manuell mit einer IP-Adresse konfiguriert werden muss. Daher wird häufig das **DHCP** (Dynamic Host Configuration Protocol) verwendet, um Computern automatisch eine IP-Adresse zuzuweisen, wenn sie sich mit dem Netzwerk verbinden.
 
 Ein DHCP-Server verwaltet einen Pool von verfügbaren IP-Adressen und weist diese dynamisch an Computer zu. Dies erleichtert die Verwaltung erheblich, insbesondere in Umgebungen mit vielen Geräten.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: DHCP-Server einrichten {#ex-dhcp-server}
 
 Benutzen Sie das Netzwerk aus der [Router-Übung](#ex-router-gateway) und richten Sie auf einem der Computer in LAN A einen DHCP-Server ein, der automatisch IP-Adressen im Bereich `192.168.1.3` bis `192.168.1.127` vergibt. Die IP-Adresse des DHCP-Servers sollen Sie manuell auf `192.168.1.2` einstellen.
@@ -853,8 +842,8 @@ Benutzen Sie das Netzwerk aus der [Router-Übung](#ex-router-gateway) und richte
 6. Machen Sie das gleiche für LAN B.
 :::
 
-::: {.callout-tip icon=false}
-## 💡 Bemerkung: IP-Reservierung
+::: {.callout-caution icon=false appearance="simple"}
+## Bemerkung: IP-Reservierung
 
 Falls ein gewisses Gerät immer dieselbe lokale IP-Adresse benötigt (z.B. ein Drucker oder ein Server), kann eine **IP-Reservierung** eingerichtet werden, die sicherstellt, dass dieses Gerät immer dieselbe IP-Adresse erhält. Dies wird durch die Zuordnung der MAC-Adresse zu einer bestimmten IP-Adresse im DHCP-Server erreicht.
 
@@ -865,7 +854,7 @@ Falls ein gewisses Gerät immer dieselbe lokale IP-Adresse benötigt (z.B. ein D
 | ... | ... |
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: DHCP-Server mit IP-Reservierung
 
 Fügen Sie in LAN A aus der [DHCP-Übung](#ex-dhcp-server) einen neuen Computer hinzu, der zukünftig als DNS-Server fungieren soll. Richten Sie für diesen Computer eine IP-Reservierung ein, so dass er immer die IP-Adresse `192.168.1.3` erhält. Die Einstellungen dazu finden Sie im DHCP-Server unter "Statische Adresszuweisung".
@@ -889,15 +878,18 @@ Traceroute nutzt das **TTL**-Feld (*Time To Live*) im IP-Header. Dieses Feld gib
 
 ### Anwendung {.unnumbered}
 
-```bash
-# Linux/MacOS:
-traceroute www.google.com
+Linux/MacOS:
 
-# Windows:
+```bash
+traceroute www.google.com
+```
+
+Windows:
+```bash
 tracert www.google.com
 ```
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Traceroute im echten Internet
 
 1. Öffnen Sie ein Terminal.
@@ -910,14 +902,14 @@ tracert www.google.com
    a) **möglichst lange** die gleiche Route haben (erst spät divergieren).
    b) **möglichst schnell** unterschiedliche Routen nehmen.
 
-::: {.callout-tip icon=false}
-## 💡 Bemerkung: Leere Hops
+::: {.callout-caution icon=false appearance="simple"}
+## Bemerkung: Leere Hops
 
 Nicht alle Router antworten auf Traceroute-Anfragen. In solchen Fällen sehen Sie `* * *` statt einer IP-Adresse. Das ist normal.
 :::
 :::
 
-## Unterseekabel: Die physische Infrastruktur des Internets
+<!-- ## Unterseekabel: Die physische Infrastruktur des Internets
 
 Wenn wir uns mit Traceroute die Routen von Datenpaketen anschauen, sehen wir IP-Adressen und Hostnamen von Routern. Was wir nicht sehen, ist die **physische Infrastruktur**, über die diese Daten übertragen werden. Dabei spielen **Unterseekabel** eine zentrale Rolle.
 
@@ -943,7 +935,7 @@ Ein modernes Unterseekabel besteht aus mehreren Schichten: Polyethylen, Mylar-Ba
 
 Tech-Giganten wie Google, Meta, Microsoft und Amazon haben begonnen, eigene Unterseekabel zu finanzieren. Unterseekabel sind zudem ein potenzielles Ziel für Spionage und Sabotage.
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Unterseekabel erkunden
 
 1. Besuchen Sie [https://www.submarinecablemap.com](https://www.submarinecablemap.com) und erkunden Sie die interaktive Karte.
@@ -999,13 +991,13 @@ Weitere wichtige Metadaten:
 
 - **Sequence** und **Acknowledgement**-Nummern, die die richtige Reihenfolge der gesendeten und erhaltenen Daten garantieren.
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Ports für HTTP-Verbindungen
 
 Testen Sie, was beim Aufrufen von [http://www.sbb.ch:80](http://www.sbb.ch:80) und [http://www.sbb.ch:81](http://www.sbb.ch:81) passiert. Erklären Sie den Unterschied.
 :::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 - `http://www.sbb.ch:80` funktioniert, da Port 80 der Standard-Port für HTTP-Verbindungen ist.
@@ -1016,7 +1008,7 @@ Testen Sie, was beim Aufrufen von [http://www.sbb.ch:80](http://www.sbb.ch:80) u
 
 Nebst TCP gibt es noch ein weiteres Protokoll: **UDP**. Im Gegensatz zu TCP stellt UDP keine zuverlässige Datenübertragung sicher, sondern sendet die Daten einfach los, ohne zu überprüfen, ob sie angekommen sind. Dies ist nützlich für Anwendungen, bei denen Geschwindigkeit wichtiger ist als Zuverlässigkeit, wie z.B. bei Online-Gaming, Video-Streaming oder VPN-Verbindungen.
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## 🏆 Challenge: Weitere Port-Aufgaben
 
 Lösen Sie die Socket- und Port-Aufgaben auf: [https://www.inf-schule.de/rechnernetze/anwendung/socketprogrammierung/Anfragen_an_einen_Server_Stellen](https://www.inf-schule.de/rechnernetze/anwendung/socketprogrammierung/Anfragen_an_einen_Server_Stellen).
@@ -1054,25 +1046,25 @@ Die Sequenznummern werden im Folgenden nach dieser Logik erhöht:
 - Für jedes empfangene Byte wird die Acknowledgement-Nummer um 1 erhöht.
 - Spezielle TCP-Flags wie `SYN` und `FIN` erhöhen die Sequenznummer jeweils um 1.
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Warum nicht 2 Schritte? (Teil 1)
 
 Bob fragt Alice: "Treffen wir uns morgen um 20:00 im Kino?" (SYN). Alice hat die Nachricht aber nie erhalten. Erklären Sie, weshalb es nicht sinnvoll wäre, dass Bob morgen einfach ins Kino geht.
 :::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 Bob sollte nicht einfach ins Kino gehen, weil er keine Bestätigung von Alice erhalten hat. Ohne Antwort weiss Bob nicht, ob Alice die Nachricht erhalten hat oder überhaupt kommen wird.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Warum nicht 2 Schritte? (Teil 2)
 
 Bob fragt Alice: "Treffen wir uns morgen um 20:00 im Kino?" (SYN). Alice antwortet: "Ja, gerne." (SYN+ACK). Bob hat Alices Antwort aber nie erhalten. Erklären Sie, weshalb es nicht sinnvoll wäre, dass Alice morgen einfach ins Kino geht.
 :::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 Alice sollte nicht einfach ins Kino gehen, weil sie keine Bestätigung von Bob erhalten hat. Ohne Bobs ACK weiss Alice nicht, ob Bob ihre Antwort erhalten hat oder überhaupt kommen wird.
@@ -1084,13 +1076,13 @@ Alice sollte nicht einfach ins Kino gehen, weil sie keine Bestätigung von Bob e
 
 Ein einfacher Anwendungsfall eines Servers ist der **Echo-Server**. Er empfängt Nachrichten von einem Client und sendet diese unverändert zurück. Dies kann nützlich sein, um die Erreichbarkeit eines Servers zu testen oder die Latenzzeit zu messen.
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Filius-Anwendung — Echo-Server {#ex-echo-server}
 
 Schauen Sie sich das [Filius-Video Nummer 5](https://www.youtube.com/watch?v=Kn8v_HrckUM&list=PLUfZiVdJui-57k0VcRecHX0JTEhOMgiKP) an. Erstellen Sie selber einen Echo-Server sowie zwei Clients in Filius, die mit dem Echo-Server kommunizieren können. Testen Sie die Konfiguration durch Senden von Nachrichten.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Datenaustausch des Echo-Servers analysieren
 
 Schauen Sie sich das Datenaustausch-Fenster der [Echo-Server-Übung](#ex-echo-server) genauer an.
@@ -1099,7 +1091,7 @@ Schauen Sie sich das Datenaustausch-Fenster der [Echo-Server-Übung](#ex-echo-se
 2. Über welche Ports erfolgt die Kommunikation beim Server und beim Client?
 :::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 Typischer Ablauf:
@@ -1127,7 +1119,7 @@ Ein **Email-Server** ist dafür verantwortlich, E-Mails zu empfangen, zu speiche
 
 Weshalb braucht es überhaupt einen Email-Server? Ohne einen Email-Server müsste jeder Computer direkt mit dem Computer des Empfängers kommunizieren. Falls der Empfänger offline ist, müsste der Sender warten oder die Mail würde verloren gehen. Server sind rund um die Uhr online und können E-Mails speichern, bis der Empfänger sie abruft.
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## 🏆 Challenge: Filius-Anwendung — Email-Server
 
 Erstellen Sie in Filius eine Client-Server-Architektur. Der Server soll als Email-Server fungieren und sowohl SMTP als auch POP3 unterstützen. Installieren Sie auf dem Server einen "E-Mail-Server" und auf den Clients je einen "E-Mail-Client".
@@ -1168,19 +1160,19 @@ Der schematische Ablauf eines Webseiten-Abrufs:
 └──────────────────┘                              └──────────────────┘
 ```
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Filius-Anwendung — Web-Server
 
 Erstellen Sie in Filius eine Client-Server-Architektur, ähnlich derjenigen aus [Filius-Video Nummer 6](https://www.youtube.com/watch?v=Kn8v_HrckUM&list=PLUfZiVdJui-57k0VcRecHX0JTEhOMgiKP). Der Server soll als Web-Server fungieren. Installieren Sie auf dem Server einen "Webserver" und auf dem Client einen "Webbrowser". Installieren Sie auf dem Server zusätzlich die Software "Text-Editor" und öffnen Sie die Datei `index.html` im Ordner `webserver`, um den Inhalt anzupassen. Fügen Sie einen neuen Titel und Text hinzu und testen Sie von einem Client aus, ob die Änderungen korrekt angezeigt werden.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## 🏆 Challenge: HTML genauer verstehen
 
 Besuchen Sie [https://www.w3schools.com/html](https://www.w3schools.com/html) und lesen Sie die Grundlagen von HTML. Erstellen Sie anschliessend eine einfache HTML-Datei mit einem Titel, einer Überschrift und einem Absatz. Speichern Sie die Datei als `meine_erste_webseite.html` und öffnen Sie sie in Ihrem Webbrowser.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## 🏆 Challenge: "Echter" Webserver via Modem (zu zweit)
 
 In Filius können Sie auch einen "echten" Webserver einrichten, der über ein Modem den anderen Rechnern im gleichen LAN zur Verfügung steht.
@@ -1190,14 +1182,14 @@ Diese Aufgabe funktioniert nur im gleichen Subnetz. Erstellen Sie daher einen pe
 Richten Sie in Filius einen Webserver ein, der über ein Modem mit dem LAN verbunden ist. Das Modem muss Ihre lokale IP-Adresse haben. Auf einem zweiten Rechner richten Sie einen Client mit Modem ein, der die lokale IP des Webserver-Rechners verwendet. Testen Sie zuerst mit `ping`, dann über den Webbrowser.
 :::
 
-::: {.callout-tip icon=false}
-## 💡 Bemerkung: Modem vs. Router
+::: {.callout-caution icon=false appearance="simple"}
+## Bemerkung: Modem vs. Router
 
 Ein **Modem** (**Mo**dulator-**Dem**odulator) wandelt digitale in analoge Signale um und umgekehrt. Ein **Router** leitet Datenpakete zwischen Netzwerken weiter. Moderne Geräte vereinen oft beide Funktionen.
 :::
 
-::: {.callout-tip icon=false}
-## 💡 Bemerkung: HTTP vs. HTTPS
+::: {.callout-caution icon=false appearance="simple"}
+## Bemerkung: HTTP vs. HTTPS
 
 **HTTP** (Hypertext Transfer Protocol) ist das grundlegende Protokoll für die Übertragung von Webseiten. **HTTPS** (HTTP Secure) fügt eine Verschlüsselungsschicht (TLS) hinzu, um die Kommunikation zu schützen. Nur weil Webseiten verschlüsselt übertragen werden, sind sie aber nicht automatisch sicher — die Seite selbst kann immer noch Schadcode enthalten.
 :::
@@ -1225,31 +1217,31 @@ Client ─────── "Wer ist beispiel.ch?" ──►  DNS-Server       
                 2. DNS-Antwort                    4. HTTP-Antwort
 ```
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: DNS-Server — Verständnisfrage
 
 Weshalb kann ein Client nicht auf die Webseite `ksimlee.ch` zugreifen, wenn diese nicht in der Tabelle des DNS-Servers abgespeichert ist?
 :::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 Die Webseite `ksimlee.ch` ist nicht in der DNS-Tabelle abgespeichert, daher kann der DNS-Server die entsprechende IP-Adresse nicht zurückgeben und der Client findet den Webserver nicht.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: IP-Adresse einer Webseite herausfinden
 
 Verwenden Sie den Befehl `nslookup [domainname]` in der Befehlszeile (MacOS: Terminal, Windows: Powershell), um herauszufinden, welche IP-Adresse zur Webseite `sbb.ch` gehört. Geben Sie diese IP im URL-Fenster Ihres Browsers ein und beobachten Sie, was passiert.
 :::
 
-::: {.callout-note collapse="true"}
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 Die IP-Adresse von `sbb.ch` kann mit `nslookup sbb.ch` ermittelt werden (z.B. `194.150.245.142`). Wenn wir die Adresse im Browser eingeben, landen wir trotzdem nicht auf der Seite der SBB. Der Webserver ist so konfiguriert, dass er den Domain-Namen im HTTP-Header erwartet (**Virtual Hosting**: mehrere Domainnamen zeigen auf die gleiche IP-Adresse). Ohne den korrekten Domain-Namen weiss der Server nicht, welche Webseite er ausliefern soll.
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Filius-Anwendung — DNS-Server
 
 Erstellen Sie in Filius eine Client-Server-Architektur gemäss [Filius-Video Nummer 7](https://www.youtube.com/watch?v=Kn8v_HrckUM&list=PLUfZiVdJui-57k0VcRecHX0JTEhOMgiKP). Ihre Konfiguration sollte aus 2 Servern bestehen: ein DNS-Server und ein Web-Server. Der DNS-Server soll dem Client die IP-Adresse des Web-Servers bereitstellen.
@@ -1259,7 +1251,7 @@ Vergessen Sie nicht, den DNS-Server zu starten sowie dessen IP-Adresse bei jedem
 
 # Weitere Aufgaben
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Video zu Netzwerkschichten und Protokollen (Zusammenfassung)
 
 Schauen Sie sich folgendes [Youtube-Video (13')](https://www.youtube.com/watch?v=PBWhzz_Gn10) an.
@@ -1274,7 +1266,7 @@ Notieren Sie sich dabei Ihre Antworten auf folgende Fragen:
 - Notieren Sie Ihre **Fragen**: Welche Begriffe verstehen Sie (noch) nicht?
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## ✏️ Übung: Austausch zu Netzwerkschichten und Protokollen
 
 Tauschen Sie sich in 3er- bis 4er-Gruppen aus und tragen Sie Ihre Notizen zusammen. Beantworten Sie danach folgende Fragen:
@@ -1287,13 +1279,13 @@ Tauschen Sie sich in 3er- bis 4er-Gruppen aus und tragen Sie Ihre Notizen zusamm
 - Was macht der "Ping of Death"? ☠️
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## 🏆 Challenge: Weitere Filius-Aufgaben (Troubleshooting)
 
 Lösen Sie die Troubleshooting-Aufgaben 2.13 auf folgendem [Link](https://mychallenge.mygymer.ch/base/?book=network).
 :::
 
-::: {.callout-caution icon=false}
+::: {.callout-note icon=false}
 ## 🏆 Challenge: Vertiefung Schichtenmodell
 
 Lesen Sie zur Vertiefung des Schichtenmodells folgende Webseite (ohne Übungen):
@@ -1322,7 +1314,7 @@ Lesen Sie zur Vertiefung des Schichtenmodells folgende Webseite (ohne Übungen):
 - [ ] Ich kann die Funktionsweise eines Relay-Servers erklären und einfache Nachrichtenformate definieren.
 - [ ] Ich kann mit Netzwerkanalyse-Tools (z.B. Wireshark) gängige Protokolle in einem Abruf identifizieren (DNS, TCP, HTTP).
 - [ ] Ich kann Chancen und Risiken zentraler Serverarchitekturen hinsichtlich Datenschutz und Souveränität reflektieren.
-- [ ] Ich kann konkrete Massnahmen zur Datenminimierung und zum Schutz der Privatsphäre in einem Chat-Design vorschlagen.
+- [ ] Ich kann konkrete Massnahmen zur Datenminimierung und zum Schutz der Privatsphäre in einem Chat-Design vorschlagen. -->
 
 # Anhang: Installation Filius {.unnumbered}
 
@@ -1338,7 +1330,7 @@ Falls Sie dazu aufgefordert werden, klicken Sie immer auf "erlauben" bzw. "weite
 
 ## MacOS {.unnumbered}
 
-::: {.callout-warning}
+::: {.callout-warning icon=false}
 Falls Probleme beim Ausführen der unten stehenden Schritte auftreten, schauen Sie sich die genauen Anleitungen mit Screenshots auf [https://oinf.ch/wp-content/uploads/Anleitung_Filius_Mac-OS.pdf](https://oinf.ch/wp-content/uploads/Anleitung_Filius_Mac-OS.pdf) an.
 :::
 
