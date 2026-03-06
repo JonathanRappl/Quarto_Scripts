@@ -215,13 +215,13 @@ Dieses wird jedes Mal ausgeführt, wenn ein Computer eine Nachricht an eine best
 - Computer `192.168.0.34` antwortet: "Ich! Meine MAC ist `60:4E:46:F5:08:09`."
 - Nun kann der Computer seine Nachricht direkt an den nächsten Empfänger übergeben.
 
-Die Resultate aller ARP-Anfragen werden in einer sogenannten **ARP-Tabelle** gespeichert, damit nicht jedes Mal eine neue Anfrage gesendet werden muss. Diese Tabelle wird periodisch aktualisiert. Um die ARP-Tabelle auf einem Computer anzuzeigen, kann der Befehl `arp -a` im Terminal (MacOS, UNIX) bzw. `cmd` oder PowerShell (Windows) verwendet werden.
+Die Resultate aller ARP-Anfragen werden in einer sogenannten **ARP-Tabelle** gespeichert, damit nicht jedes Mal eine neue Anfrage gesendet werden muss. Diese Tabelle wird periodisch aktualisiert. Um die ARP-Tabelle auf einem Computer anzuzeigen, kann der Befehl `arp -a` im Terminal verwendet werden.
 
 ## Ping
 
 Mit dem Befehl `ping` kann überprüft werden, ob ein Rechner im Netzwerk erreichbar ist. Dabei wird eine minimale, inhaltslose Nachricht an einen anderen Rechner (= IP-Adresse) geschickt. Ziel ist es zu überprüfen, ob eine gewisse IP-Adresse im Netzwerk existiert. Der Befehl "ping" ist vergleichbar mit einem Ping-Pong-Spiel: Der Absender-Rechner, der eine "ping"-Nachricht schickt, erhält vom Ziel-Rechner, sofern dieser erreicht wird, viermal eine "pong"-Nachricht zurückgeschickt.
-
-Der `ping`-Befehl kann im Terminal (MacOS, UNIX) bzw. `cmd` oder PowerShell (Windows) wie folgt ausgeführt werden:
+   
+Der `ping`-Befehl kann im Terminal wie folgt ausgeführt werden:
 
 ```bash
 ping [ip-adresse]
@@ -766,8 +766,8 @@ Dank NAT können Millionen von Geräten mit derselben privaten IP-Adresse gleich
 ## ✏️ Übung: Private vs. öffentliche IP-Adresse herausfinden
 
 1. Finden Sie die **private IP-Adresse** Ihres Computers heraus:
-   - **Windows**: Eingabeaufforderung (`cmd`) → `ipconfig` → suchen Sie die "IPv4-Adresse"
-   - **MacOS**: Terminal → `ifconfig`, oder Systemeinstellungen → Netzwerk
+   - **Windows**: Terminal → `ipconfig` → suchen Sie die "IPv4-Adresse"
+   - **MacOS**: Terminal → `ifconfig | grep inet`, oder Systemeinstellungen → Netzwerk
 2. Überprüfen Sie, ob Ihre private IP-Adresse in einem der privaten Adressbereiche liegt.
 3. Finden Sie die **öffentliche IP-Adresse** Ihres Routers heraus:
    - Besuchen Sie [https://www.whatismyip.com](https://www.whatismyip.com)
@@ -900,7 +900,7 @@ tracert www.google.com
 ::: {.callout-caution icon=false}
 ## ✏️ Übung: Traceroute im echten Internet
 
-1. Öffnen Sie ein Terminal (MacOS/Linux) oder die Kommandozeile (`cmd` unter Windows).
+1. Öffnen Sie ein Terminal.
 2. Führen Sie einen Traceroute zu `www.ethz.ch` aus und notieren Sie die Anzahl der Hops sowie die IP-Adressen der ersten drei Router.
 3. Führen Sie einen Traceroute zu `www.mit.edu` (Massachusetts Institute of Technology, USA) aus. Notieren Sie ebenfalls die Hops.
 4. Vergleichen Sie die beiden Routen:
