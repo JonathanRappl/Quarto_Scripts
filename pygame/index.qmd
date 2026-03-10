@@ -436,13 +436,8 @@ Benutzen Sie die zufällige Farbengenerierung aus dem vorherigen Kapitel, um die
 # Tastatursteuerung und Kollisionen {#sec-steuerung}
 
 
-
-In diesem Kapitel lernen wir, wie man ein Spielerobjekt mit der Tastatur steuert und wie man Kollisionen zwischen mehreren Objekten erkennt.
-
-## Tastatureingaben verarbeiten
-
 ::: {.callout-tip icon=false collapse="true"}
-## Gesamter Code: Einführung und Installation
+## Gesamter Code: Tastatursteuerung und Kollisionen
 
 ```python
 # Kapitel 4: Tastatursteuerung und Kollisionen
@@ -540,6 +535,11 @@ pg.quit()
 ```
 
 :::
+
+In diesem Kapitel lernen wir, wie man ein Spielerobjekt mit der Tastatur steuert und wie man Kollisionen zwischen mehreren Objekten erkennt.
+
+## Tastatureingaben verarbeiten
+
 
 
 Im Gegensatz zur automatischen Bewegung aus dem vorherigen Kapitel wollen wir nun, dass der Spieler das Objekt direkt mit der Tastatur steuern kann. Dafür gibt es in Pygame zwei Hauptansätze:
