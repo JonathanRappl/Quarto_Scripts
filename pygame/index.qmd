@@ -863,7 +863,7 @@ screen.blit(text_surface, (x, y))
 Die Methode `font.render(text, antialias, farbe)` erstellt eine neue Oberfläche ("Surface") mit dem gerenderten Text. Der Parameter `antialias` (immer `True` setzen) sorgt für geglättete Kanten. Mit `screen.blit(surface, (x, y))` wird diese Oberfläche an der Position (x, y) auf den Bildschirm kopiert. `blit` steht für "Block Image Transfer" und ist die allgemeine Methode, um eine Oberfläche auf eine andere zu zeichnen.
 :::
 
-::: {.callout-warning icon=false appearance="simple"}
+<!-- ::: {.callout-warning icon=false appearance="simple"}
 ## 💡 Beispiel: Text auf dem Bildschirm
 
 ```python
@@ -905,7 +905,7 @@ pg.quit()
 ```
 
 Beachten Sie: Mit `get_rect(center=(x, y))` können wir den Text zentriert positionieren, anstatt die obere linke Ecke manuell zu berechnen. Weitere nützliche Positionierungs-Parameter sind `topleft`, `topright`, `bottomleft`, `bottomright`, `midtop`, `midbottom`, `midleft` und `midright`.
-:::
+::: -->
 
 
 ::: {.callout-note icon=false}
