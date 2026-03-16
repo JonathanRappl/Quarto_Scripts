@@ -166,6 +166,59 @@ while running:
 pg.quit()
 ```
 :::
+
+::: {.callout-tip icon=false collapse="true"}
+## Lösung
+
+```python
+import random # Für Aufgabe 2.3
+
+# Beispiel 2.1
+import pygame as pg
+pg.init() # Pygame initialisieren (starten)
+HEIGHT = 600 # Höhe des Fensters
+WIDTH = 800 # Breite des Fensters
+WINDOW = (WIDTH, HEIGHT) # Fenstergrösse (als Tuple gespeichert)
+screen = pg.display.set_mode(WINDOW) # Fenster erstellen
+
+# Challenge 2.2 ----------------
+# icon = pg.image.load("path/to/icon.png")
+# pg.display.set_icon(icon)
+# ------------------------------
+
+pg.display.set_caption("Mein erstes Game") # Fenstertitel setzen
+clock = pg.time.Clock() # Clock für Zeitsteuerung erstellen
+
+running = True # Hauptschleife
+while running:
+    # --- Events ---
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+    # --- Update --- (Spielzustand aktualisieren)
+
+
+    # --- render (zeichnen) ---
+    # Aufgabe 2.3 ------------------
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    screen.fill((r, g, b))
+    # ------------------------------
+    # Aufgabe 2.4 ------------------
+    # Rechtecke, Kreise, Linien zeichnen
+    pg.draw.rect(screen, (255, 0, 0), pg.Rect(100, 100, 200, 100)) # rotes Rechteck
+    pg.draw.circle(screen, (0, 255, 0), (400, 300), 50) # grüner Kreis
+    pg.draw.line(screen, (0, 0, 255), (0, 0), (800, 600), 5) # blaue Linie
+    # ------------------------------
+    screen.fill((255,255,255))
+    pg.display.flip()
+    # --- Zeitsteuerung ---
+    clock.tick(10) # 10 FPS
+pg.quit()
+```
+:::
+
 ::: {.callout-warning icon=false appearance="simple"}
 ## 💡 Beispiel: Minimale Game-Schleife
 Folgender Code zeigt den minimalen Aufbau eines Pygame-Programms mit Fenster, Game-Schleife und Ereignisverarbeitung. Kopieren Sie den Code in eine Datei `game_intro.py` und führen Sie ihn in VS Code aus.
@@ -315,6 +368,66 @@ while running:
     # --- Render ---
     screen.fill((255,255,255))
     pg.draw.rect(screen, (255, 0, 0), mein_rechteck)
+
+    # ------------------------------
+    pg.display.flip()
+
+    clock.tick(60) 
+pg.quit()
+
+```
+
+:::
+
+::: {.callout-tip icon=false collapse="true"}
+## Lösung 
+
+```python
+ # Beispiel 3.1
+import pygame as pg
+import random
+pg.init()
+HEIGHT = 600
+WIDTH = 800 
+WINDOW = (WIDTH, HEIGHT)
+screen = pg.display.set_mode(WINDOW) 
+
+mein_rechteck = pg.Rect(100, 100, 100, 50)
+# Aufgabe 3.1:
+# Variablen vx, vy definieren und mit einem Wert belegen
+vx = 3
+vy = 3
+
+rechteck_farbe = (255, 0, 0) # Rot
+
+pg.display.set_caption("Bouncing Rectangle")
+clock = pg.time.Clock()
+
+running = True 
+while running:
+    # --- Events ---
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+
+    # --- Update --- 
+    # Aufgabe 3.2:
+    # Kollision mit den Wänden erkennen und die Richtung ändern
+    if mein_rechteck.left <= 0 or mein_rechteck.right >= WIDTH:
+        vx = -vx  # Richtung in x-Richtung umkehren
+        rechteck_farbe = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)) # Farbe ändern bei Kollision
+    if mein_rechteck.top <= 0 or mein_rechteck.bottom >= HEIGHT:
+        vy = -vy  # Richtung in y-Richtung umkehren
+        rechteck_farbe = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)) # Farbe ändern bei Kollision
+    
+    # Aufgabe 3.1:
+    # Position des Rechtecks aktualisieren
+    mein_rechteck.x += vx
+    mein_rechteck.y += vy
+
+    # --- Render ---
+    screen.fill((255,255,255))
+    pg.draw.rect(screen, rechteck_farbe, mein_rechteck)
 
     # ------------------------------
     pg.display.flip()
@@ -535,6 +648,155 @@ pg.quit()
 ```
 
 :::
+
+## Lösung
+
+```python
+# Kapitel 4: Tastatursteuerung und Kollisionen
+import pygame as pg
+import random
+
+pg.init()
+HEIGHT = 600
+WIDTH = 800 
+WINDOW = (WIDTH, HEIGHT)
+screen = pg.display.set_mode(WINDOW) 
+
+# Aus vorherigem Kapitel:
+mein_rechteck = pg.Rect(100, 100, 100, 50)
+vx = 3
+vy = 3
+
+# Aufgabe 4.2: Spieler definieren
+spieler = pg.Rect(WIDTH//2 - 20, HEIGHT//2 - 20, 40, 40) # Spieler-Rechteck in der Mitte des Fensters
+spieler_farbe = (0, 0, 255)  # Blau
+
+# Aufgabe 4.4: Hindernisse erstellen (3-5 Rechtecke)
+hindernis1 = pg.Rect(random.randint(0, WIDTH - 20), random.randint(0, HEIGHT - 20), 20, 20)
+hindernis2 = pg.Rect(random.randint(0, WIDTH - 20), random.randint(0, HEIGHT - 20), 20, 20)
+hindernis3 = pg.Rect(random.randint(0, WIDTH - 20), random.randint(0, HEIGHT - 20), 20, 20)
+
+# Aufgabe 4.5: Sammelobjekte erstellen (5-10 kleine Rechtecke, zufällig verteilt)
+sammelobjekt_farbe = (255, 215, 0) # Gold
+sammelobjekte = []
+for _ in range(10):
+    x = random.randint(0, WIDTH - 20)
+    y = random.randint(0, HEIGHT - 20)
+    sammelobjekt = pg.Rect(x, y, 20, 20)
+    sammelobjekte.append(sammelobjekt)
+
+# Aufgabe 4.6: Wände für Labyrinth erstellen
+wände = []
+for _ in range(5):
+    x = random.randint(0, WIDTH - 100)
+    y = random.randint(0, HEIGHT - 20)
+    wand = pg.Rect(x, y, 100, 20)
+    wände.append(wand)
+
+speed = 5  # Spielergeschwindigkeit
+
+pg.display.set_caption("Tastatursteuerung")
+clock = pg.time.Clock()
+
+running = True 
+while running:
+    # --- Events ---
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+        
+        # Aufgabe 4.1: Event-basierte Tastaturabfrage
+        # Bei KEYDOWN die Position des Spielers um 10 Pixel verschieben
+        if event.type == pg.KEYDOWN:
+            if event.key == pg.K_w:
+                mein_rechteck.y -= 10
+            if event.key == pg.K_s:
+                mein_rechteck.y += 10
+            if event.key == pg.K_a:
+                mein_rechteck.x -= 10
+            if event.key == pg.K_d:
+                mein_rechteck.x += 10
+
+    # --- Update --- 
+    # Aus vorherigem Kapitel: Rechteck bewegen. TODO: Durch Aufgabe 4.1 ersetzen
+    # mein_rechteck.x += vx
+    # mein_rechteck.y += vy
+
+    alte_position = spieler.topleft # Alte Position speichern für Aufgabe 4.6
+
+    # Aufgabe 4.2: Zustandsbasierte Tastaturabfrage
+    # Spieler mit Pfeiltasten bewegen (get_pressed)
+    keys = pg.key.get_pressed()
+    if keys[pg.K_UP]:
+        spieler.y -= speed
+    if keys[pg.K_DOWN]:
+        spieler.y += speed
+    if keys[pg.K_LEFT]:
+        spieler.x -= speed
+    if keys[pg.K_RIGHT]:
+        spieler.x += speed
+
+    # Aufgabe 4.3: Fenster-Grenzen
+    # Spieler darf nicht aus dem Fenster herauslaufen
+    if spieler.left < 0:
+        spieler.left = 0
+    if spieler.right > WIDTH:
+        spieler.right = WIDTH
+    if spieler.top < 0:
+        spieler.top = 0
+    if spieler.bottom > HEIGHT:
+        spieler.bottom = HEIGHT
+
+    # Aufgabe 4.4: Kollision mit Hindernissen erkennen
+    # Farbe ändern oder Spieler zurücksetzen
+    if spieler.colliderect(hindernis1) or spieler.colliderect(hindernis2) or spieler.colliderect(hindernis3):
+        spieler_farbe = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)) # Farbe ändern bei Kollision
+        spieler.x = WIDTH//2 - 20 # Spieler zurücksetzen
+        spieler.y = HEIGHT//2 - 20
+
+    # Aufgabe 4.5: Kollision mit Sammelobjekten
+    # Objekt aus der Liste entfernen (pop) und Zähler erhöhen
+    kollisionsindex = spieler.collidelist(sammelobjekte)
+    if kollisionsindex != -1:
+        sammelobjekte.pop(kollisionsindex) # Objekt entfernen
+
+    # Aufgabe 4.6: Kollisionsvermeidung (Labyrinth)
+    # Alte Position speichern, bei Wandkollision zurücksetzen
+    kollisionsindex = spieler.collidelist(wände)
+    if kollisionsindex != -1:
+        spieler.topleft = alte_position # Spieler zurücksetzen bei Kollision mit Wand
+
+    # --- Render ---
+    screen.fill((255, 255, 255))
+    
+    # Aus vorherigem Kapitel: Rechteck zeichnen
+    pg.draw.rect(screen, (255, 0, 0), mein_rechteck)
+
+    # Spieler zeichnen
+    pg.draw.rect(screen, spieler_farbe, spieler)
+    
+    # Aufgabe 4.4: Hindernisse zeichnen (grau)
+    pg.draw.rect(screen, (128, 128, 128), hindernis1)
+    pg.draw.rect(screen, (128, 128, 128), hindernis2)
+    pg.draw.rect(screen, (128, 128, 128), hindernis3)
+
+    # Aufgabe 4.5: Sammelobjekte zeichnen (gelb/gold)
+    for sammelobjekt in sammelobjekte:
+        pg.draw.rect(screen, (255, 215, 0), sammelobjekt)
+
+    # Aufgabe 4.6: Wände zeichnen (dunkelgrau)
+    for wand in wände:
+        pg.draw.rect(screen, (64, 64, 64), wand)
+
+    # ------------------------------
+    pg.display.flip()
+    clock.tick(60) 
+
+pg.quit()
+```
+
+:::
+
 
 In diesem Kapitel lernen wir, wie man ein Spielerobjekt mit der Tastatur steuert und wie man Kollisionen zwischen mehreren Objekten erkennt.
 
