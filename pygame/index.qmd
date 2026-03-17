@@ -1894,4 +1894,217 @@ while running:
 pg.quit()
 ```
 :::
+
+:::
+
+
+# Prüfungsvorbereitung {#sec-pruefungsvorbereitung}
+
+Die folgenden Aufgaben dienen zur Vorbereitung auf die Prüfung. Sie decken die wichtigsten Konzepte aus den Kapiteln 2–5 ab. Versuchen Sie, die Aufgaben selbstständig zu lösen, bevor Sie die Musterlösung anschauen. Sie dürfen [WebTigerPython](https://webtigerpython.ethz.ch/) verwenden, um Ihren Code zu testen.
+
+::: {.callout-note icon=false}
+## Aufgabe 1: Fliegender Ballon
+
+Ein roter Ballon (Rechteck) schwebt in einem Pygame-Fenster **vertikal** auf und ab. Schreiben Sie ein Pygame-Programm, das diese Animation Schritt für Schritt aufbaut.
+
+**a) Grundgerüst**
+
+Erstellen Sie das Grundgerüst eines Pygame-Programms mit:
+
+- Import von pygame (`import pygame as pg`) und Initialisierung mit `pg.init()`
+- Einem Fenster der Grösse **640×480** mit dem Titel **"Ballon"**
+- Einer Clock, die die Bildwiederholrate auf **60 FPS** begrenzt
+- Einer Game-Schleife, die auf das Schliessen-Event (`pg.QUIT`) reagiert
+- `pg.quit()` am Ende des Programms
+
+**b) Ballon zeichnen**
+
+Ergänzen Sie Ihr Programm:
+
+- Erstellen Sie **vor der Game-Schleife** ein Rect-Objekt namens `ballon` mit Breite 40, Höhe 50 an der Startposition (300, 50).
+- **In der Game-Schleife:** Füllen Sie den Hintergrund mit Hellgrau `(220, 220, 230)`, zeichnen Sie den Ballon in Rot `(220, 50, 50)`, und rufen Sie `pg.display.flip()` auf.
+
+**c) Bewegung**
+
+- Definieren Sie **vor der Game-Schleife** eine Variable für die vertikale Geschwindigkeit.
+- Aktualisieren Sie **in der Game-Schleife** die y-Position des Ballons um diese Geschwindigkeit.
+
+**d) Wandkollision**
+
+- Erkennen Sie, wenn der Ballon den **oberen** oder **unteren** Fensterrand erreicht.
+- Kehren Sie in diesem Fall die Bewegungsrichtung um, sodass der Ballon auf und ab schwebt.
+
+::: {.callout-tip icon=false collapse="true"}
+## Musterlösung: Fliegender Ballon
+
+```python
+# a) Grundgerüst
+import pygame as pg
+
+pg.init()
+WIDTH = 640
+HEIGHT = 480
+screen = pg.display.set_mode((WIDTH, HEIGHT))
+pg.display.set_caption("Ballon")
+clock = pg.time.Clock()
+
+# b) Ballon erstellen
+ballon = pg.Rect(300, 50, 40, 50)
+
+# c) Geschwindigkeit
+vy = 2
+
+running = True
+while running:
+    # --- Events ---
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+
+    # --- Update ---
+    # c) Position aktualisieren
+    ballon.y += vy
+
+    # d) Wandkollision
+    if ballon.top <= 0 or ballon.bottom >= HEIGHT:
+        vy = -vy
+
+    # --- Render ---
+    screen.fill((220, 220, 230))               # b) Hellgrauer Hintergrund
+    pg.draw.rect(screen, (220, 50, 50), ballon) # b) Roter Ballon
+    pg.display.flip()
+
+    clock.tick(60)
+
+pg.quit()
+```
+:::
+
+:::
+
+::: {.callout-note icon=false}
+## Aufgabe 2: Münzsammler {#sec-vorb-muenzsammler}
+
+Ein Spieler (grünes Quadrat) wird mit den Pfeiltasten gesteuert und sammelt goldene Münzen ein. Der aktuelle Punktestand wird oben links im Fenster angezeigt.
+
+**a) Grundgerüst und Spieler**
+
+- Erstellen Sie ein Pygame-Programm mit einem Fenster der Grösse **800×600**, dem Titel **"Münzsammler"**, einer Clock (60 FPS) und einer Game-Schleife mit QUIT-Event.
+- Erstellen Sie ein Rect-Objekt `spieler` der Grösse **30×30** in der **Mitte des Fensters**.
+- Füllen Sie den Hintergrund mit Weiss `(255, 255, 255)` und zeichnen Sie den Spieler in Grün `(0, 180, 0)`.
+
+**b) Tastatursteuerung**
+
+- Implementieren Sie eine **zustandsbasierte** Tastatursteuerung mit `pg.key.get_pressed()`.
+- Der Spieler soll sich mit den **Pfeiltasten** (UP, DOWN, LEFT, RIGHT) mit einer Geschwindigkeit von **5 Pixeln pro Frame** bewegen.
+
+**c) Fenstergrenzen**
+
+- Verhindern Sie, dass der Spieler den Fensterrand überschreitet.
+
+**d) Münzen erstellen und zeichnen**
+
+- Erstellen Sie **vor der Game-Schleife** eine **Liste** namens `muenzen`, die 5 Rect-Objekte (je **15×15**) an fünf verschiedenen Positionen enthält.
+- Zeichnen Sie **alle** Münzen in der Farbe Gold `(255, 215, 0)` mit einer **for-Schleife**.
+
+**e) Kollision und Einsammeln**
+
+- Erstellen Sie eine Variable `punkte = 0`.
+- Prüfen Sie in jedem Frame, ob der Spieler eine Münze berührt.
+- Falls ja: Entfernen Sie die Münze und erhöhen Sie `punkte` um 1.
+
+**f) Punktestand anzeigen**
+
+- Erstellen Sie **vor der Game-Schleife** einen Font: `font = pg.font.Font(None, 36)`
+- Rendern Sie **in der Game-Schleife** (im Render-Abschnitt) den Text `"Punkte: X"` (wobei X der aktuelle Wert von `punkte` ist) in Schwarz.
+- Zeichnen Sie den Text an der Position **(10, 10)**.
+
+::: {.callout-tip icon=false collapse="true"}
+## Musterlösung: Münzsammler
+
+```python
+# a) Grundgerüst und Spieler
+import pygame as pg
+
+pg.init()
+WIDTH = 800
+HEIGHT = 600
+screen = pg.display.set_mode((WIDTH, HEIGHT))
+pg.display.set_caption("Münzsammler")
+clock = pg.time.Clock()
+
+spieler = pg.Rect(WIDTH // 2 - 15, HEIGHT // 2 - 15, 30, 30)
+speed = 5
+
+# d) Münzen in einer Liste erstellen
+muenzen = [
+    pg.Rect(100, 100, 15, 15),
+    pg.Rect(300, 400, 15, 15),
+    pg.Rect(600, 150, 15, 15),
+    pg.Rect(450, 350, 15, 15),
+    pg.Rect(200, 500, 15, 15),
+]
+
+# e) Punktestand
+punkte = 0
+
+# f) Font erstellen
+font = pg.font.Font(None, 36)
+
+running = True
+while running:
+    # --- Events ---
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+
+    # --- Update ---
+    # b) Zustandsbasierte Tastatursteuerung
+    keys = pg.key.get_pressed()
+    if keys[pg.K_UP]:
+        spieler.y -= speed
+    if keys[pg.K_DOWN]:
+        spieler.y += speed
+    if keys[pg.K_LEFT]:
+        spieler.x -= speed
+    if keys[pg.K_RIGHT]:
+        spieler.x += speed
+
+    # c) Fenstergrenzen
+    if spieler.left < 0:
+        spieler.left = 0
+    if spieler.right > WIDTH:
+        spieler.right = WIDTH
+    if spieler.top < 0:
+        spieler.top = 0
+    if spieler.bottom > HEIGHT:
+        spieler.bottom = HEIGHT
+
+    # e) Kollision mit Münzen
+    kollisionsindex = spieler.collidelist(muenzen)
+    if kollisionsindex != -1:
+        muenzen.pop(kollisionsindex)
+        punkte += 1
+
+    # --- Render ---
+    screen.fill((255, 255, 255))
+
+    # Spieler zeichnen
+    pg.draw.rect(screen, (0, 180, 0), spieler)
+
+    # d) Alle Münzen zeichnen
+    for muenze in muenzen:
+        pg.draw.rect(screen, (255, 215, 0), muenze)
+
+    # f) Punktestand anzeigen
+    text_surface = font.render(f"Punkte: {punkte}", True, (0, 0, 0))
+    screen.blit(text_surface, (10, 10))
+
+    pg.display.flip()
+    clock.tick(60)
+
+pg.quit()
+```
+:::
+
 :::
