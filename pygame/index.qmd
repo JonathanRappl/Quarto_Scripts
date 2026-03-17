@@ -649,6 +649,7 @@ pg.quit()
 
 :::
 
+::: {.callout-tip icon=false collapse="true"}
 ## Lösung
 
 ```python
