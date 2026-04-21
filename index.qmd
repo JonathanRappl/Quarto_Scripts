@@ -4,11 +4,16 @@ subtitle: "Lehrmaterialien & Referenzen"
 toc: false
 ---
 
-Willkommen zur Sammlung von Informatik-Skripten. Wählen Sie ein Thema unten aus, um auf die entsprechenden Materialien zuzugreifen.
+Willkommen zur Sammlung von Informatik-Skripten. Wählen Sie ein Thema oben aus, um auf die entsprechenden Materialien zuzugreifen.
 
-## Themen
+<!-- ## Themen
 
 ::: {.grid}
+
+::: {.g-col-6}
+### [AI & ML](ai-ml/index.qmd)
+Arbeitsauftrag zu einem aktuellen Artikel uber KI, LLMs und Sicherheitsrisiken in der Softwareentwicklung.
+:::
 
 ::: {.g-col-6}
 ### [Netzwerke](networking/index.qmd)
@@ -24,4 +29,4 @@ Spieleprogrammierung mit Python und Pygame — Game-Schleife, Bewegung, Kollisio
 
 ---
 
-*Weitere Themen werden im Laufe der Zeit hinzugefügt.*
+*Weitere Themen werden im Laufe der Zeit hinzugefügt.* -->
