@@ -14,6 +14,8 @@ website:
         text: Netzwerke
       - href: pygame/index.qmd
         text: Pygame
+      - href: kryptologie/index.qmd
+        text: Kryptologie
   page-footer:
     center: "Informatik Skripte — Built with [Quarto](https://quarto.org)"
 

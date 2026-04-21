@@ -1,0 +1,259 @@
+---
+title: "Kryptologie"
+subtitle: "Grundlagen der Verschlüsselung und Geheimhaltung"
+toc: true
+toc-location: right
+toc-depth: 3
+number-sections: true
+smooth-scroll: true
+format:
+  html:
+    code-fold: false
+  pdf:
+    documentclass: scrartcl
+    papersize: a4
+    fontsize: 11pt
+    colorlinks: true
+    lang: de
+    include-in-header:
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+---
+
+# Einstieg: Geheime Kommunikation
+
+Stellen Sie sich folgende Situation vor: **Alice** möchte eine geheime Nachricht an **Bob** schicken. Das Problem: **Charlie** kann alle Nachrichten mitlesen, die zwischen Alice und Bob verschickt werden.
+
+::: {.callout-tip title="Aufgabe 1: Eigenes Verschlüsselungsverfahren" icon=true}
+Überlegen Sie sich in Zweiergruppen ein Verfahren, mit dem Alice eine Nachricht so verschlüsseln kann, dass nur Bob sie lesen kann — nicht aber Charlie.
+
+- Wie wird die Nachricht verändert (verschlüsselt)?
+- Was muss Bob wissen, um die Nachricht wieder lesen zu können?
+- Könnte Charlie Ihr Verfahren knacken? Wie?
+
+**Halten Sie Ihr Verfahren schriftlich fest und testen Sie es mit einer kurzen Beispielnachricht.**
+:::
+
+## Das Grundprinzip
+
+Die folgende Grafik zeigt das Grundprinzip der **symmetrischen Verschlüsselung**: Alice verschlüsselt eine Nachricht mit einem Schlüssel $k$, schickt den Chiffretext über einen unsicheren Kanal an Bob, und Bob entschlüsselt mit demselben Schlüssel $k$. Charlie sieht zwar den Chiffretext, kann ihn aber ohne den Schlüssel nicht lesen.
+
+![Symmetrische Verschlüsselung: Alice sendet eine verschlüsselte Nachricht an Bob](figures/alice_bob_key.png){fig-align="center" width=70%}
+
+Zentrale Begriffe:
+
+| Begriff | Bedeutung |
+|---|---|
+| **Klartext** | Die ursprüngliche, lesbare Nachricht |
+| **Chiffretext** | Die verschlüsselte, unlesbare Nachricht |
+| **Schlüssel** | Die geheime Information zum Ver-/Entschlüsseln |
+| **Verschlüsseln** | Klartext → Chiffretext |
+| **Entschlüsseln** | Chiffretext → Klartext |
+
+# Caesar-Verschlüsselung
+
+Eines der ältesten bekannten Verschlüsselungsverfahren ist die **Caesar-Verschlüsselung**, benannt nach Julius Caesar, der sie zur Kommunikation mit seinen Generälen verwendet haben soll.
+
+## Das Prinzip
+
+Jeder Buchstabe im Klartext wird um eine feste Anzahl Positionen im Alphabet verschoben. Bei einer Verschiebung von $k = 3$:
+
+| A | B | C | D | E | F | ... | X | Y | Z |
+|---|---|---|---|---|---|-----|---|---|---|
+| D | E | F | G | H | I | ... | A | B | C |
+
+Das Wort **HALLO** wird mit $k = 3$ zu **KDOOR**.
+
+Mathematisch ausgedrückt:
+
+$$
+c = (p + k) \mod 26
+$$
+
+wobei $c$ der Chiffrebuchstabe, $p$ der Klartextbuchstabe (als Zahl 0–25) und $k$ der Schlüssel ist.
+
+## Interaktive Caesar-Drehscheibe
+
+Verwenden Sie die Drehscheibe unten, um Nachrichten zu verschlüsseln und zu entschlüsseln. Der äussere Ring zeigt das Klartextalphabet, der innere Ring das verschobene Chiffrealphabet. Verändern Sie die Verschiebung mit dem Schieberegler.
+
+```{=html}
+<style>
+  .caesar-widget {
+    font-family: 'Source Sans Pro', sans-serif;
+    max-width: 500px;
+    margin: 1.5em auto;
+    text-align: center;
+  }
+  .caesar-widget .disk-container {
+    position: relative;
+    width: 340px;
+    height: 340px;
+    margin: 0 auto 1em;
+  }
+  .caesar-widget svg {
+    width: 340px;
+    height: 340px;
+  }
+  .caesar-widget .controls {
+    margin: 0.5em 0;
+  }
+  .caesar-widget .controls label {
+    font-weight: 600;
+    font-size: 1.05em;
+  }
+  .caesar-widget input[type=range] {
+    width: 250px;
+    margin: 0.3em 0;
+  }
+  .caesar-widget .shift-display {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #4169E1;
+    margin: 0.2em 0 0.6em;
+  }
+  .caesar-widget .io-area {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .caesar-widget .io-area div {
+    flex: 1;
+    min-width: 200px;
+  }
+  .caesar-widget textarea {
+    width: 100%;
+    height: 60px;
+    font-family: monospace;
+    font-size: 1em;
+    padding: 0.4em;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+  }
+  .caesar-widget .io-area label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.2em;
+  }
+</style>
+
+<div class="caesar-widget" id="caesarWidget">
+  <div class="disk-container">
+    <svg id="caesarDisk" viewBox="0 0 340 340"></svg>
+  </div>
+  <div class="controls">
+    <label for="shiftSlider">Verschiebung (k):</label><br>
+    <input type="range" id="shiftSlider" min="0" max="25" value="3">
+    <div class="shift-display">k = <span id="shiftValue">3</span></div>
+  </div>
+  <div class="io-area">
+    <div>
+      <label for="plainInput">Klartext:</label>
+      <textarea id="plainInput" placeholder="Nachricht eingeben..."></textarea>
+    </div>
+    <div>
+      <label for="cipherOutput">Chiffretext:</label>
+      <textarea id="cipherOutput" placeholder="Verschlüsselt..." readonly></textarea>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const cx = 170, cy = 170;
+  // Outer ring (plain): 160 → 132, text at midpoint 146
+  const rOO = 160, rOI = 132, rTO = 146;
+  // Inner ring (cipher): 128 → 95, text at midpoint 112
+  const rIO = 128, rII = 95, rTI = 112;
+
+  function drawDisk(shift) {
+    const svg = document.getElementById('caesarDisk');
+    let html = '';
+    // Outer ring
+    html += `<circle cx="${cx}" cy="${cy}" r="${rOO}" fill="#e8ecf4" stroke="#4169E1" stroke-width="2"/>`;
+    html += `<circle cx="${cx}" cy="${cy}" r="${rOI}" fill="white" stroke="#4169E1" stroke-width="1.5"/>`;
+    // Inner ring
+    html += `<circle cx="${cx}" cy="${cy}" r="${rIO}" fill="#e6f4ea" stroke="#228B22" stroke-width="2"/>`;
+    html += `<circle cx="${cx}" cy="${cy}" r="${rII}" fill="white" stroke="#228B22" stroke-width="1.5"/>`;
+
+    for (let i = 0; i < 26; i++) {
+      const angle = (i * 360 / 26 - 90) * Math.PI / 180;
+      // Outer letter (plain)
+      const xo = cx + rTO * Math.cos(angle);
+      const yo = cy + rTO * Math.sin(angle);
+      html += `<text x="${xo}" y="${yo}" text-anchor="middle" dominant-baseline="central"
+                font-size="13" font-weight="700" fill="#4169E1">${ABC[i]}</text>`;
+      // Inner letter (cipher, shifted)
+      const xi = cx + rTI * Math.cos(angle);
+      const yi = cy + rTI * Math.sin(angle);
+      html += `<text x="${xi}" y="${yi}" text-anchor="middle" dominant-baseline="central"
+                font-size="13" font-weight="700" fill="#228B22">${ABC[(i + shift) % 26]}</text>`;
+      // Tick marks between rings
+      const x1 = cx + rOI * Math.cos(angle);
+      const y1 = cy + rOI * Math.sin(angle);
+      const x2 = cx + rIO * Math.cos(angle);
+      const y2 = cy + rIO * Math.sin(angle);
+      html += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#bbb" stroke-width="0.5"/>`;
+    }
+    // Center label
+    html += `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="central"
+              font-size="16" font-weight="700" fill="#333">k = ${shift}</text>`;
+    svg.innerHTML = html;
+  }
+
+  function caesarEncrypt(text, shift) {
+    return text.toUpperCase().split('').map(ch => {
+      const idx = ABC.indexOf(ch);
+      if (idx === -1) return ch;
+      return ABC[(idx + shift) % 26];
+    }).join('');
+  }
+
+  const slider = document.getElementById('shiftSlider');
+  const shiftDisp = document.getElementById('shiftValue');
+  const plainIn = document.getElementById('plainInput');
+  const cipherOut = document.getElementById('cipherOutput');
+
+  function update() {
+    const k = parseInt(slider.value);
+    shiftDisp.textContent = k;
+    drawDisk(k);
+    cipherOut.value = caesarEncrypt(plainIn.value, k);
+  }
+
+  slider.addEventListener('input', update);
+  plainIn.addEventListener('input', update);
+  update();
+})();
+</script>
+```
+
+## Aufgaben
+
+::: {.callout-note title="Aufgabe 2: Verschlüsseln" icon=true}
+Verschlüsseln Sie die folgende Nachricht von Hand und überprüfen Sie Ihr Ergebnis mit der Drehscheibe.
+
+> **TREFFPUNKT AM BAHNHOF**
+
+Verwenden Sie den Schlüssel $k = 7$.
+:::
+
+::: {.callout-note title="Aufgabe 3: Knacken" icon=true}
+Die folgende Nachricht wurde mit einer Caesar-Verschlüsselung verschlüsselt. Finden Sie den Schlüssel und den Klartext!
+
+> **LQIRUPDWLN LVW HLQH VSDQQHQGH ZLVVHQVFKDIW**
+
+*Tipp: Probieren Sie verschiedene Verschiebungen aus. Verwenden Sie die Drehscheibe zur Hilfe.*
+:::
+
+::: {.callout-warning title="Aufgabe 4: Sicherheit der Caesar-Verschlüsselung" icon=true}
+Beantworten Sie die folgenden Fragen:
+
+a) Wie viele mögliche Schlüssel gibt es bei der Caesar-Verschlüsselung?
+b) Wenn Sie pro Sekunde einen Schlüssel ausprobieren können — wie lange dauert es maximal, alle Schlüssel durchzuprobieren?
+c) Ist die Caesar-Verschlüsselung ein sicheres Verfahren? Begründen Sie Ihre Antwort.
+d) Wie könnte man die Caesar-Verschlüsselung verbessern?
+:::
