@@ -1,0 +1,86 @@
+---
+title: "AI & ML"
+# subtitle: "Arbeitsauftrag zu LLMs, Halluzinationen und Sicherheitsrisiken"
+toc: true
+toc-location: right
+toc-depth: 3
+number-sections: true
+smooth-scroll: true
+---
+
+# Arbeitsauftrag: Artikel verstehen
+
+In diesem ersten Thema zu **AI & ML** arbeiten Sie mit einem aktuellen Artikel über **LLMs** (Large Language Models) und ein konkretes Sicherheitsproblem in der Softwareentwicklung.
+
+Der Artikel behandelt die Frage, wie KI-Systeme Softwarepakete "erfinden" können, die gar nicht existieren, und warum daraus echte Sicherheitsrisiken entstehen können.
+
+## Material
+
+- Artikel: [Package Hallucinations: How LLMs Can Invent Vulnerabilities](materials/package-hallucinations-usenix.pdf)
+<!-- - Download: [PDF herunterladen](materials/package-hallucinations-usenix.pdf) -->
+
+## Ziel
+
+Am Schluss sollen Sie **in eigenen Worten erklären können, worum es im Artikel geht**.
+
+Sie müssen nicht jedes Detail verstehen. Wichtig ist, dass Sie die **Hauptaussage**, das **Problem** und die **Bedeutung** des Artikels nachvollziehen können.
+
+## Arbeitsauftrag
+
+::: {.callout-note icon=false}
+## Phase 1: Lesen oder zusammenfassen lassen (20 Minuten)
+
+Lesen Sie den Artikel aufmerksam.
+
+Falls der Originaltext für Sie zu dicht ist, dürfen Sie sich den Artikel auch mit einem KI-Tool oder einem anderen Hilfsmittel **zusammenfassen lassen**. Ziel bleibt aber, dass Sie **selbst verstehen**, worum es geht.
+
+Während dem Lesen:
+
+- Notieren Sie Begriffe, die Sie nicht verstehen.
+- Markieren Sie Stellen, die Sie wichtig finden.
+- Halten Sie in 2 bis 4 Stichworten fest, worum es im Artikel insgesamt geht.
+:::
+
+::: {.callout-important icon=false}
+## Phase 2: Begriffe klären und Inhalt verstehen (20 Minuten)
+
+Arbeiten Sie nun mit Ihren Notizen weiter.
+
+- Suchen Sie unbekannte Begriffe selbst nach.
+- Schreiben Sie zu jedem unklaren Begriff eine kurze Erklärung in eigenen Worten auf.
+- Versuchen Sie anschliessend zusammenzufassen:
+  - Was ist das zentrale Problem?
+  - Wie entsteht dieses Problem?
+  - Warum ist es für Entwicklerinnen und Entwickler relevant?
+:::
+
+::: {.callout-tip icon=false}
+## Phase 3: Austausch zu zweit (5 Minuten)
+
+Besprechen Sie den Artikel kurz mit einer Mitschülerin oder einem Mitschüler.
+
+Sprechen Sie dabei mindestens über diese zwei Punkte:
+
+- Was ist Ihrer Meinung nach die wichtigste Aussage des Artikels?
+- Welcher Begriff oder Gedanke war am schwierigsten zu verstehen?
+:::
+
+## Ergebnis
+
+Am Ende der Arbeitszeit sollen Sie Folgendes vorliegen haben:
+
+- Eine Liste mit unbekannten Begriffen und Ihren Erklärungen.
+- Eine kurze Zusammenfassung in eigenen Worten.
+- Eine Antwort auf die Frage: **Warum ist das Thema für den Umgang mit KI-Tools relevant?**
+
+## Leitfragen
+
+Nutzen Sie diese Fragen als Orientierung:
+
+1. Was bedeutet in diesem Zusammenhang eine "Halluzination" eines LLMs?
+2. Was ist mit einem "Package Hallucination" gemeint?
+3. Weshalb kann daraus ein Sicherheitsproblem entstehen?
+
+## Hinweis
+
+Wenn Sie beim Lesen auf viele unbekannte Begriffe stossen, ist das normal. Genau darum geht es in diesem Auftrag: **Begriffe erkennen, selbstständig klären und dadurch ein komplexes Thema Schritt für Schritt verstehen.**

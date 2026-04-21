@@ -8,6 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: ai-ml/index.qmd
+        text: AI & ML
       - href: programming/index.qmd
         text: Programmieren
       - href: networking/index.qmd
