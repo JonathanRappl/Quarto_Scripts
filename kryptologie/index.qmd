@@ -34,7 +34,7 @@ Stellen Sie sich folgende Situation vor: **Alice** möchte eine geheime Nachrich
 
 **Halten Sie Ihr Verfahren schriftlich fest und testen Sie es mit einer kurzen Beispielnachricht.**
 :::
-<!-- 
+
 ## Das Grundprinzip
 
 Die folgende Grafik zeigt das Grundprinzip der **symmetrischen Verschlüsselung**: Alice verschlüsselt eine Nachricht mit einem Schlüssel $k$, schickt den Chiffretext über einen unsicheren Kanal an Bob, und Bob entschlüsselt mit demselben Schlüssel $k$. Charlie sieht zwar den Chiffretext, kann ihn aber ohne den Schlüssel nicht lesen.
@@ -256,4 +256,4 @@ a) Wie viele mögliche Schlüssel gibt es bei der Caesar-Verschlüsselung?
 b) Wenn Sie pro Sekunde einen Schlüssel ausprobieren können — wie lange dauert es maximal, alle Schlüssel durchzuprobieren?
 c) Ist die Caesar-Verschlüsselung ein sicheres Verfahren? Begründen Sie Ihre Antwort.
 d) Wie könnte man die Caesar-Verschlüsselung verbessern?
-::: -->
+:::
