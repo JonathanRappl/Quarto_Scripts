@@ -84,3 +84,72 @@ Nutzen Sie diese Fragen als Orientierung:
 ## Hinweis
 
 Wenn Sie beim Lesen auf viele unbekannte Begriffe stossen, ist das normal. Genau darum geht es in diesem Auftrag: **Begriffe erkennen, selbstständig klären und dadurch ein komplexes Thema Schritt für Schritt verstehen.**
+
+# KI und Verantwortung: Expertenpuzzle
+
+In dieser Lektion befassen wir uns mit realen Schadensfällen, bei denen KI-Systeme zu Problemen geführt haben. Jede Gruppe liest einen anderen Artikel. Am Ende werden die Erkenntnisse aller Gruppen zusammengeführt.
+
+## Methode: Expertenpuzzle
+
+Das Expertenpuzzle läuft in zwei Phasen ab:
+
+1. **Expertengruppen (20 Minuten):** Alle, die denselben Artikel haben, lesen und besprechen ihn gemeinsam. Ziel ist, den eigenen Fall so gut zu verstehen, dass Sie ihn anderen erklären können.
+
+2. **Gemischte Gruppen (15 Minuten):** Sie werden in neue Gruppen aufgeteilt, in denen jede Person einen anderen Artikel gelesen hat. Jede Person stellt ihren Fall kurz vor und gemeinsam diskutiert die Gruppe die Leitfragen.
+
+## Artikel-Zuteilung
+
+Jeder Person wird **ein** Artikel zugeteilt. Schauen Sie, welche Gruppe Ihnen zugewiesen wurde:
+
+| Gruppe | Artikel | Download |
+|--------|---------|----------|
+| **A** | Air Canada: Chatbot gibt falsche Auskunft | [PDF](materials/air-canada-chatbot.pdf) |
+| **B** | UnitedHealth: KI verweigert Pflegeleistungen | [PDF](materials/unitedhealth-ai-denial.pdf) |
+| **C** | Character.AI: Chatbot und Suizid eines Jugendlichen | [PDF](materials/character-ai-suicide.pdf) |
+| **D** | Tesla Autopilot: Tödlicher Unfall, Jury spricht Entschädigung zu | [PDF](materials/tesla-autopilot-crash.pdf) |
+| **E** | Gesichtserkennung: Unschuldiger Mensch verhaftet | [PDF](materials/face-recognition-arrest.pdf) |
+
+::: {.callout-warning icon=false}
+## Hinweis zu Artikel C
+
+Der Artikel über Character.AI behandelt den Freitod eines 14-jährigen Jugendlichen. Der Fall wird im Unterricht sachlich und respektvoll behandelt.
+:::
+
+## Phase 1: Expertengruppe (20 Minuten)
+
+::: {.callout-note icon=false}
+## Arbeitsauftrag Expertengruppe
+
+1. Lesen Sie Ihren Artikel **einzeln** durch. (ca. 10 Minuten)
+2. Besprechen Sie ihn anschliessend mit den Personen, die **denselben Artikel** haben. (ca. 10 Minuten)
+
+Halten Sie gemeinsam fest:
+
+- **Was ist passiert?** Beschreiben Sie den Fall in 2–3 Sätzen.
+- **Welche Rolle spielte die KI?** Was hat das System getan oder nicht getan?
+- **Was waren die Folgen?** Für wen, und wie schwerwiegend?
+- **Wer trägt Ihrer Meinung nach Verantwortung?** Begründen Sie kurz.
+
+Bereiten Sie sich darauf vor, Ihren Fall in der gemischten Gruppe in **2–3 Minuten** vorzustellen.
+:::
+
+## Phase 2: Gemischte Expertengruppen (15 Minuten)
+
+::: {.callout-important icon=false}
+## Arbeitsauftrag gemischte Gruppe
+
+Jede Person in der Gruppe hat einen anderen Artikel gelesen. Gehen Sie so vor:
+
+1. Jede Person stellt ihren Fall kurz vor. (je ca. 1–2 Minuten)
+2. Diskutieren Sie gemeinsam die Leitfragen unten — und beziehen Sie dabei **alle Fälle** mit ein.
+:::
+
+## Leitfragen
+
+Die folgenden Fragen gelten für alle Artikel. Versuchen Sie, bei jeder Antwort auf **mehrere** der Fälle einzugehen:
+
+1. In allen Fällen hat ein KI-System versagt oder Schaden verursacht. Was haben die Fälle gemeinsam?
+2. Wer ist in diesen Fällen jeweils verantwortlich: das Unternehmen, die Technologie, die Nutzerinnen und Nutzer, oder jemand anderes?
+3. Hätte der Schaden verhindert werden können? Wenn ja, wie?
+4. Vertrauen Sie KI-Systemen nach dem Lesen dieser Artikel mehr oder weniger als zuvor? Warum?
+5. Sollten KI-Systeme stärker reguliert werden? Wenn ja, wer sollte die Regeln festlegen und durchsetzen?
