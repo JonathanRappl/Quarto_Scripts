@@ -257,3 +257,95 @@ b) Wenn Sie pro Sekunde einen Schlüssel ausprobieren können — wie lange daue
 c) Ist die Caesar-Verschlüsselung ein sicheres Verfahren? Begründen Sie Ihre Antwort.
 d) Wie könnte man die Caesar-Verschlüsselung verbessern?
 :::
+
+# Monoalphabetische Substitution
+
+## Das Prinzip
+
+Bei der **monoalphabetischen Substitution** wird jeder Buchstabe des Klartexts durch einen fest zugeordneten anderen Buchstaben ersetzt — die Zuordnung ist beliebig wählbar. Die Caesar-Verschlüsselung ist ein Spezialfall: Die Zuordnung ist immer eine gleichmässige Verschiebung.
+
+Allgemeines Beispiel einer Zuordnung:
+
+| Klartext    | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z |
+|-------------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chiffretext | Q | W | E | R | T | Z | U | I | O | P | A | S | D | F | G | H | J | K | L | Y | X | C | V | B | N | M |
+
+::: {.callout-note title="Aufgabe 5: Schlüsselraum" icon=true}
+Bei der Caesar-Verschlüsselung gibt es nur 25 sinnvolle Schlüssel — *Brute Force* reicht vollkommen aus.
+
+Wie viele verschiedene Schlüssel gibt es bei der allgemeinen monoalphabetischen Substitution mit 26 Buchstaben?
+
+::: {.callout-tip title="Hinweis" collapse=true icon=true}
+Auf wie viele Buchstaben kann A abgebildet werden? Danach B (A ist bereits vergeben)? Danach C? …
+:::
+:::
+
+## Häufigkeitsanalyse
+
+Mit 
+<!-- $26! \approx 4 \times 10^{26}$  -->
+$\dots$
+möglichen Schlüsseln ist Brute Force nicht mehr praktikabel. Trotzdem ist die monoalphabetische Substitution unsicher — denn die **Häufigkeiten der Buchstaben bleiben erhalten**.
+
+```{=html}
+<div id="freqChart" style="font-family:'Source Sans Pro',sans-serif; max-width:520px; margin:1.5em auto;"></div>
+<script>
+(function() {
+  const freqs = [
+    ['E',17.40],['N',9.78],['I',7.55],['S',7.27],['R',7.00],
+    ['A',6.51],['T',6.15],['D',5.08],['H',4.76],['U',4.35],
+    ['L',3.44],['C',3.06],['G',3.01],['M',2.53],['O',2.51],
+    ['B',1.89],['W',1.89],['F',1.66],['K',1.21],['Z',1.13],
+    ['P',0.79],['V',0.67],['ẞ',0.31],['J',0.27],['Y',0.04],['X',0.03],['Q',0.02]
+  ];
+  const max = freqs[0][1];
+  const container = document.getElementById('freqChart');
+  let html = '<div style="font-size:0.85em;color:#555;margin-bottom:0.6em;">Buchstabenhäufigkeiten im Deutschen (in %)</div>';
+  html += '<div style="display:grid;grid-template-columns:1.6em 1fr 3.2em;gap:4px 8px;align-items:center;">';
+  for (const [letter, freq] of freqs) {
+    const pct = (freq / max * 100).toFixed(0);
+    const color = freq >= 7 ? '#4169E1' : freq >= 3 ? '#6688cc' : '#99aadd';
+    html += `<span style="font-weight:700;color:${color};text-align:right;">${letter}</span>` +
+            `<div style="background:#e8ecf4;border-radius:3px;height:15px;">` +
+            `<div style="width:${pct}%;background:${color};border-radius:3px;height:100%;"></div></div>` +
+            `<span style="font-size:0.85em;color:#555;">${freq.toFixed(1)}</span>`;
+  }
+  html += '</div>';
+  container.innerHTML = html;
+})();
+</script>
+```
+
+Kommt ein Buchstabe im Chiffretext häufig vor, entspricht er wahrscheinlich einem häufigen Klartextbuchstaben. Durch systematisches Zuordnen lässt sich der Schlüssel Schritt für Schritt rekonstruieren.
+
+## Aufgaben
+
+::: {.callout-note title="Aufgabe 6: Häufigkeiten in normalem Text" icon=true}
+Analysieren Sie die Häufigkeiten in einem selbst gewählten deutschen Text:
+
+[CyberChef öffnen](https://gchq.github.io/CyberChef/#recipe=Frequency_distribution(false,true)){target="_blank"}
+
+Fügen Sie einen beliebigen deutschen Text ein und beobachten Sie die Häufigkeitsanalyse. Welcher Buchstabe kommt am häufigsten vor? Stimmt das Ergebnis mit der Grafik oben überein?
+:::
+
+::: {.callout-warning title="Aufgabe 7: Entschlüsseln per Häufigkeitsanalyse" icon=true}
+Gegeben ist ein verschlüsselter Text. 
+
+```
+JAW FPJDOAS ADLHQEADUQ EQUSTQEWWVWUQF ZTSJ CPN WPLUZASQQNUZTYMOQSN ADL JQS HANKQN ZQOU ZQTUQSQNUZTYMQOU, JTQ AN JQN CQSWYXTQJQNQN RSPBQMUQN FTUASEQTUQN. AN JQS QNUZTYMODNH WTNJ DNUQSNQXFQN, NPNRSPLTU-PSHANTWAUTPNQN DNJ CTQOQ LSQTZTOOTHQ EQUQTOTHU. EQTF HQESADYX ADL YPFRDUQSN MPFFQN FQTWU WPHQNANNUQ OTNDG-JTWUSTEDUTPNQN KDF QTNWAUK. QTNQ JTWUSTEDUTPN LAWWU JQN OTNDG-MQSNQO FTU CQSWYXTQJQNQS WPLUZASQ KD QTNQF EQUSTQEWWVWUQF KDWAFFQN, JAW LDQS JTQ QNJNDUKDNH HQQTHNQU TWU. JAEQT RAWWQN CTQOQ JTWUSTEDUPSQN DNJ CQSWTQSUQ EQNDUKQS JTQ WPLUZASQ AN TXSQ QTHQNQN KZQYMQ AN.
+
+OTNDG ZTSJ CTQOLAQOUTH DNJ DFLAWWQNJ QTNHQWQUKU, EQTWRTQOWZQTWQ ADL ASEQTUWROAUKSQYXNQSN, WQSCQSN, FPETOUQOQLPNQN, SPDUQSN, NPUQEPPMW, QFEQJJQJ WVWUQFW, FDOUTFQJTA-QNJHQSAQUQN DNJ WDRQSYPFRDUQSN. JAEQT ZTSJ OTNDG DNUQSWYXTQJOTYX XAQDLTH HQNDUKU: WP TWU OTNDG TF WQSCQS-FASMU ZTQ ADYX TF FPETOQN EQSQTYX QTNQ LQWUQ HSPQWWQ, ZAQXSQNJ QW ADL JQF JQWMUPR DNJ OARUPRW QTNQ HQSTNHQ SPOOQ WRTQOU. TF NPCQFEQS 2023 ZAS QW TN JQDUWYXOANJ ADL YA. 2,8 % JQS JQWMUPR-WVWUQFQ TNWUAOOTQSU, DNJ QSSQTYXUQ ANLANH 2024 QSWUFAOW QTNQ ZQOUZQTUQ CQSESQTUDNH CPN DQEQS 4 %.
+```
+
+Entschlüsseln Sie ihn mithilfe der Häufigkeitsanalyse.
+
+**Schritt 1** — Öffnen Sie den Chiffretext und analysieren Sie die Buchstabenhäufigkeiten:
+
+[Chiffretext mit Häufigkeitsanalyse öffnen](https://gchq.github.io/CyberChef/#recipe=Frequency_distribution(false,true)&input=SkFXIEZQSkRPQVMgQURMSFFFQURVUSBFUVVTVFFFV1dWV1VRRiBaVFNKIENQTiBXUExVWkFTUVFOVVpUWU1PUVNOIEFETCBKUVMgSEFOS1FOIFpRT1UgWlFUVVFTUU5VWlRZTVFPVSwgSlRRIEFOIEpRTiBDUVNXWVhUUUpRTlFOIFJTUEJRTVVRTiBGVFVBU0VRVFVRTi4gQU4gSlFTIFFOVVpUWU1PRE5IIFdUTkogRE5VUVNOUVhGUU4sIE5QTlJTUExUVS1QU0hBTlRXQVVUUE5RTiBETkogQ1RRT1EgTFNRVFpUT09USFEgRVFVUVRPVEhVLiBFUVRGIEhRRVNBRFlYIEFETCBZUEZSRFVRU04gTVBGRlFOIEZRVFdVIFdQSFFOQU5OVVEgT1ROREctSlRXVVNURURVVFBOUU4gS0RGIFFUTldBVUsuIFFUTlEgSlRXVVNURURVVFBOIExBV1dVIEpRTiBPVE5ERy1NUVNOUU8gRlRVIENRU1dZWFRRSlFOUVMgV1BMVVpBU1EgS0QgUVROUUYgRVFVU1RRRVdXVldVUUYgS0RXQUZGUU4sIEpBVyBMRFFTIEpUUSBRTkpORFVLRE5IIEhRUVRITlFVIFRXVS4gSkFFUVQgUkFXV1FOIENUUU9RIEpUV1VTVEVEVVBTUU4gRE5KIENRU1dUUVNVUSBFUU5EVUtRUyBKVFEgV1BMVVpBU1EgQU4gVFhTUSBRVEhRTlFOIEtaUVlNUSBBTi4KCk9UTkRHIFpUU0ogQ1RRT0xBUU9VVEggRE5KIERGTEFXV1FOSiBRVE5IUVdRVUtVLCBFUVRXUlRRT1daUVRXUSBBREwgQVNFUVRVV1JPQVVLU1FZWE5RU04sIFdRU0NRU04sIEZQRVRPVVFPUUxQTlFOLCBTUERVUVNOLCBOUFVRRVBQTVcsIFFGRVFKSlFKIFdWV1VRRlcsIEZET1VURlFKVEEtUU5KSFFTQVFVUU4gRE5KIFdEUlFTWVBGUkRVUVNOLiBKQUVRVCBaVFNKIE9UTkRHIEROVVFTV1lYVFFKT1RZWCBYQVFETFRIIEhRTkRVS1U6IFdQIFRXVSBPVE5ERyBURiBXUVNDUVMtRkFTTVUgWlRRIEFEWVggVEYgRlBFVE9RTiBFUVNRVFlYIFFUTlEgTFFXVVEgSFNQUVdXUSwgWkFRWFNRTkogUVcgQURMIEpRRiBKUVdNVVBSIEROSiBPQVJVUFJXIFFUTlEgSFFTVE5IUSBTUE9PUSBXUlRRT1UuIFRGIE5QQ1FGRVFTIDIwMjMgWkFTIFFXIFROIEpRRFVXWVhPQU5KIEFETCBZQS4gMiw4ICUgSlFTIEpRV01VUFItV1ZXVVFGUSBUTldVQU9PVFFTVSwgRE5KIFFTU1FUWVhVUSBBTkxBTkggMjAyNCBRU1dVRkFPVyBRVE5RIFpRT1VaUVRVUSBDUVNFU1FUVUROSCBDUE4gRFFFUVMgNCAlLg){target="_blank"}
+
+**Schritt 2** — Öffnen Sie die Substitutions-Funktion und passen Sie die Zuordnung an:
+
+[Substitution öffnen](https://gchq.github.io/CyberChef/#recipe=Substitute('ABCDEFGHIJKLMNOPQRSTUVWXYZ','ABCDEFGHIJKLMNOPQRSTUVWXYZ',false)&input=SkFXIEZQSkRPQVMgQURMSFFFQURVUSBFUVVTVFFFV1dWV1VRRiBaVFNKIENQTiBXUExVWkFTUVFOVVpUWU1PUVNOIEFETCBKUVMgSEFOS1FOIFpRT1UgWlFUVVFTUU5VWlRZTVFPVSwgSlRRIEFOIEpRTiBDUVNXWVhUUUpRTlFOIFJTUEJRTVVRTiBGVFVBU0VRVFVRTi4gQU4gSlFTIFFOVVpUWU1PRE5IIFdUTkogRE5VUVNOUVhGUU4sIE5QTlJTUExUVS1QU0hBTlRXQVVUUE5RTiBETkogQ1RRT1EgTFNRVFpUT09USFEgRVFVUVRPVEhVLiBFUVRGIEhRRVNBRFlYIEFETCBZUEZSRFVRU04gTVBGRlFOIEZRVFdVIFdQSFFOQU5OVVEgT1ROREctSlRXVVNURURVVFBOUU4gS0RGIFFUTldBVUsuIFFUTlEgSlRXVVNURURVVFBOIExBV1dVIEpRTiBPVE5ERy1NUVNOUU8gRlRVIENRU1dZWFRRSlFOUVMgV1BMVVpBU1EgS0QgUVROUUYgRVFVU1RRRVdXVldVUUYgS0RXQUZGUU4sIEpBVyBMRFFTIEpUUSBRTkpORFVLRE5IIEhRUVRITlFVIFRXVS4gSkFFUVQgUkFXV1FOIENUUU9RIEpUV1VTVEVEVVBTUU4gRE5KIENRU1dUUVNVUSBFUU5EVUtRUyBKVFEgV1BMVVpBU1EgQU4gVFhTUSBRVEhRTlFOIEtaUVlNUSBBTi4KCk9UTkRHIFpUU0ogQ1RRT0xBUU9VVEggRE5KIERGTEFXV1FOSiBRVE5IUVdRVUtVLCBFUVRXUlRRT1daUVRXUSBBREwgQVNFUVRVV1JPQVVLU1FZWE5RU04sIFdRU0NRU04sIEZQRVRPVVFPUUxQTlFOLCBTUERVUVNOLCBOUFVRRVBQTVcsIFFGRVFKSlFKIFdWV1VRRlcsIEZET1VURlFKVEEtUU5KSFFTQVFVUU4gRE5KIFdEUlFTWVBGUkRVUVNOLiBKQUVRVCBaVFNKIE9UTkRHIEROVVFTV1lYVFFKT1RZWCBYQVFETFRIIEhRTkRVS1U6IFdQIFRXVSBPVE5ERyBURiBXUVNDUVMtRkFTTVUgWlRRIEFEWVggVEYgRlBFVE9RTiBFUVNRVFlYIFFUTlEgTFFXVVEgSFNQUVdXUSwgWkFRWFNRTkogUVcgQURMIEpRRiBKUVdNVVBSIEROSiBPQVJVUFJXIFFUTlEgSFFTVE5IUSBTUE9PUSBXUlRRT1UuIFRGIE5QQ1FGRVFTIDIwMjMgWkFTIFFXIFROIEpRRFVXWVhPQU5KIEFETCBZQS4gMiw4ICUgSlFTIEpRV01VUFItV1ZXVVFGUSBUTldVQU9PVFFTVSwgRE5KIFFTU1FUWVhVUSBBTkxBTkggMjAyNCBRU1dVRkFPVyBRVE5RIFpRT1VaUVRVUSBDUVNFU1FUVUROSCBDUE4gRFFFUVMgNCAlLg){target="_blank"}
+
+Vergleichen Sie die häufigsten Chiffrebuchstaben mit der deutschen Häufigkeitstabelle und ordnen Sie diese zu. Verfeinern Sie die Zuordnung schrittweise, bis der Klartext lesbar wird.
+:::
