@@ -14,7 +14,6 @@ format:
     papersize: a4
     fontsize: 11pt
     colorlinks: true
-    lang: de
     include-in-header:
       text: |
         \usepackage{fvextra}
