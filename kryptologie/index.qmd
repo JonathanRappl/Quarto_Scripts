@@ -354,3 +354,385 @@ Vergleichen Sie die häufigsten Chiffrebuchstaben mit der deutschen Häufigkeits
 [Substitution öffnen](https://gchq.github.io/CyberChef/#recipe=Substitute('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz','0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',false)&input=eVc5IGFXSjkzS0sgaTNGc21QNiAoV0ZKNTM2MngsIEc1VDlINSBLVDkgY1dGNmxXOSkgMzZsIFczRlcgYVdYVzMyeEZURkogS1Q5IDFtS2xQSDlXLVNWVzlLNUgyeFdGVzVXYldGbFcgVEZzIEpXeGwgSFRLIHNINiAzRiBzV0YgSzlUeFdGIHZNaHJXOSBESHg5V0YgM2IgcVc5bWUgR1pRayBXRmxQMzJ6VzVsVyBpakFHLUdIOUhzM0piSCAoaTNGc21QLCBqMm1GLCBBV0ZULCBHbTNGbDNGSi15V3UzMlcpIEtUOSBzV0YgWlRLVkhUIHVtRiBhV0ZUbFhXOTYyeEYzbGw2bFc1NVdGIFhUOVQyei4gQTMyOW02bUtsIGkzRnNtUDYgSld4bTlsIFhUIHNXRiBKOUhLMzYyeFdGIGFXbDkzV1Y2Njc2bFdiV0YsIHMzVyBzM1c2VzYgR0g5SHMzSmJIIFRiNldsWFdGLiBTS2wgNmxXeGwgaTNGc21QNiDigJMgUDNXIEhUMnggc1c5IGFXSjkzS0sgaTNGc21QNi1HayBLVDkgaTNGc21QNiBIVEsgc1c5IGVSSS1aOTJ4M2xXemxUOSBzVzYgVDk2NDlURko1MzJ4V0YgamFBIEdrIOKAkyBINTYgRzVIbGxLbTliIFRGcyAxNDNXNVc0NUhsbEttOWIgS1Q5IEc5bUo5SGJiVyBURnMga21iNFRsVzk2NDNXNVcsIHMzVyBURmxXOSBpM0ZzbVA2LXRXOTYzbUZXRiA1SFRLV0YsIHMzVyBYVDkgRVczbCAzeDlXOSB0VzltS0tXRmw1MzJ4VEZKIFRGbFc5NmxUbFhsIFBUOXNXRi4gWjU2IGkzRnNtUDYga2QgUDM5cyBzSDYgYVdsOTNXVjY2NzZsV2IgSFQyeCAzRiBXM0ZKV1ZXbGxXbFdGIDBXOUhsV0YgVzNGSlc2V2xYbDsgVzYgMzZsIEhUNjZXOXNXYiBhV2w5M1dWNjY3NmxXYiBINTVXOSAwV0ZXOUhsM21GV0Ygc1c5IHFWbWUtT21GNm01V0YuCgppM0ZzbVA2LUc5bUo5SGJiVyBWWFAuIGkzRnNtUDYtMTQzVzVXIHptRkZXRiBIVDJ4IFRGbFc5IEZXVFc5V0YgKDZXNWxXRiBIVDJ4IEg1bFc5V0YpIHRXOTYzbUZXRiB1bUYgaTNGc21QNiBKV0ZUbFhsIFBXOXNXRiwgbVZQbXg1IFBXc1c5IEEzMjltNm1LbCBGbTJ4IHNXOSBnVzk2bFc1NVc5IHNIS1Q5IDBXUEh4OTVXMzZsVEZKV0YgSFZKV1ZXRi4gblczNTYgSjNWbCBXNiBIVDJ4IGY0c0hsVzYgbXNXOSBHSGwyeFc2LCBzM1cgT21iNEhsM1YzNTNsSGwgWFQgVzNGVzkgRldUVzlXRiAobXNXOSBINWxXOVdGKSBpM0ZzbVA2LXRXOTYzbUYgeFc5NmxXNTVXRi4KCnlINiBUOTY0OVRGSjUzMnhXIGkzRnNtUDYgc1c5IHZNUnJXOSBESHg5VyBQSDkgVzNGVyBKOUhLMzYyeFcgZDlQVzNsVzlURkogS1Q5IHMzVyBHay1HNUhsbEttOWIgVEZzIEdrLXptYjRIbDNWNVc2IHlTMSwgSDU1V0YgdW05SEYgQTEteVMxIChINTYg4oCeeVMxLUdr4oCcIGIzbCBzV2IgRkh4V1hUIDNzV0ZsMzYyeFdGIEdrIHlTMSBINTYgUVdLVzlXRlgtRzVIbGxLbTliKS4gWnhGNTMyeFcgem1GelQ5OTNXOVdGc1cgMTc2bFdiVyBQSDlXRiBWVzM2NDNXNTZQVzM2VyBzSDYgejVINjYzNjJ4VyBBSDIgUzEgKHVtRiBzV2IgVzYgM0Y2NDM5M1c5bCBQSDkpLCAwZEEgbXNXOSBHay8wZFMxLiB5M1c2VzkgVDk2NDlURko1MzJ4VyBKOUhLMzYyeFcgeVMxLVpUSzZIbFggUFQ5c1cgYjNsIGkzRnNtUDYgTW8gVGIgVzNGV0YgVFZXOUg5VlczbFdsV0YgT1c5Rlc1LCBzVzkgcEwtYTNsLWkzRnNtUDYtWkdqIGkzRnBMIChLVDkgV0ZKNTM2MnggWjQ0NTMySGwzbUYgRzltSjlIYmIzRkogakZsVzlLSDJXLCBHOW1KOUhiYjNXOTYyeEYzbGw2bFc1NVcpIFRGcyBqRmxXOUZXbEtIeDNKelczbCBXOVBXM2xXOWwgVEZzIFYzNiBYVDkgQTM1NVdGRjNUYiBkczNsM21GIHVtRiBkRnNXIExycnIgUFczbFc5SldLVHg5bC4gY1Q5IHNXOUg5bDNKVyBpM0ZzbVA2LWFXbDkzV1Y2Njc2bFdiVywgczNXIEhUSyBXM0YgM0ZsV0o5M1c5bFc2IFRGcyBiM2xKVzUzV0tXOWxXNiBBMS15UzEgSEZKV1AzVzZXRiA2M0ZzLCB4SGwgNjMyeCBzM1cgMUhiYlc1VldYVzMyeEZURkogaTNGc21QNiBNZSBXbEhWNTNXOWwuCgpHSDlINTVXNSBYVDkg4oCeeVMxLU4zRjNX4oCcIFBUOXNXIFRGbFc5IHNXOSBOVzNsVEZKIHVtRiB5SHUzcyA4LiBrVGw1VzkgSFYgdk1SUiBzSDYgSFRLIHNXRiBPbUZYVzRsV0Ygc1c2IGFXbDkzV1Y2Njc2bFdiNiB0QTEgVkg2M1c5V0ZzVyBpM0ZzbVA2IDhuIFdGbFAzMnpXNWwgVEZzIEg1NiBibXNXOUZXOVcgWjVsVzlGSGwzdVcgRldWV0YgaTNGc21QNiBwLmUgVlhQLiBpM0ZzbVA2IE1lIDRtNjNsM21GM1c5bC4geUggczNXIOKAnjhuLU4zRjNX4oCcIEhWVzkgM0Ygc1dGIHZNTXJXOSBESHg5V0YgWkY2NDlUMnhXIEhGIHMzVyBnSDlzUEg5VyA2bFc1NWxXLCBzM1cgM2IgZmJLVzVzIHNXOSBnVzNiSEZQV0ZzVzkgRjMyeGwgVzlLVDU1Vkg5IDYyeDNXRldGLCB6bUZGbFcgaTNGc21QNiBNZSBsOW1sWCBzVzkgVzNGc1dUbDNKV0YgbFcyeEYzNjJ4V0YgMTJ4UEgyeFdGIHNUOTJ4IHNINiB5UzEtVkg2M1c5bFcgY1RGc0hiV0ZsIFc5NmwgYjNsIHNXOSB0VzltS0tXRmw1MzJ4VEZKIHVtRiBpM0ZzbVA2IHFHIExycnYgV0ZzSlQ1bDNKIHNUOTJ4IHNINiBibXNXOUZXOVcgMTc2bFdiIFc5NldsWGwgUFc5c1dGLiAxVzNseFc5IHVXOWw5VzNWbCBBMzI5bTZtS2wgS1Q5IHNXRiB5VzZ6bG00IEZUOSBGbTJ4IHNINiBIVEsgc1c5IOKAnjhuLU4zRjNX4oCcIFZINjNXOVdGc1cgaTNGc21QNiwgc0g2IEttOWxIRiBteEZXIOKAnjhu4oCcIDNiIDhIYldGIEg1NiBBMzI5bTZtS2wgaTNGc21QNiBLbTlsSldLVHg5bCBQMzlzLgoKaTNGc21QNi1hV2w5M1dWNjY3NmxXYlcgNjNGcyB1bTkgSDU1V2IgSFRLIChGMzJ4bCBGVDksIEhWVzkgSjltNjZsVzM1NiBqYUEtR2stem1iNEhsM1Y1V0YpIEdXOTZtRkg1IGttYjRUbFc5RiwgaW05ejZsSGwzbUY2IFRGcyAxVzl1VzlGIHVXOVY5VzNsV2w7IHNIRldWV0YgV2UzNmwzVzlXRiB0SDkzSEZsV0YgS1Q5IDBXOUhsVyBQM1cgMWJIOWw0eG1GVzYgbXNXOSBHeVo2IDZtUDNXIEtUOSA2NFdYM1c1NVcgZGJWV3NzV3MgeVd1MzJXNiBQM1cgV2xQSCB1bTU1VzVXemw5bUYzNjJ4VyBBVzY2Slc5SGxXIFRGcyBkM0ZYVzV4SEZzVzU2LU9INjZXRjY3NmxXYlcgbXNXOSBLVDkgczNXIFpGUFdGc1RGSiAzRiBPOUhLbEtIeDlYV1RKV0YuIE9XdTNGIG5UOUZXOSwgc1c5IGt4M1dLIFM0VzlIbDNGSiBTS0szMlc5IHVtRiBBMzI5bTZtS2wsIEZIRkZsVyBIVEsgc1c5IGltOTVzUDNzVyBHSDlsRlc5IGttRktXOVdGMlcgTHJ2dyBXM0ZXRiAwVzZIYmwtQUg5emxIRmxXMzUgdW1GIHZ3IEc5bVhXRmwgS1Q5IEg1NVcgaTNGc21QNi10SDkzSEZsV0YuIHlXOSBQVzVsUFczbFcgQUg5emxIRmxXMzUgc1c2IEh6bFRXNTVXRiBhV2w5M1dWNjY3NmxXYjYgaTNGc21QNiB2ciBIVEsgSDU1V0Yga21iNFRsVzlGIDVISiAzYiBTemxtVlc5IExyTHIgVlczIElMLHZJICUu&oenc=65001){target="_blank"}
 
 :::
+
+
+# Vigenère-Verschlüsselung
+
+Für Jahrhunderte galt das nach Blaise de Vigenère benannte Verfahren als unknackbar — es wurde als *«le chiffre indéchiffrable»* bezeichnet. Tatsächlich blieb es von seiner Entstehung im 16. Jahrhundert bis 1863 ungebrochen.
+
+## Das Prinzip
+
+Die monoalphabetische Substitution hat einen grundlegenden Schwachpunkt: **Jeder Klartextbuchstabe wird immer auf denselben Chiffrebuchstaben abgebildet.** Damit bleiben die Häufigkeitsverhältnisse erhalten.
+
+Die **Vigenère-Verschlüsselung** beseitigt diesen Schwachpunkt, indem statt einer einzelnen Verschiebungszahl ein **Schlüsselwort** verwendet wird. Das Schlüsselwort wird zeichenweise dem Klartext zugeordnet und bei Bedarf **wiederholt** (*Schlüsselauffüllung*):
+
+**Beispiel mit dem Schlüsselwort `KEY`:**
+
+| Position      |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |
+|:-------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| Klartext      |  H |  A |  L |  L |  O |  W |  E |  L |  T |
+| Schlüssel     |  K |  E |  Y |  K |  E |  Y |  K |  E |  Y |
+| Verschiebung  | +10| +4 |+24 | +10| +4 |+24 | +10| +4 |+24 |
+| Chiffretext   |  R |  E |  J |  V |  S |  U |  O |  P |  R |
+
+Jeder Schlüsselbuchstabe gibt eine Caesar-Verschiebung vor (K = 10, E = 4, Y = 24). Die Verschiebungen wiederholen sich mit der Schlüssellänge $m$:
+
+$$
+c_i = (p_i + k_{i \mod m}) \mod 26
+$$
+
+Beachten Sie: Das **L** taucht im Klartext dreimal auf — es wird einmal zu **J** (Verschiebung +24), einmal zu **V** (+10) und einmal zu **P** (+4) verschlüsselt. Damit wird die direkte Häufigkeitsanalyse unmöglich.
+
+::: {.callout-tip title="Kernidee" icon=true}
+Die Vigenère-Verschlüsselung entspricht **$m$ verschiedenen Caesar-Verschlüsselungen gleichzeitig**: Position $i$ wird mit dem Schlüsselbuchstaben an Position $i \mod m$ verschoben. Derselbe Klartextbuchstabe kann so zu verschiedenen Chiffrebuchstaben werden — und umgekehrt.
+:::
+
+::: {.callout-note title="Aufgabe 8: Von Hand verschlüsseln" icon=true}
+Verschlüsseln Sie die folgende Nachricht von Hand mit dem Schlüsselwort **BUCH**.
+
+> **HALLO WELT**
+
+Füllen Sie dazu die Tabelle aus:
+
+| Position      |  1 |  2 |  3 |  4 |  5 |    |  6 |  7 |  8 |  9 |
+|:-------------|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| Klartext      | H  | A  | L  | L  | O  |    | W  | E  | L  | T  |
+| Schlüssel     | B  | U  | C  | H  |    |    |    |    |    |    |
+| Verschiebung  | +1 |+20 | +2 | +7 |    |    |    |    |    |    |
+| Chiffretext   |    |    |    |    |    |    |    |    |    |    |
+
+*Hinweis: Leerzeichen werden übersprungen und zählen nicht als Klartext­buchstabe.*
+
+:::
+
+
+<!-- ## Interaktives Widget
+
+Verwenden Sie das Widget, um Nachrichten mit einem beliebigen Schlüsselwort zu verschlüsseln oder zu entschlüsseln. Die Schlüsselausdehnung zeigt farblich, welcher Schlüsselbuchstabe an welcher Position wirkt.
+
+```{=html}
+<style>
+  .vigenere-widget {
+    font-family: 'Source Sans Pro', sans-serif;
+    max-width: 580px;
+    margin: 1.5em auto;
+  }
+  .vigenere-widget .vig-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7em 1.2em;
+    align-items: center;
+    margin-bottom: 0.8em;
+  }
+  .vigenere-widget .vig-key-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    flex-wrap: wrap;
+  }
+  .vigenere-widget .vig-key-row > label {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .vigenere-widget #vigKey {
+    font-family: monospace;
+    font-size: 1.05em;
+    padding: 0.2em 0.5em;
+    border: 1.5px solid #ccc;
+    border-radius: 5px;
+    width: 120px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .vigenere-widget .vig-key-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    align-items: center;
+  }
+  .vigenere-widget .vig-mode-row {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    font-size: 0.97em;
+  }
+  .vigenere-widget .vig-mode-row label {
+    cursor: pointer;
+  }
+  .vigenere-widget .vig-io-area {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+  }
+  .vigenere-widget .vig-io-area > div {
+    flex: 1;
+    min-width: 200px;
+  }
+  .vigenere-widget .vig-io-area label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.2em;
+  }
+  .vigenere-widget textarea {
+    width: 100%;
+    height: 60px;
+    font-family: monospace;
+    font-size: 1em;
+    padding: 0.4em;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+  }
+  .vigenere-widget .vig-exp-label {
+    font-size: 0.82em;
+    color: #777;
+    margin: 0.8em 0 0.25em;
+  }
+  .vigenere-widget .vig-expansion {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px 10px;
+    background: #fafafa;
+    overflow-x: auto;
+    min-height: 62px;
+  }
+</style>
+
+<div class="vigenere-widget">
+  <div class="vig-controls">
+    <div class="vig-key-row">
+      <label for="vigKey">Schlüsselwort:</label>
+      <input type="text" id="vigKey" value="KEY" maxlength="20">
+      <div class="vig-key-display" id="vigKeyDisplay"></div>
+    </div>
+    <div class="vig-mode-row">
+      <strong>Modus:</strong>
+      <label><input type="radio" name="vigMode" id="vigModeEnc" value="enc" checked> Verschlüsseln</label>
+      <label><input type="radio" name="vigMode" id="vigModeDec" value="dec"> Entschlüsseln</label>
+    </div>
+  </div>
+  <div class="vig-io-area">
+    <div>
+      <label id="vigInLabel" for="vigPlain">Klartext:</label>
+      <textarea id="vigPlain" placeholder="Nachricht eingeben..."></textarea>
+    </div>
+    <div>
+      <label id="vigOutLabel" for="vigCipher">Chiffretext:</label>
+      <textarea id="vigCipher" readonly placeholder="..."></textarea>
+    </div>
+  </div>
+  <div class="vig-exp-label">Schlüsselausdehnung (erste 50 Buchstaben):</div>
+  <div class="vig-expansion" id="vigExpansion"></div>
+</div>
+
+<script>
+(function() {
+  var ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var KC = ['#4169E1','#C0392B','#27AE60','#D35400','#8E44AD',
+            '#0097A7','#F57F17','#2980B9','#E91E63','#00796B',
+            '#5D4037','#546E7A'];
+
+  function cleanKey(s) {
+    return s.toUpperCase().replace(/[^A-Z]/g, '');
+  }
+
+  function processText(text, key, dec) {
+    var k = cleanKey(key);
+    if (!k) return text.toUpperCase();
+    var out = '', ki = 0;
+    var up = text.toUpperCase();
+    for (var i = 0; i < up.length; i++) {
+      var ch = up[i];
+      var pi = ABC.indexOf(ch);
+      if (pi < 0) { out += ch; continue; }
+      var sh = ABC.indexOf(k[ki % k.length]);
+      out += dec ? ABC[(pi - sh + 26) % 26] : ABC[(pi + sh) % 26];
+      ki++;
+    }
+    return out;
+  }
+
+  function renderExpansion(text, key, dec, max) {
+    var k = cleanKey(key);
+    if (!k || !text.trim()) {
+      return '<em style="color:#bbb;font-size:0.9em;">Text und Schlüsselwort eingeben\u2026</em>';
+    }
+    var up = text.toUpperCase();
+    var n = Math.min(up.length, max);
+    var cols = '', ki = 0;
+    for (var i = 0; i < n; i++) {
+      var ch = up[i];
+      var pi = ABC.indexOf(ch);
+      var isL = pi >= 0;
+      var ci = isL ? ki % k.length : -1;
+      var clr = ci >= 0 ? KC[ci % KC.length] : '#ccc';
+      var kch = isL ? k[ci] : '\u00a0';
+      var och = '\u00a0';
+      if (isL) {
+        var sh = ABC.indexOf(kch);
+        och = dec ? ABC[(pi - sh + 26) % 26] : ABC[(pi + sh) % 26];
+        ki++;
+      }
+      var bg = ci >= 0 ? clr + '18' : 'transparent';
+      var disp = ch === ' ' ? '\u00b7' : ch;
+      cols += '<div style="display:flex;flex-direction:column;align-items:center;min-width:' + (isL ? 20 : 8) + 'px;padding:0 1px;background:' + bg + ';border-radius:3px;">' +
+        '<span style="font-size:10px;font-weight:700;color:' + clr + ';height:17px;line-height:17px;">' + kch + '</span>' +
+        '<span style="font-size:12px;color:#444;height:17px;line-height:17px;font-family:monospace;">' + disp + '</span>' +
+        '<span style="font-size:12px;font-weight:700;color:' + clr + ';height:17px;line-height:17px;font-family:monospace;">' + och + '</span>' +
+        '</div>';
+    }
+    var row2 = dec ? 'Chiffretext' : 'Klartext';
+    var row3 = dec ? 'Klartext' : 'Chiffretext';
+    return '<div style="display:flex;gap:4px;align-items:flex-start;">' +
+      '<div style="flex-shrink:0;display:flex;flex-direction:column;color:#888;font-size:10px;text-align:right;padding-right:6px;border-right:1px solid #ddd;white-space:nowrap;">' +
+      '<span style="height:17px;line-height:17px;">Schlüssel</span>' +
+      '<span style="height:17px;line-height:17px;">' + row2 + '</span>' +
+      '<span style="height:17px;line-height:17px;">' + row3 + '</span>' +
+      '</div><div style="display:flex;flex-wrap:nowrap;">' + cols + '</div></div>';
+  }
+
+  function updateKeyDisplay(key) {
+    var k = cleanKey(key);
+    var el = document.getElementById('vigKeyDisplay');
+    if (!k) { el.innerHTML = ''; return; }
+    var h = '';
+    for (var i = 0; i < k.length; i++) {
+      var c = KC[i % KC.length];
+      h += '<span style="color:' + c + ';font-weight:700;font-family:monospace;background:' + c + '18;padding:0 3px;border-radius:3px;font-size:1.05em;">' + k[i] + '</span>';
+    }
+    el.innerHTML = h;
+  }
+
+  function update() {
+    var dec = document.getElementById('vigModeDec').checked;
+    document.getElementById('vigInLabel').textContent = dec ? 'Chiffretext:' : 'Klartext:';
+    document.getElementById('vigOutLabel').textContent = dec ? 'Klartext:' : 'Chiffretext:';
+    var key = document.getElementById('vigKey').value;
+    var text = document.getElementById('vigPlain').value;
+    document.getElementById('vigCipher').value = processText(text, key, dec);
+    document.getElementById('vigExpansion').innerHTML = renderExpansion(text, key, dec, 50);
+    updateKeyDisplay(key);
+  }
+
+  ['vigKey', 'vigPlain'].forEach(function(id) {
+    document.getElementById(id).addEventListener('input', update);
+  });
+  ['vigModeEnc', 'vigModeDec'].forEach(function(id) {
+    document.getElementById(id).addEventListener('change', update);
+  });
+  update();
+})();
+</script>
+``` -->
+
+## Häufigkeitsanalyse und Vigenère
+
+Warum schlägt die einfache Häufigkeitsanalyse beim Vigenère-Verfahren fehl?
+
+Bei einem Schlüsselwort der Länge $m = 3$ (z. B. KEY) gibt es **drei verschiedene Verschlüsselungen**, die abwechselnd angewendet werden:
+
+- Positionen 1, 4, 7, 10, … → alle mit Verschiebung K = +10 (ein Caesar-Cipher)
+- Positionen 2, 5, 8, 11, … → alle mit Verschiebung E = +4 (ein weiterer Caesar-Cipher)
+- Positionen 3, 6, 9, 12, … → alle mit Verschiebung Y = +24 (ein dritter Caesar-Cipher)
+
+Der häufigste deutsche Buchstabe **E** kann je nach Position als **O** (+10), **I** (+4) oder **C** (+24) erscheinen. Im Chiffretext sind diese drei Buchstaben zusammen ungefähr so häufig, aber **einzeln** sieht keiner davon ungewöhnlich oft aus. Die charakteristischen Häufigkeitsspitzen des Deutschen werden so **über mehrere Chiffrebuchstaben verteilt** und geglättet.
+
+Je länger das Schlüsselwort, desto gleichmässiger die Häufigkeitsverteilung — bei einem Schlüssel, der genauso lang wie die Nachricht ist und zufällig gewählt wird, entsteht eine **perfekt gleichmässige Verteilung** (das Prinzip des One-Time-Pad).
+
+## Aufgaben
+
+
+
+::: {.callout-note title="Aufgabe 9: Entschlüsselungs-Strategien (10 min)" icon=true}
+Die einfache Häufigkeitsanalyse versagt bei Vigenère, aber weil es sich trotzdem um $m$ verschiedene Caesar-Cipher handelt, kann man die üblichen Methoden angepasst anwenden.
+
+Überlegen Sie sich eine Strategie, einen Vigenère-Chiffretext zu entschlüsseln. Ihre Strategie sollte folgende zwei Schritte beinhalten:
+
+1. **Schlüssellänge ist unbekannt → Schlüssellänge $m$ bestimmen**
+2. **$m$ ist bekannt → Schlüsselwort herausfinden**
+
+:::
+
+<!-- ::: {.callout-note title="Aufgabe 10: Entschlüsseln" icon=true}
+Der folgende Text wurde mit Vigenère verschlüsselt. Schlüsselwort und Schlüssellänge sind unbekannt.
+
+```
+ESKGI CBRF JBDFLSEFLWISSGK ECL FJQ WEIGG KFLNXARXR QPHTSGXXBCKIO ZBXLCXTFP-LCTRXQT IHRORXR EGX PJLNB-LCKRFJ-XRUUBGLJXV EGXWFQ GMDFM QFFK OPQMIOJHW WCKAFLWIO, SGH TMFMU ZEMFZ OMFJXR FLMAJADPFPG HFP SYHYGK WCKAFFKX. EYAIS ZXKBLG XPPOEMBL MN YIVJJ 2005 FMU BXV FLMAJADPVLZ IJLXV OCNIO ONIMJVSEC-FEOYZINCGX-TMYXXYKI VLW TSYXWFLMMFPMI CCKIJRL AFLBKF RTKF LTGI BXVFL TRLSXREGZYOE XMOC XVTRX ZFPLMPL.
+TPUCL PPEH
+
+XPPOEMBL AVCGWDFMI TGVL FGG ZFPMIJJMIT QRWUCF, HBQ PMF ZBXLCXTFP ZIOSMDU UXVECG OBLG YOB WMF DHPHCGHFL TRGMKHFPNRHCG ISDNIMJM:
+
+    YORXVTRNIUXNRH TXVUCBPUCK, FJRDIFNXV-BCARMGVLFP TVCCBXTYUPBCNJF
+    QXLS FHLF QBGICKLFGM KFEXR TMPSIJ NRCCTFTGVLUGZXF YEW BSVL CMXWXGEPJEX ZFPYEFJLGISGK
+    IMAI FDYMAGXRA
+
+CBR CCKIJRL IYGLXJCKIOBXW QPHNFIM RBKXRT KHRPRHRF CGXTNKEDF WIO CKWUCG FFGWIO YGJPPWISSGKFL,[7] WET BKMURX OSGMISGNQ XSKHF HXHPAA ZPL DIJLXQ CCLXFFXRECG WZQMIN CKJVCEPU.
+
+RHVWYEHT CGXTAAMFB LMDF WEHCZIO, KHRPRHRF YG WFGGI BLYSSBXVVLZIO YGDVNTWTCG YOB UIHYGR TRTXUBXWTCG, IJL XMHCGIT QRWUCF DV CGXXGVOFJG. IJLXV ECK LBSIXHPNIOBX JVCK HJCLIO QVLSGMX XYK HJC TVCCBXTUXMTC, YYFP WMF KHRPRHRF LTGI RHVWYEHT YGWJAAX PNMMNGXVU GLX. UMKZBJWW BPZYNCGXJCKXF, BTWT CBRACERF PXZJQBSOCG ZPL XMOCF EOBXVFL XRUUBGLJXV JL WIO CBKFLXR FLMAJADPVLZWAUXMH XN MNNHVUGXVFL SY SMLMOCGTJADISCB YOB NRPPWIOREMDFXR SCISTGMSSGXR GSXLSCG AVCKHF. UXRO FBRHCZIO GFQFP ZEOXX DXCBKF GFTPPMMFPM AFPWIO, UTISCG IORPMDIEIS EXDXSGKFL, WMFQX EVDSYSYXYNCG. HBXN WFG XW OMMAFLWMH, YNGI BBI NMXKMGVLLCBX WMG AFEPISD-SAFGZIO YGDVZBIUCG.
+```
+
+**Schritt 1 — Schlüssellänge bestimmen:**
+Analysieren Sie die Häufigkeit von Buchstaben an Position 1, $m+1$, $2m+1$, … für verschiedene Werte von $m$. Bei welcher Schlüssellänge treten deutliche Häufigkeitsspitzen auf?
+
+- "Take every x" gibt an, dass jeder $x$-te Buchstabe analysiert wird (z. B. $m=3$ → Position 1, 4, 7, 10, …).
+- "Starting at y" gibt an, dass die Analyse bei Position $y$ beginnt (z. B. $y=2$ → Position 2, 5, 8, 11, …).
+
+[Chiffretext mit Häufigkeitsanalyse öffnen](https://gchq.github.io/CyberChef/#recipe=Take_nth_bytes(1,0,false)Frequency_distribution(false,true)&input=RVNLR0lDQlJGSkJERkxTRUZMV0lTU0dLRUNMRkpRV0VJR0dLRkxOWEFSWFJRUEhUU0dYWEJDS0lPWkJYTENYVEZQTENUUlhRVElIUk9SWFJFR1hQSkxOQkxDS1JGSlhSVVVCR0xKWFZFR1hXRlFHTURGTVFGRktPUFFNSU9KSFdXQ0tBRkxXSU9TR0hUTUZNVVpFTUZaT01GSlhSRkxNQUpBRFBGUEdIRlBTWUhZR0tXQ0tBRkZLWEVZQUlTWlhLQkxHWFBQT0VNQkxNTllJVkpKRk1VQlhWRkxNQUpBRFBWTFpJSkxYVk9DTklPT05JTUpWU0VDRkVPWVpJTkNHWFRNWVhYWUtJVkxXVFNZWFdGTE1NRlBNSUNDS0lKUkxBRkxCS0ZSVEtGTFRHSUJYVkZMVFJMU1hSRUdaWU9FWE1PQ1hWVFJYWkZQTE1QTFRQVUNMUFBFSFhQUE9FTUJMQVZDR1dERk1JVEdWTEZHR1pGUE1JSkpNSVRRUldVQ0ZIQlFQTUZaQlhMQ1hURlBaSU9TTURVVVhWRUNHT0JMR1lPQldNRkRIUEhDR0hGTFRSR01LSEZQTlJIQ0dJU0ROSU1KTVlPUlhWVFJOSVVYTlJIVFhWVUNCUFVDS0ZKUkRJRk5YVkJDQVJNR1ZMRlBUVkNDQlhUWVVQQkNOSkZRWExTRkhMRlFCR0lDS0xGR01LRkVYUlRNUFNJSk5SQ0NURlRHVkxVR1pYRllFV0JTVkxDTVhXWEdFUEpFWFpGUFlFRkpMR0lTR0tJTUFJRkRZTUFHWFJBQ0JSQ0NLSUpSTElZR0xYSkNLSU9CWFdRUEhORklNUkJLWFJUS0hSUFJIUkZDR1hUTktFREZXSU9DS1dVQ0dGRkdXSU9ZR0pQUFdJU1NHS0ZMV0VUQktNVVJYT1NHTUlTR05RWFNLSEZIWEhQQUFaUExESUpMWFFDQ0xYRkZYUkVDR1daUU1JTkNLSlZDRVBVUkhWV1lFSFRDR1hUQUFNRkJMTURGV0VIQ1pJT0tIUlBSSFJGWUdXRkdHSUJMWVNTQlhWVkxaSU9ZR0RWTlRXVENHWU9CVUlIWUdSVFJUWFVCWFdUQ0dJSkxYTUhDR0lUUVJXVUNGRFZDR1hYR1ZPRkpHSUpMWFZFQ0tMQlNJWEhQTklPQlhKVkNLSEpDTElPUVZMU0dNWFhZS0hKQ1RWQ0NCWFRVWE1UQ1lZRlBXTUZLSFJQUkhSRkxUR0lSSFZXWUVIVFlHV0pBQVhQTk1NTkdYVlVHTFhVTUtaQkpXV0JQWllOQ0dYSkNLWEZCVFdUQ0JSQUNFUkZQWFpKUUJTT0NHWlBMWE1PQ0ZFT0JYVkZMWFJVVUJHTEpYVkpMV0lPQ0JLRkxYUkZMTUFKQURQVkxaV0FVWE1IWE5NTk5IVlVHWFZGTFNZU01MTU9DR1RKQURJU0NCWU9CTlJQUFdJT1JFTURGWFJTQ0lTVEdNU1NHWFJHU1hMU0NHQVZDS0hGVVhST0ZCUkhDWklPR0ZRRlBaRU9YWERYQ0JLRkdGVFBQTU1GUE1BRlBXSU9VVElTQ0dJT1JQTURJRUlTRVhEWFNHS0ZMV01GUVhFVkRTWVNZWFlOQ0dIQlhOV0ZHWFdPTU1BRkxXTUhZTkdJQkJJTk1YS01HVkxMQ0JYV01HQUZFUElTRFNBRkdaSU9ZR0RWWkJJVUNH){target="_blank"}
+
+**Schritt 2 — Schlüsselwort herausfinden:**
+Analysieren Sie die Häufigkeit von Buchstaben an Position 1, $m+1$, $2m+1$, … für die gefundene Schlüssellänge. Welche Verschiebung ergibt die charakteristischen Häufigkeitsspitzen?
+
+Denken Sie daran, dass eine Verschiebung von 0 bedeutet, dass der Schlüsselbuchstabe **A** ist, eine Verschiebung von 1 bedeutet **B**, …, usw.
+
+Tun Sie dies für alle Positionen 1, 2, …, $m$, um alle Schlüsselbuchstaben zu finden.
+
+**Schritt 3 — Schlüsselwort überprüfen:**
+Setzen Sie die gefundenen Schlüsselbuchstaben zusammen und überprüfen Sie das Schlüsselwort hier:
+
+[Schlüsselwort eingeben](https://gchq.github.io/CyberChef/#recipe=Vigen%C3%A8re_Decode('')&input=RVNLR0kgQ0JSRiBKQkRGTFNFRkxXSVNTR0sgRUNMIEZKUSBXRUlHRyBLRkxOWEFSWFIgUVBIVFNHWFhCQ0tJTyBaQlhMQ1hURlAtTENUUlhRVCBJSFJPUlhSIEVHWCBQSkxOQi1MQ0tSRkotWFJVVUJHTEpYViBFR1hXRlEgR01ERk0gUUZGSyBPUFFNSU9KSFcgV0NLQUZMV0lPLCBTR0ggVE1GTVUgWkVNRlogT01GSlhSIEZMTUFKQURQRlBHIEhGUCBTWUhZR0sgV0NLQUZGS1guIEVZQUlTIFpYS0JMRyBYUFBPRU1CTCBNTiBZSVZKSiAyMDA1IEZNVSBCWFYgRkxNQUpBRFBWTFogSUpMWFYgT0NOSU8gT05JTUpWU0VDLUZFT1laSU5DR1gtVE1ZWFhZS0kgVkxXIFRTWVhXRkxNTUZQTUkgQ0NLSUpSTCBBRkxCS0YgUlRLRiBMVEdJIEJYVkZMIFRSTFNYUkVHWllPRSBYTU9DIFhWVFJYIFpGUExNUEwuClRQVUNMIFBQRUgKClhQUE9FTUJMIEFWQ0dXREZNSSBUR1ZMIEZHRyBaRlBNSUpKTUlUIFFSV1VDRiwgSEJRIFBNRiBaQlhMQ1hURlAgWklPU01EVSBVWFZFQ0cgT0JMRyBZT0IgV01GIERIUEhDR0hGTCBUUkdNS0hGUE5SSENHIElTRE5JTUpNOgoKICAgIFlPUlhWVFJOSVVYTlJIIFRYVlVDQlBVQ0ssIEZKUkRJRk5YVi1CQ0FSTUdWTEZQIFRWQ0NCWFRZVVBCQ05KRgogICAgUVhMUyBGSExGIFFCR0lDS0xGR00gS0ZFWFIgVE1QU0lKIE5SQ0NURlRHVkxVR1pYRiBZRVcgQlNWTCBDTVhXWEdFUEpFWCBaRlBZRUZKTEdJU0dLCiAgICBJTUFJIEZEWU1BR1hSQQoKQ0JSIENDS0lKUkwgSVlHTFhKQ0tJT0JYVyBRUEhORklNIFJCS1hSVCBLSFJQUkhSRiBDR1hUTktFREYgV0lPIENLV1VDRyBGRkdXSU8gWUdKUFBXSVNTR0tGTCxbN10gV0VUIEJLTVVSWCBPU0dNSVNHTlEgWFNLSEYgSFhIUEFBIFpQTCBESUpMWFEgQ0NMWEZGWFJFQ0cgV1pRTUlOIENLSlZDRVBVLgoKUkhWV1lFSFQgQ0dYVEFBTUZCIExNREYgV0VIQ1pJTywgS0hSUFJIUkYgWUcgV0ZHR0kgQkxZU1NCWFZWTFpJTyBZR0RWTlRXVENHIFlPQiBVSUhZR1IgVFJUWFVCWFdUQ0csIElKTCBYTUhDR0lUIFFSV1VDRiBEViBDR1hYR1ZPRkpHLiBJSkxYViBFQ0sgTEJTSVhIUE5JT0JYIEpWQ0sgSEpDTElPIFFWTFNHTVggWFlLIEhKQyBUVkNDQlhUVVhNVEMsIFlZRlAgV01GIEtIUlBSSFJGIExUR0kgUkhWV1lFSFQgWUdXSkFBWCBQTk1NTkdYVlUgR0xYLiBVTUtaQkpXVyBCUFpZTkNHWEpDS1hGLCBCVFdUIENCUkFDRVJGIFBYWkpRQlNPQ0cgWlBMIFhNT0NGIEVPQlhWRkwgWFJVVUJHTEpYViBKTCBXSU8gQ0JLRkxYUiBGTE1BSkFEUFZMWldBVVhNSCBYTiBNTk5IVlVHWFZGTCBTWSBTTUxNT0NHVEpBRElTQ0IgWU9CIE5SUFBXSU9SRU1ERlhSIFNDSVNUR01TU0dYUiBHU1hMU0NHIEFWQ0tIRi4gVVhSTyBGQlJIQ1pJTyBHRlFGUCBaRU9YWCBEWENCS0YgR0ZUUFBNTUZQTSBBRlBXSU8sIFVUSVNDRyBJT1JQTURJRUlTIEVYRFhTR0tGTCwgV01GUVggRVZEU1lTWVhZTkNHLiBIQlhOIFdGRyBYVyBPTU1BRkxXTUgsIFlOR0kgQkJJIE5NWEtNR1ZMTENCWCBXTUcgQUZFUElTRC1TQUZHWklPIFlHRFZaQklVQ0cu){target="_blank"}
+
+
+::: -->
+
+<!-- ## Ausblick: Kasiski-Test
+
+Die Vigenère-Verschlüsselung blieb fast drei Jahrhunderte lang ungebrochen — bis Friedrich Kasiski 1863 eine systematische Methode zur Bestimmung der Schlüssellänge veröffentlichte.
+
+**Die Idee:** Wenn dasselbe Klartextwort zufällig an zwei verschiedenen Positionen steht, bei denen der Abstand ein Vielfaches der Schlüssellänge $m$ ist, entsteht **im Chiffretext dieselbe Buchstabenfolge**. Findet man solche Wiederholungen, verraten deren Abstände die Schlüssellänge.
+
+**Vorgehen (Kasiski-Test):**
+
+1. **Wiederholungen suchen:** Alle im Chiffretext mehrfach vorkommenden Zeichenfolgen der Länge ≥ 3 finden und deren Abstände notieren.
+2. **GGT berechnen:** Den grössten gemeinsamen Teiler (GGT) aller gefundenen Abstände berechnen — dieser ist wahrscheinlich die Schlüssellänge $m$.
+3. **Text aufteilen:** Den Chiffretext in $m$ Teilfolgen aufteilen: Teilfolge 1 enthält alle Buchstaben an Position 1, $m+1$, $2m+1$, …; Teilfolge 2 alle an Position 2, $m+2$, $2m+2$, … usw.
+4. **Häufigkeitsanalyse:** Jede Teilfolge ist ein Caesar-Cipher mit festem Schlüssel → klassische Häufigkeitsanalyse anwenden.
+
+**Beispiel:** Im Chiffretext findet man die Folge `XQR` an Position 4 und an Position 22 (Abstand 18) sowie an Position 34 (Abstand 30 von der ersten). GGT(18, 30) = 6 → wahrscheinliche Schlüssellänge: **6**.
+
+::: {.callout-warning title="Aufgabe 11 (Fortgeschrittene): Kasiski-Test anwenden" icon=true}
+Der folgende Text wurde mit Vigenère und einem **unbekannten** Schlüsselwort verschlüsselt.
+
+```
+[LÜCKE: Hier längeren Vigenère-Chiffretext einfügen]
+```
+
+**Schritt 1 — Schlüssellänge bestimmen:**
+
+Suchen Sie von Hand (oder mit der Suchfunktion des Browsers) nach wiederholten Drei-Buchstaben-Folgen im Chiffretext. Notieren Sie die Abstände und berechnen Sie den GGT.
+
+**Schritt 2 — Teilfolgen analysieren:**
+
+Extrahieren Sie die erste Teilfolge (Buchstaben an Position 1, $m+1$, $2m+1$, …) und analysieren Sie die Häufigkeiten. Welchen Caesar-Schlüssel ergibt die Häufigkeitsanalyse?
+
+**Schritt 3 — Schlüsselwort rekonstruieren:**
+
+Wiederholen Sie Schritt 2 für alle $m$ Teilfolgen und setzen Sie die Schlüsselbuchstaben zusammen. Überprüfen Sie das Schlüsselwort mit dem Widget oben.
+
+::: {.callout-tip title="Hilfsmittel" collapse=true icon=true}
+[CyberChef – Vigenère Analyse](https://gchq.github.io/CyberChef/#recipe=Vigen%C3%A8re_Decode('')){target="_blank"} (Schlüssel manuell eingeben und prüfen)
+
+[dcode.fr – Kasiski-Test](https://www.dcode.fr/kasiski-test){target="_blank"} (automatische Schlüssellängenbestimmung) 
+:::
+
+:::
+-->
