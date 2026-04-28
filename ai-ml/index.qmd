@@ -153,3 +153,100 @@ Die folgenden Fragen gelten für alle Artikel. Versuchen Sie, bei jeder Antwort 
 3. Hätte der Schaden verhindert werden können? Wenn ja, wie?
 4. Vertrauen Sie KI-Systemen nach dem Lesen dieser Artikel mehr oder weniger als zuvor? Warum?
 5. Sollten KI-Systeme stärker reguliert werden? Wenn ja, wer sollte die Regeln festlegen und durchsetzen?
+
+# Teachable Machine: Ein Modell selbst trainieren
+
+In diesem Kapitel trainieren Sie selbst ein einfaches Bildklassifikationsmodell mit **Google Teachable Machine** – ohne Programmieren.
+
+## Was ist Teachable Machine?
+
+[Teachable Machine](https://teachablemachine.withgoogle.com/) ist ein webbasiertes Tool von Google, mit dem Sie ein Machine-Learning-Modell durch eigene Beispielbilder trainieren können. Das Tool läuft direkt im Browser – keine Installation nötig.
+
+## Aufgabe 1: Erstes Modell trainieren
+
+::: {.callout-note icon=false}
+## Schritt-für-Schritt
+
+1. Öffnen Sie [teachablemachine.withgoogle.com](https://teachablemachine.withgoogle.com/) und wählen Sie **«Get Started»** → **«Image Project»** → **«Standard image model»**.
+2. Erstellen Sie **zwei Klassen** mit aussagekräftigen Namen (z. B. zwei verschiedene Gesten, Objekte oder Personen).
+3. Nehmen Sie für jede Klasse mindestens **30 Bilder** mit der Webcam auf.
+4. Klicken Sie auf **«Train Model»** und warten Sie, bis das Training abgeschlossen ist.
+5. Testen Sie Ihr Modell live mit der Webcam im Vorschau-Bereich.
+:::
+
+## Aufgabe 2: Fehlerrate bestimmen
+
+Jetzt messen Sie, wie gut Ihr Modell wirklich ist.
+
+::: {.callout-important icon=false}
+## Auftrag
+
+1. Führen Sie **10 Testdurchläufe** durch: Zeigen Sie dem Modell abwechselnd ein Beispiel aus Klasse 1 und Klasse 2.
+2. Notieren Sie für jeden Versuch, ob das Modell **richtig oder falsch** klassifiziert hat.
+3. Berechnen Sie die Fehlerrate:
+
+$$\text{Fehlerrate} = \frac{\text{Anzahl falscher Vorhersagen}}{\text{Gesamtanzahl Versuche}} \times 100\%$$
+
+4. Notieren Sie sich Begründungen für die Fehler und für die tiefe Fehlerrate.
+
+:::
+
+## Aufgabe 3: Konzeptuelle Fragen
+
+Beantworten Sie die folgenden Fragen **schriftlich**, bevor Sie weitermachen. Besprechen Sie Ihre Antworten kurz mit einer Mitschülerin oder einem Mitschüler.
+
+1. Was genau hat das Modell beim Training «gelernt»? Beschreiben Sie es in eigenen Worten.
+2. Warum braucht das Modell mehrere Beispielbilder pro Klasse – würde eines nicht reichen?
+3. Was könnte passieren, wenn alle Bilder einer Klasse unter denselben Bedingungen aufgenommen wurden?
+
+## Aufgabe 4: Grenzen des Modells finden
+
+::: {.callout-note icon=false}
+## Auftrag
+
+Versuchen Sie, Ihr Modell zum Scheitern zu bringen. Testen Sie verschiedene Situationen und notieren Sie, wann das Modell **falsch oder unsicher** reagiert.
+
+Ideen zum Ausprobieren:
+
+- Verändern Sie den **Hintergrund** oder die **Beleuchtung**.
+- Zeigen Sie das Beispiel aus einem anderen **Winkel** oder in einer anderen **Entfernung**.
+- Zeigen Sie etwas, das **keiner der beiden Klassen** angehört.
+
+**Dokumentieren Sie mindestens 3 Situationen**, in denen das Modell versagt oder stark unsicher wird. Beschreiben Sie jeweils, was Sie gezeigt haben und wie das Modell reagiert hat.
+:::
+
+::: {.callout-tip icon=false}
+## Reflexionsfrage
+
+Warum versagt das Modell in den Situationen, die Sie gefunden haben? Was fehlt ihm?
+:::
+
+## Aufgabe 5: Modell verbessern
+
+Sie haben Schwächen gefunden. Jetzt versuchen Sie, das Modell robuster zu machen – aber **wie**, entscheiden Sie selbst.
+
+::: {.callout-important icon=false}
+## Auftrag
+
+Wählen Sie **eine** der folgenden Strategien (oder kombinieren Sie beide) und setzen Sie diese um:
+
+- **Strategie A:** Fügen Sie **neue, vielfältigere Bilder** zu Ihren bestehenden Klassen hinzu (z. B. andere Beleuchtung, anderer Hintergrund, andere Personen).
+- **Strategie B:** Fügen Sie eine **dritte Klasse** hinzu, die die problematischen Fälle aus Aufgabe 4 abdeckt.
+
+Trainieren Sie das Modell neu und messen Sie die Fehlerrate erneut mit den gleichen 20 Testfällen wie zuvor.
+
+**Fragen zum Nachdenken:**
+
+1. Hat sich die Fehlerrate verbessert? Um wie viel?
+2. Was hat Ihre Strategie bewirkt – was hat das Modell dadurch «dazugelernt»?
+3. Welche Strategie war effektiver, und warum könnte das so sein?
+:::
+
+## Ergebnis
+
+Am Ende dieses Kapitels sollen Sie Folgendes vorliegen haben:
+
+- Ein trainiertes Modell mit mindestens zwei Klassen.
+- Eine dokumentierte Fehlerrate (vor und nach der Verbesserung).
+- Schriftliche Antworten auf die Konzeptfragen in Aufgabe 3.
+- Eine Liste von mindestens 3 Grenzsituationen und eine Erklärung, warum das Modell dort versagt.
