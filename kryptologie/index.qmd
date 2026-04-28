@@ -9,16 +9,16 @@ smooth-scroll: true
 format:
   html:
     code-fold: false
-  pdf:
-    documentclass: scrartcl
-    papersize: a4
-    fontsize: 11pt
-    colorlinks: true
-    lang: de
-    include-in-header:
-      text: |
-        \usepackage{fvextra}
-        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+  # pdf:
+  #   documentclass: scrartcl
+  #   papersize: a4
+  #   fontsize: 11pt
+  #   colorlinks: true
+  #   lang: de
+  #   include-in-header:
+  #     text: |
+  #       \usepackage{fvextra}
+  #       \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 ---
 
 # Einstieg: Geheime Kommunikation
