@@ -1,11 +1,24 @@
 ---
 title: "AI & ML"
-# subtitle: "Arbeitsauftrag zu LLMs, Halluzinationen und Sicherheitsrisiken"
 toc: true
 toc-location: right
 toc-depth: 3
 number-sections: true
 smooth-scroll: true
+format:
+  html: default
+  pdf:
+    documentclass: scrartcl
+    papersize: a4
+    fontsize: 11pt
+    number-sections: true
+    toc: true
+    lang: de
+    colorlinks: true
+    include-in-header:
+      text: |
+        \usepackage{fvextra}
+        \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 ---
 
 # Arbeitsauftrag: Artikel verstehen
@@ -250,3 +263,6 @@ Am Ende dieses Kapitels sollen Sie Folgendes vorliegen haben:
 - Eine dokumentierte Fehlerrate (vor und nach der Verbesserung).
 - Schriftliche Antworten auf die Konzeptfragen in Aufgabe 3.
 - Eine Liste von mindestens 3 Grenzsituationen und eine Erklärung, warum das Modell dort versagt.
+
+
+{{< include linear-regression.qmd >}}
