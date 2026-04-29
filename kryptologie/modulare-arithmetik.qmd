@@ -1,0 +1,114 @@
+---
+title: "Modulare Arithmetik"
+toc: true
+toc-location: right
+toc-depth: 3
+number-sections: true
+smooth-scroll: true
+format:
+  html: default
+  pdf:
+    documentclass: scrartcl
+    papersize: a4
+    fontsize: 11pt
+    number-sections: false
+    toc: false
+    lang: de
+    colorlinks: true
+    filters:
+      - remove_title.lua
+---
+
+# Modulare Arithmetik
+
+Sie haben das Zeichen $\bmod$ bereits mehrfach in diesem Skript verwendet — bei der Caesar-Verschlüsselung ($c = (p + k) \bmod 26$) und im Vigenère-Verfahren. Zeit, dieses Konzept formaler zu betrachten: Modulare Arithmetik ist nicht nur ein Werkzeug für Buchstabenverschiebungen, sondern das mathematische Fundament nahezu aller modernen kryptographischen Verfahren.
+
+## Das Prinzip: Reste und Kreisläufe
+
+Der Ausdruck $a \bmod m$ («$a$ modulo $m$») gibt den **Rest** an, der bei der ganzzahligen Division von $a$ durch $m$ übrig bleibt:
+
+$$
+a \bmod m = r \quad \Longleftrightarrow \quad a = q \cdot m + r, \quad 0 \leq r < m
+$$
+
+**Beispiele:**
+
+| Ausdruck | Rechnung | Ergebnis |
+|:------|:------|:---:|
+| $17 \bmod 5$ | $17 = 3 \cdot 5 + \mathbf{2}$ | $2$ |
+| $26 \bmod 26$ | $26 = 1 \cdot 26 + \mathbf{0}$ | $0$ |
+| $7 \bmod 3$ | $7 = 2 \cdot 3 + \mathbf{1}$ | $1$ |
+| $3 \bmod 7$ | $3 = 0 \cdot 7 + \mathbf{3}$ | $3$ |
+| $(-3) \bmod 26$ | $-3 = (-1) \cdot 26 + \mathbf{23}$ | $23$ |
+
+Eine anschauliche Vorstellung liefert eine **Kreiszahl-Uhr**: Stellen Sie sich eine Uhr mit $m$ Positionen vor ($0$ bis $m - 1$). Nach $m - 1$ beginnt alles wieder bei $0$. Auf einer 12-Stunden-Uhr gilt z.B. $15 \bmod 12 = 3$, also: 15 Uhr entspricht 3 Uhr.
+
+## Rechengesetze modulo $n$
+
+Addition und Multiplikation können *vor* oder *nach* der Reduktion modulo $n$ durchgeführt werden — das Ergebnis ist dasselbe:
+
+$$
+(a + b) \bmod n = \bigl((a \bmod n) + (b \bmod n)\bigr) \bmod n
+$$
+
+$$
+(a \cdot b) \bmod n = \bigl((a \bmod n) \cdot (b \bmod n)\bigr) \bmod n
+$$
+
+Das ist besonders nützlich bei der **modularen Exponentiation**: Statt die riesige Zahl $g^x$ vollständig auszurechnen, kann man nach jedem Schritt reduzieren und hält die Zwischenergebnisse dadurch klein.
+
+**Beispiel — $7^4 \bmod 13$ schrittweise:**
+
+$$7^1 \bmod 13 = 7$$
+$$7^2 \bmod 13 = 49 \bmod 13 = 10$$
+$$7^3 \bmod 13 = (7^2 \cdot 7) \bmod 13 = (10 \cdot 7) \bmod 13 = 70 \bmod 13 = 5$$
+$$7^4 \bmod 13 = (7^3 \cdot 7) \bmod 13 = (5 \cdot 7) \bmod 13 = 35 \bmod 13 = 9$$
+
+## Potenzen modulo Primzahlen
+
+Ein besonders interessantes Verhalten zeigt die Folge $g^1 \bmod p,\; g^2 \bmod p,\; g^3 \bmod p, \ldots$, wenn $p$ eine Primzahl ist und $g$ geeignet gewählt wird. Für $p = 7$ und $g = 3$:
+
+| $x$ | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| $3^x \bmod 7$ | 3 | 2 | 6 | 4 | 5 | 1 | 3 |
+
+Die Folge $3, 2, 6, 4, 5, 1, 3, 2, \ldots$ **dreht sich im Kreis** und enthält jede der Zahlen $1$ bis $6$ genau einmal. Man nennt $g = 3$ deshalb eine **primitive Wurzel** (oder Generator) modulo $7$.
+
+## Aufgaben
+
+::: {.callout-note title="Aufgabe 11: Modulare Arithmetik" icon=true}
+Berechnen Sie die folgenden Ausdrücke von Hand:
+
+a) $23 \bmod 7$
+b) $100 \bmod 11$
+c) $(4 \cdot 9) \bmod 5$
+d) $3^5 \bmod 7$ — berechnen Sie schrittweise wie im Beispiel oben.
+:::
+
+::: {.callout-note title="Aufgabe 12: Potenzen modulo Primzahl" icon=true}
+Berechnen Sie alle Potenzen $2^x \bmod 11$ für $x = 1, 2, \ldots, 10$ und füllen Sie die Tabelle aus:
+
+| $x$ | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| $2^x \bmod 11$ | | | | | | | | | | |
+
+Erscheinen alle Zahlen von 1 bis 10 in der Tabelle? Was fällt Ihnen auf, wenn Sie $2^{10} \bmod 11$ berechnen? Und $2^{11} \bmod 11$?
+:::
+
+## Einwegfunktionen und der diskrete Logarithmus
+
+Die Berechnung von $y = g^x \bmod p$ ist **schnell**: Man kann schrittweise multiplizieren und reduzieren, auch wenn $p$ Hunderte von Stellen hat.
+
+Die **Umkehrung** jedoch — gegeben $y$, $g$ und $p$, finde $x$ mit
+
+$$
+g^x \equiv y \pmod{p}
+$$
+
+— ist das **Problem des diskreten Logarithmus**. Für grosse Primzahlen $p$ kennt man keine effiziente Methode. Alle bekannten Algorithmen benötigen eine in der Praxis nicht handhabbare Rechenzeit.
+
+$$
+\underbrace{g^x \bmod p}_{\text{leicht zu berechnen}} \qquad \longleftrightarrow \qquad \underbrace{x = \log_g y \bmod p}_{\text{schwer umzukehren}}
+$$
+
+Solche Funktionen — leicht in eine Richtung, praktisch unmöglich rückwärts — nennt man **Einwegfunktionen** (*one-way functions*). Sie sind das Herzstück der modernen Kryptographie.
