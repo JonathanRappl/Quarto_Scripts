@@ -18,6 +18,8 @@ website:
         text: Pygame
       - href: kryptologie/index.qmd
         text: Kryptologie
+      - href: sql/index.qmd
+        text: SQL
   page-footer:
     center: "Informatik Skripte — Built with [Quarto](https://quarto.org)"
 

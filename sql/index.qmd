@@ -1,0 +1,272 @@
+---
+title: "SQL – Verschachtelte Abfragen"
+subtitle: "Unterabfragen (Nested Queries) entdecken und anwenden"
+toc: true
+toc-location: right
+toc-depth: 3
+number-sections: true
+smooth-scroll: true
+format:
+  html:
+    code-fold: false
+---
+
+In dieser Lerneinheit entdecken Sie **Unterabfragen** (*Nested Queries*) Schritt für Schritt anhand von Weltländerdaten. Eine Unterabfrage ist eine SQL-Abfrage, die **innerhalb einer anderen Abfrage** eingebettet ist – das Ergebnis der inneren Abfrage wird direkt als Bedingung für die äußere Abfrage verwendet.
+
+Sie arbeiten mit der Tabelle `welt`:
+
+| Spalte | Bedeutung |
+|---|---|
+| `Name` | Name des Landes |
+| `Region` | Geografische Region (z. B. `'Südamerika'`, `'Europa'`) |
+| `Fläche` | Fläche in km² |
+| `Einwohner` | Einwohnerzahl |
+| `BIP` | Bruttoinlandsprodukt (USD) |
+
+```{=html}
+<style>
+  .mc-widget {
+    margin: 1.2em 0 1.8em 0;
+    max-width: 600px;
+  }
+  .mc-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .mc-btn {
+    text-align: left;
+    padding: 0.65em 1.1em;
+    border: 2px solid #d0d0d0;
+    border-radius: 8px;
+    background: #fafafa;
+    cursor: pointer;
+    font-size: 0.97em;
+    font-family: inherit;
+    transition: background 0.12s, border-color 0.12s;
+    line-height: 1.4;
+  }
+  .mc-btn:hover:not(:disabled) {
+    background: #e8f0fe;
+    border-color: #4a90d9;
+  }
+  .mc-btn:disabled { cursor: default; }
+  .mc-btn.mc-correct {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+    font-weight: 600;
+  }
+  .mc-btn.mc-wrong {
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+  }
+  .mc-feedback {
+    margin-top: 0.9em;
+    padding: 0.8em 1.1em;
+    border-radius: 8px;
+    font-size: 0.93em;
+    line-height: 1.55;
+    display: none;
+  }
+  .mc-feedback.show-correct {
+    display: block;
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+  }
+  .mc-feedback.show-wrong {
+    display: block;
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #7a5a00;
+  }
+  .mc-hidden { display: none !important; }
+  .primm-badge {
+    display: inline-block;
+    padding: 0.15em 0.6em;
+    border-radius: 4px;
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+    margin-right: 0.3em;
+  }
+  .badge-predict  { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
+  .badge-run      { background: #d4edda; color: #155724; border: 1px solid #28a745; }
+  .badge-investigate { background: #cfe2ff; color: #084298; border: 1px solid #6ea8fe; }
+  .badge-modify   { background: #f0d9ff; color: #5a0090; border: 1px solid #c77dff; }
+  .badge-make     { background: #f8d7da; color: #58151c; border: 1px solid #f1aeb5; }
+</style>
+
+<script>
+function mc_check(btn, widgetId) {
+  var widget = document.getElementById(widgetId);
+  if (widget.dataset.answered) return;
+  widget.dataset.answered = '1';
+
+  var isCorrect = btn.dataset.correct === '1';
+  var buttons = widget.querySelectorAll('.mc-btn');
+  buttons.forEach(function(b) { b.disabled = true; });
+
+  var feedback = widget.querySelector('.mc-feedback');
+
+  if (isCorrect) {
+    btn.classList.add('mc-correct');
+    feedback.className = 'mc-feedback show-correct';
+    feedback.innerHTML = widget.querySelector('.mc-correct-text').innerHTML;
+  } else {
+    btn.classList.add('mc-wrong');
+    buttons.forEach(function(b) {
+      if (b.dataset.correct === '1') b.classList.add('mc-correct');
+    });
+    feedback.className = 'mc-feedback show-wrong';
+    feedback.innerHTML = widget.querySelector('.mc-wrong-text').innerHTML;
+  }
+}
+</script>
+```
+
+# Abfrage 1: Was macht dieser Code?
+
+<span class="primm-badge badge-predict">Predict</span> Lesen Sie die folgende SQL-Abfrage genau und überlegen Sie, was sie zurückgibt, bevor Sie auf eine Antwort klicken.
+
+```sql
+SELECT Name
+FROM welt
+WHERE Region = 'Südamerika'
+ORDER BY Einwohner DESC
+LIMIT 1;
+```
+
+::: {.callout-warning title="Aufgabe 1: Vorhersage" icon=true}
+Welches Land gibt diese Abfrage aus? Klicken Sie auf Ihre Antwort.
+:::
+
+```{=html}
+<div class="mc-widget" id="q1">
+  <div class="mc-options">
+    <button class="mc-btn" onclick="mc_check(this, 'q1')">Argentinien</button>
+    <button class="mc-btn" onclick="mc_check(this, 'q1')">Kolumbien</button>
+    <button class="mc-btn" data-correct="1" onclick="mc_check(this, 'q1')">Brasilien</button>
+    <button class="mc-btn" onclick="mc_check(this, 'q1')">China</button>
+  </div>
+  <div class="mc-feedback"></div>
+  <div class="mc-correct-text mc-hidden">
+    <strong>✓ Richtig!</strong> <code>ORDER BY Einwohner DESC</code> sortiert die südamerikanischen Länder absteigend nach Einwohnerzahl (größter Wert zuerst). <code>LIMIT 1</code> liefert nur den ersten Eintrag – also das bevölkerungsreichste Land. Das ist <strong>Brasilien</strong> mit über 172 Millionen Einwohnern.
+  </div>
+  <div class="mc-wrong-text mc-hidden">
+    <strong>✗ Nicht ganz.</strong> Beachte: <code>ORDER BY Einwohner DESC</code> sortiert absteigend (größter Wert zuerst), und <code>LIMIT 1</code> wählt nur den allerersten Eintrag. Welches südamerikanische Land hat die meisten Einwohner?
+  </div>
+</div>
+```
+
+## Wie funktioniert die Abfrage?
+
+<span class="primm-badge badge-investigate">Investigate</span> Die Abfrage besteht aus vier Bausteinen:
+
+| Klausel | Funktion |
+|---|---|
+| `WHERE Region = 'Südamerika'` | Filtert auf Länder der Region Südamerika |
+| `ORDER BY Einwohner DESC` | Sortiert absteigend nach Einwohnerzahl |
+| `LIMIT 1` | Gibt nur den ersten (= größten) Eintrag zurück |
+
+# Abfrage 2: Was filtert diese Bedingung?
+
+<span class="primm-badge badge-predict">Predict</span> Betrachten Sie nun eine zweite Abfrage mit einer anderen Filterbedingung:
+
+```sql
+SELECT Name, Einwohner
+FROM welt
+WHERE Einwohner > 1000000;
+```
+
+::: {.callout-warning title="Aufgabe 2: Vorhersage" icon=true}
+Was gibt diese Abfrage zurück? Klicken Sie auf Ihre Antwort.
+:::
+
+```{=html}
+<div class="mc-widget" id="q2">
+  <div class="mc-options">
+    <button class="mc-btn" onclick="mc_check(this, 'q2')">Alle Länder, sortiert nach Einwohnerzahl in absteigender Reihenfolge</button>
+    <button class="mc-btn" data-correct="1" onclick="mc_check(this, 'q2')">Alle Länder mit mehr als einer Million Einwohnern</button>
+    <button class="mc-btn" onclick="mc_check(this, 'q2')">Alle Länder mit weniger als einer Million Einwohnern</button>
+    <button class="mc-btn" onclick="mc_check(this, 'q2')">Alle Länder mit genau einer Million Einwohnern</button>
+  </div>
+  <div class="mc-feedback"></div>
+  <div class="mc-correct-text mc-hidden">
+    <strong>✓ Richtig!</strong> <code>WHERE Einwohner > 1000000</code> filtert alle Datensätze, bei denen die Einwohnerzahl den Wert 1 000 000 <em>überschreitet</em>. Die Abfrage gibt also alle Länder mit mehr als einer Million Einwohnern zurück – Name und Einwohnerzahl pro Zeile.
+  </div>
+  <div class="mc-wrong-text mc-hidden">
+    <strong>✗ Nicht ganz.</strong> Achte genau auf den Vergleichsoperator: <code>&gt;</code> bedeutet «größer als» – nicht «kleiner als», «gleich» oder eine Sortierung. Eine Sortierung würde eine <code>ORDER BY</code>-Klausel erfordern, die hier fehlt.
+  </div>
+</div>
+```
+
+# Die Unterabfrage
+
+<span class="primm-badge badge-predict">Predict</span> Jetzt werden beide Konzepte kombiniert. Lesen Sie die folgende Abfrage sorgfältig – **was könnte sie zurückgeben?**
+
+```sql
+SELECT Name
+FROM welt
+WHERE Einwohner > (
+    SELECT MAX(Einwohner)
+    FROM welt
+    WHERE Region = 'Südamerika'
+);
+```
+
+::: {.callout-warning title="Aufgabe 3: Vorhersage" icon=true}
+Was gibt diese Abfrage zurück? Überlegen Sie: Was berechnet der Teil in den Klammern? Was macht die äußere Abfrage mit diesem Wert?
+:::
+
+```{=html}
+<div class="mc-widget" id="q3">
+  <div class="mc-options">
+    <button class="mc-btn" data-correct="1" onclick="mc_check(this, 'q3')">Alle Länder, die mehr Einwohner haben als das bevölkerungsreichste Land Südamerikas</button>
+    <button class="mc-btn" onclick="mc_check(this, 'q3')">Das bevölkerungsreichste Land der gesamten Welt</button>
+    <button class="mc-btn" onclick="mc_check(this, 'q3')">Alle Länder Südamerikas, geordnet nach Einwohnerzahl</button>
+    <button class="mc-btn" onclick="mc_check(this, 'q3')">Alle Länder mit mehr Einwohnern als der weltweite Durchschnitt</button>
+  </div>
+  <div class="mc-feedback"></div>
+  <div class="mc-correct-text mc-hidden">
+    <strong>✓ Richtig!</strong> Die <em>innere Abfrage</em> (<code>SELECT MAX(Einwohner) … WHERE Region = 'Südamerika'</code>) berechnet die maximale Einwohnerzahl aller südamerikanischen Länder – das ist Brasilien mit 172 860 370. Die <em>äußere Abfrage</em> gibt dann alle Länder zurück, deren Einwohnerzahl diesen Wert übersteigt.
+  </div>
+  <div class="mc-wrong-text mc-hidden">
+    <strong>✗ Nicht ganz.</strong> Teile die Abfrage in zwei Teile:<br>
+    1. <code>SELECT MAX(Einwohner) FROM welt WHERE Region = 'Südamerika'</code> – was liefert das?<br>
+    2. Die äußere Abfrage filtert alle Länder, bei denen <code>Einwohner &gt;</code> diesem Wert gilt.
+  </div>
+</div>
+```
+
+::: {.callout-tip title="Aufgabe 4: Ausführen" icon=true}
+<span class="primm-badge badge-run">Run</span> Kopieren Sie die obige Abfrage und fügen Sie sie auf [sql-tutorial.de → Aufgabe 1](https://sql-tutorial.de/home/uebungen.php?lektion=5) ein. Welche Länder erscheinen im Ergebnis? Stimmt das Ergebnis mit Ihrer Vorhersage überein?
+
+**Hinweis:** Auf sql-tutorial.de heißt die Tabelle möglicherweise anders – prüfen Sie die verfügbaren Tabellennamen auf der Seite.
+:::
+
+# Abfrage anpassen
+
+<span class="primm-badge badge-modify">Modify</span>
+
+::: {.callout-note title="Aufgabe 5: Abfrage verändern" icon=true}
+Die bisherige Abfrage liefert alle Länder mit mehr Einwohnern als das **bevölkerungsreichste** Land Südamerikas.
+
+Ändern Sie die innere Abfrage so, dass stattdessen Länder ausgegeben werden, die mehr Einwohner haben als ein **durchschnittliches** Land Südamerikas.
+
+- Welche SQL-Funktion müssen Sie in der inneren Abfrage ersetzen?
+- Erwarten Sie mehr oder weniger Ergebnisse als vorher? Warum?
+
+Testen Sie Ihre angepasste Abfrage auf [sql-tutorial.de → Aufgabe 1](https://sql-tutorial.de/home/uebungen.php?lektion=5).
+:::
+
+# Weiterüben
+
+<span class="primm-badge badge-make">Make</span>
+
+::: {.callout-note title="Aufgaben 2–6: Unterabfragen selbst schreiben" icon=true}
+Lösen Sie nun auf [sql-tutorial.de – Lektion 5: Unterabfragen](https://sql-tutorial.de/home/uebungen.php?lektion=5) die **Aufgaben 2 bis 6**. Schreiben Sie Ihre SQL-Abfragen in Ihr Heft.
+:::
