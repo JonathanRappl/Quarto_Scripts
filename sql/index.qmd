@@ -6,25 +6,39 @@ toc-location: right
 toc-depth: 3
 number-sections: true
 smooth-scroll: true
+resources:
+  - weltdaten.db
 format:
   html:
     code-fold: false
 ---
 
-In dieser Lerneinheit entdecken Sie **Unterabfragen** (*Nested Queries*) Schritt für Schritt anhand von Weltländerdaten. Eine Unterabfrage ist eine SQL-Abfrage, die **innerhalb einer anderen Abfrage** eingebettet ist – das Ergebnis der inneren Abfrage wird direkt als Bedingung für die äußere Abfrage verwendet.
-
-Sie arbeiten mit der Tabelle `welt`:
+Sie arbeiten mit der Tabelle `cia`:
 
 | Spalte | Bedeutung |
 |---|---|
 | `Name` | Name des Landes |
 | `Region` | Geografische Region (z. B. `'Südamerika'`, `'Europa'`) |
-| `Fläche` | Fläche in km² |
+| `Fläche` | Fläche in km² (in SQL als `"Fläche"` mit Anführungszeichen) |
 | `Einwohner` | Einwohnerzahl |
 | `BIP` | Bruttoinlandsprodukt (USD) |
 
+Die ersten 10 Einträge der Tabelle:
+
+```{=html}
+<div class="sql-editor-widget" id="editor-preview">
+  <textarea class="sql-input" rows="3">SELECT * FROM cia LIMIT 10;</textarea>
+  <div class="sql-controls">
+    <button class="sql-run-btn" onclick="runSQL('editor-preview')">▶ Ausführen</button>
+    <span class="sql-db-status">Datenbank wird geladen …</span>
+  </div>
+  <div class="sql-output"></div>
+</div>
+```
+
 ```{=html}
 <style>
+  /* ── Multiple-choice ───────────────────────────────────────── */
   .mc-widget {
     margin: 1.2em 0 1.8em 0;
     max-width: 600px;
@@ -46,81 +60,147 @@ Sie arbeiten mit der Tabelle `welt`:
     transition: background 0.12s, border-color 0.12s;
     line-height: 1.4;
   }
-  .mc-btn:hover:not(:disabled) {
-    background: #e8f0fe;
-    border-color: #4a90d9;
-  }
+  .mc-btn:hover:not(:disabled) { background: #e8f0fe; border-color: #4a90d9; }
   .mc-btn:disabled { cursor: default; }
-  .mc-btn.mc-correct {
-    background: #d4edda;
-    border-color: #28a745;
-    color: #155724;
-    font-weight: 600;
-  }
-  .mc-btn.mc-wrong {
-    background: #f8d7da;
-    border-color: #dc3545;
-    color: #721c24;
-  }
+  .mc-btn.mc-correct { background: #d4edda; border-color: #28a745; color: #155724; font-weight: 600; }
+  .mc-btn.mc-wrong   { background: #f8d7da; border-color: #dc3545; color: #721c24; }
   .mc-feedback {
-    margin-top: 0.9em;
-    padding: 0.8em 1.1em;
-    border-radius: 8px;
-    font-size: 0.93em;
-    line-height: 1.55;
-    display: none;
+    margin-top: 0.9em; padding: 0.8em 1.1em; border-radius: 8px;
+    font-size: 0.93em; line-height: 1.55; display: none;
   }
-  .mc-feedback.show-correct {
-    display: block;
-    background: #d4edda;
-    border-left: 4px solid #28a745;
-    color: #155724;
-  }
-  .mc-feedback.show-wrong {
-    display: block;
-    background: #fff3cd;
-    border-left: 4px solid #ffc107;
-    color: #7a5a00;
-  }
+  .mc-feedback.show-correct { display: block; background: #d4edda; border-left: 4px solid #28a745; color: #155724; }
+  .mc-feedback.show-wrong   { display: block; background: #fff3cd; border-left: 4px solid #ffc107; color: #7a5a00; }
   .mc-hidden { display: none !important; }
+
+  /* ── PRIMM badges ──────────────────────────────────────────── */
   .primm-badge {
-    display: inline-block;
-    padding: 0.15em 0.6em;
-    border-radius: 4px;
-    font-size: 0.78em;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    vertical-align: middle;
-    margin-right: 0.3em;
+    display: inline-block; padding: 0.15em 0.6em; border-radius: 4px;
+    font-size: 0.78em; font-weight: 700; letter-spacing: 0.04em;
+    vertical-align: middle; margin-right: 0.3em;
   }
-  .badge-predict  { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
-  .badge-run      { background: #d4edda; color: #155724; border: 1px solid #28a745; }
+  .badge-predict     { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
+  .badge-run         { background: #d4edda; color: #155724; border: 1px solid #28a745; }
   .badge-investigate { background: #cfe2ff; color: #084298; border: 1px solid #6ea8fe; }
-  .badge-modify   { background: #f0d9ff; color: #5a0090; border: 1px solid #c77dff; }
-  .badge-make     { background: #f8d7da; color: #58151c; border: 1px solid #f1aeb5; }
+  .badge-modify      { background: #f0d9ff; color: #5a0090; border: 1px solid #c77dff; }
+  .badge-make        { background: #f8d7da; color: #58151c; border: 1px solid #f1aeb5; }
+
+  /* ── SQL editor ────────────────────────────────────────────── */
+  .sql-editor-widget {
+    border: 1px solid #dee2e6; border-radius: 8px;
+    padding: 1em; margin: 1em 0 1.5em 0; background: #f8f9fa;
+  }
+  .sql-input {
+    width: 100%; box-sizing: border-box;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    font-size: 0.87em; padding: 0.6em;
+    border: 1px solid #ced4da; border-radius: 6px;
+    resize: vertical; background: #fff; color: #212529;
+  }
+  .sql-controls { display: flex; align-items: center; gap: 0.8em; margin-top: 0.5em; }
+  .sql-run-btn {
+    padding: 0.42em 1.1em; background: #0d6efd; color: #fff;
+    border: none; border-radius: 6px; cursor: pointer;
+    font-size: 0.92em; font-family: inherit; white-space: nowrap;
+  }
+  .sql-run-btn:hover { background: #0b5ed7; }
+  .sql-db-status { font-size: 0.82em; color: #6c757d; }
+  .sql-table-wrap { overflow-x: auto; max-height: 420px; overflow-y: auto; margin-top: 0.8em; }
+  .sql-result-table { border-collapse: collapse; width: 100%; font-size: 0.88em; }
+  .sql-result-table th { background: #343a40; color: #fff; padding: 0.4em 0.75em; text-align: left; position: sticky; top: 0; }
+  .sql-result-table td { padding: 0.32em 0.75em; border-bottom: 1px solid #dee2e6; }
+  .sql-result-table tr:nth-child(even) td { background: #f2f4f5; }
+  .sql-rowcount { font-size: 0.8em; color: #6c757d; margin-top: 0.3em; }
+  .sql-error { color: #dc3545; font-size: 0.9em; margin-top: 0.5em; font-family: monospace; }
+  .sql-empty { color: #6c757d; font-size: 0.9em; margin-top: 0.5em; }
 </style>
 
+<!-- sql.js (SQLite compiled to WebAssembly) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.12.0/sql-wasm.js"></script>
+
 <script>
+var _db = null;
+
+var _dbReady = initSqlJs({
+  locateFile: function(f) {
+    return 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.12.0/' + f;
+  }
+}).then(function(SQL) {
+  return fetch('weltdaten.db').then(function(r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.arrayBuffer();
+  }).then(function(buf) {
+    _db = new SQL.Database(new Uint8Array(buf));
+    document.querySelectorAll('.sql-db-status').forEach(function(el) {
+      el.textContent = '✓ Datenbank geladen';
+      el.style.color = '#28a745';
+    });
+  });
+}).catch(function(e) {
+  document.querySelectorAll('.sql-db-status').forEach(function(el) {
+    el.textContent = '✗ Datenbank konnte nicht geladen werden: ' + e.message;
+    el.style.color = '#dc3545';
+  });
+});
+
+function runSQL(editorId) {
+  var widget   = document.getElementById(editorId);
+  var sql      = widget.querySelector('.sql-input').value.trim();
+  var output   = widget.querySelector('.sql-output');
+  var status   = widget.querySelector('.sql-db-status');
+
+  if (!sql) { output.innerHTML = ''; return; }
+
+  _dbReady.then(function() {
+    if (!_db) { output.innerHTML = '<p class="sql-error">Datenbank nicht verfügbar.</p>'; return; }
+    try {
+      var results = _db.exec(sql);
+      if (!results.length) {
+        output.innerHTML = '<p class="sql-empty">Keine Ergebnisse (oder kein SELECT-Statement).</p>';
+        return;
+      }
+      var res = results[0];
+      var cap = 500;
+      var rows = res.values.slice(0, cap);
+      var html = '<div class="sql-table-wrap"><table class="sql-result-table"><thead><tr>';
+      res.columns.forEach(function(c) { html += '<th>' + escHtml(c) + '</th>'; });
+      html += '</tr></thead><tbody>';
+      rows.forEach(function(row) {
+        html += '<tr>';
+        row.forEach(function(v) {
+          html += '<td>' + (v === null ? '<em style="color:#999">NULL</em>' : escHtml(String(v))) + '</td>';
+        });
+        html += '</tr>';
+      });
+      html += '</tbody></table></div>';
+      var total = res.values.length;
+      html += '<p class="sql-rowcount">' + total + ' Zeile' + (total !== 1 ? 'n' : '') +
+              (total > cap ? ' (erste ' + cap + ' angezeigt)' : '') + '</p>';
+      output.innerHTML = html;
+    } catch(e) {
+      output.innerHTML = '<p class="sql-error">Fehler: ' + escHtml(e.message) + '</p>';
+    }
+  });
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 function mc_check(btn, widgetId) {
   var widget = document.getElementById(widgetId);
   if (widget.dataset.answered) return;
   widget.dataset.answered = '1';
-
   var isCorrect = btn.dataset.correct === '1';
   var buttons = widget.querySelectorAll('.mc-btn');
   buttons.forEach(function(b) { b.disabled = true; });
-
   var feedback = widget.querySelector('.mc-feedback');
-
   if (isCorrect) {
     btn.classList.add('mc-correct');
     feedback.className = 'mc-feedback show-correct';
     feedback.innerHTML = widget.querySelector('.mc-correct-text').innerHTML;
   } else {
     btn.classList.add('mc-wrong');
-    buttons.forEach(function(b) {
-      if (b.dataset.correct === '1') b.classList.add('mc-correct');
-    });
+    buttons.forEach(function(b) { if (b.dataset.correct === '1') b.classList.add('mc-correct'); });
     feedback.className = 'mc-feedback show-wrong';
     feedback.innerHTML = widget.querySelector('.mc-wrong-text').innerHTML;
   }
@@ -128,145 +208,410 @@ function mc_check(btn, widgetId) {
 </script>
 ```
 
-# Abfrage 1: Was macht dieser Code?
+# Einführung
 
-<span class="primm-badge badge-predict">Predict</span> Lesen Sie die folgende SQL-Abfrage genau und überlegen Sie, was sie zurückgibt, bevor Sie auf eine Antwort klicken.
+::: {.callout-note title="Aufgabe 1" icon=true}
 
 ```sql
 SELECT Name
-FROM welt
+FROM cia
 WHERE Region = 'Südamerika'
 ORDER BY Einwohner DESC
 LIMIT 1;
 ```
 
-::: {.callout-warning title="Aufgabe 1: Vorhersage" icon=true}
 Welches Land gibt diese Abfrage aus? Klicken Sie auf Ihre Antwort.
-:::
 
 ```{=html}
 <div class="mc-widget" id="q1">
   <div class="mc-options">
-    <button class="mc-btn" onclick="mc_check(this, 'q1')">Argentinien</button>
-    <button class="mc-btn" onclick="mc_check(this, 'q1')">Kolumbien</button>
-    <button class="mc-btn" data-correct="1" onclick="mc_check(this, 'q1')">Brasilien</button>
-    <button class="mc-btn" onclick="mc_check(this, 'q1')">China</button>
+    <button class="mc-btn" onclick="mc_check(this,'q1')">Argentinien</button>
+    <button class="mc-btn" onclick="mc_check(this,'q1')">Kolumbien</button>
+    <button class="mc-btn" data-correct="1" onclick="mc_check(this,'q1')">Brasilien</button>
+    <button class="mc-btn" onclick="mc_check(this,'q1')">China</button>
   </div>
   <div class="mc-feedback"></div>
   <div class="mc-correct-text mc-hidden">
-    <strong>✓ Richtig!</strong> <code>ORDER BY Einwohner DESC</code> sortiert die südamerikanischen Länder absteigend nach Einwohnerzahl (größter Wert zuerst). <code>LIMIT 1</code> liefert nur den ersten Eintrag – also das bevölkerungsreichste Land. Das ist <strong>Brasilien</strong> mit über 172 Millionen Einwohnern.
+    <strong>✓ Richtig!</strong> <code>ORDER BY Einwohner DESC</code> sortiert die südamerikanischen Länder absteigend (grösster Wert zuerst). <code>LIMIT 1</code> gibt nur den ersten Eintrag zurück – also das bevölkerungsreichste Land. Das ist <strong>Brasilien</strong> mit über 172 Millionen Einwohnern.
   </div>
   <div class="mc-wrong-text mc-hidden">
-    <strong>✗ Nicht ganz.</strong> Beachte: <code>ORDER BY Einwohner DESC</code> sortiert absteigend (größter Wert zuerst), und <code>LIMIT 1</code> wählt nur den allerersten Eintrag. Welches südamerikanische Land hat die meisten Einwohner?
+    <strong>✗ Nicht ganz.</strong> Beachte: <code>ORDER BY Einwohner DESC</code> sortiert absteigend und <code>LIMIT 1</code> wählt nur den ersten Eintrag. Welches südamerikanische Land hat die meisten Einwohner?
   </div>
 </div>
 ```
+:::
 
 ## Wie funktioniert die Abfrage?
 
-<span class="primm-badge badge-investigate">Investigate</span> Die Abfrage besteht aus vier Bausteinen:
+
+Die Abfrage besteht aus vier Bausteinen:
 
 | Klausel | Funktion |
 |---|---|
 | `WHERE Region = 'Südamerika'` | Filtert auf Länder der Region Südamerika |
 | `ORDER BY Einwohner DESC` | Sortiert absteigend nach Einwohnerzahl |
-| `LIMIT 1` | Gibt nur den ersten (= größten) Eintrag zurück |
+| `LIMIT 1` | Gibt nur den ersten (= grössten) Eintrag zurück |
 
-# Abfrage 2: Was filtert diese Bedingung?
 
-<span class="primm-badge badge-predict">Predict</span> Betrachten Sie nun eine zweite Abfrage mit einer anderen Filterbedingung:
+::: {.callout-note title="Aufgabe 2" icon=true}
+
+Betrachten Sie nun eine zweite Abfrage mit einer anderen Filterbedingung:
 
 ```sql
 SELECT Name, Einwohner
-FROM welt
+FROM cia
 WHERE Einwohner > 1000000;
 ```
 
-::: {.callout-warning title="Aufgabe 2: Vorhersage" icon=true}
 Was gibt diese Abfrage zurück? Klicken Sie auf Ihre Antwort.
-:::
 
 ```{=html}
 <div class="mc-widget" id="q2">
   <div class="mc-options">
-    <button class="mc-btn" onclick="mc_check(this, 'q2')">Alle Länder, sortiert nach Einwohnerzahl in absteigender Reihenfolge</button>
-    <button class="mc-btn" data-correct="1" onclick="mc_check(this, 'q2')">Alle Länder mit mehr als einer Million Einwohnern</button>
-    <button class="mc-btn" onclick="mc_check(this, 'q2')">Alle Länder mit weniger als einer Million Einwohnern</button>
-    <button class="mc-btn" onclick="mc_check(this, 'q2')">Alle Länder mit genau einer Million Einwohnern</button>
+    <button class="mc-btn" onclick="mc_check(this,'q2')">Alle Länder, sortiert nach Einwohnerzahl in absteigender Reihenfolge</button>
+    <button class="mc-btn" data-correct="1" onclick="mc_check(this,'q2')">Alle Länder mit mehr als einer Million Einwohnern</button>
+    <button class="mc-btn" onclick="mc_check(this,'q2')">Alle Länder mit weniger als einer Million Einwohnern</button>
+    <button class="mc-btn" onclick="mc_check(this,'q2')">Alle Länder mit genau einer Million Einwohnern</button>
   </div>
   <div class="mc-feedback"></div>
   <div class="mc-correct-text mc-hidden">
-    <strong>✓ Richtig!</strong> <code>WHERE Einwohner > 1000000</code> filtert alle Datensätze, bei denen die Einwohnerzahl den Wert 1 000 000 <em>überschreitet</em>. Die Abfrage gibt also alle Länder mit mehr als einer Million Einwohnern zurück – Name und Einwohnerzahl pro Zeile.
+    <strong>✓ Richtig!</strong> <code>WHERE Einwohner &gt; 1000000</code> filtert alle Datensätze, bei denen die Einwohnerzahl 1 000 000 <em>überschreitet</em>. Die Abfrage gibt Name und Einwohnerzahl aller solchen Länder zurück.
   </div>
   <div class="mc-wrong-text mc-hidden">
-    <strong>✗ Nicht ganz.</strong> Achte genau auf den Vergleichsoperator: <code>&gt;</code> bedeutet «größer als» – nicht «kleiner als», «gleich» oder eine Sortierung. Eine Sortierung würde eine <code>ORDER BY</code>-Klausel erfordern, die hier fehlt.
+    <strong>✗ Nicht ganz.</strong> Achte genau auf den Operator: <code>&gt;</code> bedeutet «grösser als». Eine Sortierung würde eine <code>ORDER BY</code>-Klausel erfordern – die hier fehlt.
   </div>
 </div>
 ```
+:::
 
-# Die Unterabfrage
 
-<span class="primm-badge badge-predict">Predict</span> Jetzt werden beide Konzepte kombiniert. Lesen Sie die folgende Abfrage sorgfältig – **was könnte sie zurückgeben?**
+::: {.callout-note title="Aufgabe 3" icon=true}
+
+Jetzt werden beide Konzepte kombiniert. Lesen Sie die folgende Abfrage sorgfältig – **was könnte sie zurückgeben?**
 
 ```sql
 SELECT Name
-FROM welt
+FROM cia
 WHERE Einwohner > (
     SELECT MAX(Einwohner)
-    FROM welt
+    FROM cia
     WHERE Region = 'Südamerika'
 );
 ```
 
-::: {.callout-warning title="Aufgabe 3: Vorhersage" icon=true}
-Was gibt diese Abfrage zurück? Überlegen Sie: Was berechnet der Teil in den Klammern? Was macht die äußere Abfrage mit diesem Wert?
-:::
-
 ```{=html}
 <div class="mc-widget" id="q3">
   <div class="mc-options">
-    <button class="mc-btn" data-correct="1" onclick="mc_check(this, 'q3')">Alle Länder, die mehr Einwohner haben als das bevölkerungsreichste Land Südamerikas</button>
-    <button class="mc-btn" onclick="mc_check(this, 'q3')">Das bevölkerungsreichste Land der gesamten Welt</button>
-    <button class="mc-btn" onclick="mc_check(this, 'q3')">Alle Länder Südamerikas, geordnet nach Einwohnerzahl</button>
-    <button class="mc-btn" onclick="mc_check(this, 'q3')">Alle Länder mit mehr Einwohnern als der weltweite Durchschnitt</button>
+    <button class="mc-btn" data-correct="1" onclick="mc_check(this,'q3')">Alle Länder, die mehr Einwohner haben als das bevölkerungsreichste Land Südamerikas</button>
+    <button class="mc-btn" onclick="mc_check(this,'q3')">Das bevölkerungsreichste Land der gesamten Welt</button>
+    <button class="mc-btn" onclick="mc_check(this,'q3')">Alle Länder Südamerikas, geordnet nach Einwohnerzahl</button>
+    <button class="mc-btn" onclick="mc_check(this,'q3')">Alle Länder mit mehr Einwohnern als der weltweite Durchschnitt</button>
   </div>
   <div class="mc-feedback"></div>
   <div class="mc-correct-text mc-hidden">
-    <strong>✓ Richtig!</strong> Die <em>innere Abfrage</em> (<code>SELECT MAX(Einwohner) … WHERE Region = 'Südamerika'</code>) berechnet die maximale Einwohnerzahl aller südamerikanischen Länder – das ist Brasilien mit 172 860 370. Die <em>äußere Abfrage</em> gibt dann alle Länder zurück, deren Einwohnerzahl diesen Wert übersteigt.
+    <strong>✓ Richtig!</strong> Die <em>innere Abfrage</em> berechnet <code>MAX(Einwohner)</code> für Südamerika – das ist Brasilien mit 172 860 370. Die <em>äussere Abfrage</em> gibt alle Länder zurück, deren Einwohnerzahl diesen Wert übersteigt.
   </div>
   <div class="mc-wrong-text mc-hidden">
-    <strong>✗ Nicht ganz.</strong> Teile die Abfrage in zwei Teile:<br>
-    1. <code>SELECT MAX(Einwohner) FROM welt WHERE Region = 'Südamerika'</code> – was liefert das?<br>
-    2. Die äußere Abfrage filtert alle Länder, bei denen <code>Einwohner &gt;</code> diesem Wert gilt.
+    <strong>✗ Nicht ganz.</strong> Teile die Abfrage in zwei Teile auf:<br>
+    1. <code>SELECT MAX(Einwohner) FROM cia WHERE Region = 'Südamerika'</code> – was liefert das?<br>
+    2. Die äussere Abfrage filtert alle Länder, bei denen <code>Einwohner &gt;</code> diesem Wert gilt.
   </div>
 </div>
 ```
-
-::: {.callout-tip title="Aufgabe 4: Ausführen" icon=true}
-<span class="primm-badge badge-run">Run</span> Kopieren Sie die obige Abfrage und fügen Sie sie auf [sql-tutorial.de → Aufgabe 1](https://sql-tutorial.de/home/uebungen.php?lektion=5) ein. Welche Länder erscheinen im Ergebnis? Stimmt das Ergebnis mit Ihrer Vorhersage überein?
-
-**Hinweis:** Auf sql-tutorial.de heißt die Tabelle möglicherweise anders – prüfen Sie die verfügbaren Tabellennamen auf der Seite.
 :::
+
+::: {.callout-note title="Aufgabe 4" icon=true}
+
+Führen Sie die Abfrage direkt hier aus. Stimmt das Ergebnis mit Ihrer Vorhersage überein?
+
+```{=html}
+<div class="sql-editor-widget" id="editor-a4">
+  <textarea class="sql-input" rows="7">SELECT Name
+    FROM cia
+WHERE Einwohner > (
+  SELECT MAX(Einwohner)
+    FROM cia
+    WHERE Region = 'Südamerika'
+);</textarea>
+  <div class="sql-controls">
+    <button class="sql-run-btn" onclick="runSQL('editor-a4')">▶ Ausführen</button>
+    <span class="sql-db-status">Datenbank wird geladen …</span>
+  </div>
+  <div class="sql-output"></div>
+</div>
+```
+
+::: {.callout-tip title="Musterlösung" collapse=true icon=false}
+```sql
+SELECT Name
+FROM cia
+WHERE Einwohner > (
+    SELECT MAX(Einwohner)
+    FROM cia
+    WHERE Region = 'Südamerika'
+);
+```
+:::
+
+:::
+
+
+
 
 # Abfrage anpassen
 
-<span class="primm-badge badge-modify">Modify</span>
+::: {.callout-note title="Aufgabe 5" icon=true}
 
-::: {.callout-note title="Aufgabe 5: Abfrage verändern" icon=true}
-Die bisherige Abfrage liefert alle Länder mit mehr Einwohnern als das **bevölkerungsreichste** Land Südamerikas.
+Ändern Sie die Abfrage so, dass stattdessen Länder ausgegeben werden, die mehr Einwohner haben als ein **durchschnittliches** Land Südamerikas.
 
-Ändern Sie die innere Abfrage so, dass stattdessen Länder ausgegeben werden, die mehr Einwohner haben als ein **durchschnittliches** Land Südamerikas.
-
-- Welche SQL-Funktion müssen Sie in der inneren Abfrage ersetzen?
-- Erwarten Sie mehr oder weniger Ergebnisse als vorher? Warum?
-
-Testen Sie Ihre angepasste Abfrage auf [sql-tutorial.de → Aufgabe 1](https://sql-tutorial.de/home/uebungen.php?lektion=5).
+```{=html}
+<div class="sql-editor-widget" id="editor-a5">
+  <textarea class="sql-input" rows="7">SELECT Name
+FROM cia
+WHERE Einwohner > (
+    SELECT MAX(Einwohner)
+    FROM cia
+    WHERE Region = 'Südamerika'
+);</textarea>
+  <div class="sql-controls">
+    <button class="sql-run-btn" onclick="runSQL('editor-a5')">▶ Ausführen</button>
+    <span class="sql-db-status">Datenbank wird geladen …</span>
+  </div>
+  <div class="sql-output"></div>
+</div>
+```
+::: {.callout-warning title="Erwartetes Ergebnis (erste Zeilen)" collapse=true icon=false}
+| Name |
+|---|
+| Afghanistan |
+| Algerien |
+| Argentinien |
+| Bangladesh |
+| Brasilien |
 :::
+
+
+::: {.callout-tip title="Musterlösung" collapse=true icon=false}
+```sql
+SELECT Name
+FROM cia
+WHERE Einwohner > (
+    SELECT AVG(Einwohner)
+    FROM cia
+    WHERE Region = 'Südamerika'
+);
+```
+:::
+:::
+
+
+
+
 
 # Weiterüben
 
-<span class="primm-badge badge-make">Make</span>
+::: {.callout-note title="Aufgabe 6" icon=true}
+Welche Länder haben mehr Einwohner als **ganz Europa zusammen**?
 
-::: {.callout-note title="Aufgaben 2–6: Unterabfragen selbst schreiben" icon=true}
-Lösen Sie nun auf [sql-tutorial.de – Lektion 5: Unterabfragen](https://sql-tutorial.de/home/uebungen.php?lektion=5) die **Aufgaben 2 bis 6**. Schreiben Sie Ihre SQL-Abfragen in Ihr Heft.
+```{=html}
+<div class="sql-editor-widget" id="editor-a6">
+  <textarea class="sql-input" rows="7">
+</textarea>
+  <div class="sql-controls">
+    <button class="sql-run-btn" onclick="runSQL('editor-a6')">▶ Ausführen</button>
+    <span class="sql-db-status">Datenbank wird geladen …</span>
+  </div>
+  <div class="sql-output"></div>
+</div>
+```
+
+::: {.callout-warning title="Erwartetes Ergebnis (erste Zeilen)" collapse=true icon=false}
+| Name | Einwohner |
+|---|---|
+| China | 1261832482 |
+| Indien | 1014003817 |
 :::
+
+
+::: {.callout-tip title="Musterlösung" collapse=true icon=false}
+```sql
+SELECT Name, Einwohner
+FROM cia
+WHERE Einwohner > (
+    SELECT SUM(Einwohner)
+    FROM cia
+    WHERE Region = 'Europa'
+)
+ORDER BY Einwohner DESC;
+```
+:::
+:::
+
+
+
+
+::: {.callout-note title="Aufgabe 7" icon=true}
+Zeige alle Länder Europas, die ein **höheres BIP pro Kopf** haben als Gross-Britannien.
+
+Das BIP pro Kopf berechnet sich als `BIP / Einwohner`.
+```{=html}
+<div class="sql-editor-widget" id="editor-a7">
+  <textarea class="sql-input" rows="7"></textarea>
+  <div class="sql-controls">
+    <button class="sql-run-btn" onclick="runSQL('editor-a7')">▶ Ausführen</button>
+    <span class="sql-db-status">Datenbank wird geladen …</span>
+  </div>
+  <div class="sql-output"></div>
+</div>
+```
+
+::: {.callout-warning title="Erwartetes Ergebnis (erste Zeilen)" collapse=true icon=false}
+| Name | BIP_pro_Kopf |
+|---|---|
+| Luxemburg | 33608 |
+| Monaco | 27450 |
+| Schweiz | 27126 |
+| Norwegen | 24837 |
+| Jersey | 24742 |
+:::
+
+
+::: {.callout-tip title="Musterlösung" collapse=true icon=false}
+```sql
+SELECT Name, BIP/Einwohner AS BIP_pro_Kopf
+FROM cia
+WHERE Region = 'Europa'
+  AND BIP/Einwohner > (
+    SELECT BIP/Einwohner
+    FROM cia
+    WHERE Name = 'Groß-Britannien'
+)
+ORDER BY BIP_pro_Kopf DESC;
+```
+:::
+:::
+
+
+
+
+::: {.callout-note title="Aufgabe 8" icon=true}
+Zeige alle Länder, die **derselben Region** angehören wie Armenien oder Iran.
+
+```{=html}
+<div class="sql-editor-widget" id="editor-a8">
+  <textarea class="sql-input" rows="7"></textarea>
+  <div class="sql-controls">
+    <button class="sql-run-btn" onclick="runSQL('editor-a8')">▶ Ausführen</button>
+    <span class="sql-db-status">Datenbank wird geladen …</span>
+  </div>
+  <div class="sql-output"></div>
+</div>
+```
+
+::: {.callout-warning title="Erwartetes Ergebnis (erste Zeilen)" collapse=true icon=false}
+| Name | Region |
+|---|---|
+| Bahrain | Mittlerer Osten |
+| Gazastreifen | Mittlerer Osten |
+| Irak | Mittlerer Osten |
+| Iran | Mittlerer Osten |
+| Israel | Mittlerer Osten |
+:::
+
+
+::: {.callout-tip title="Musterlösung" collapse=true icon=false}
+```sql
+SELECT Name, Region
+FROM cia
+WHERE Region IN (
+    SELECT Region
+    FROM cia
+    WHERE Name IN ('Armenien', 'Iran')
+)
+ORDER BY Region, Name;
+```
+:::
+:::
+
+
+
+
+
+::: {.callout-note title="Aufgabe 9" icon=true}
+Welche Länder Südostasiens haben eine **überdurchschnittliche Bevölkerungsdichte** (Einwohner pro km²)?
+
+```{=html}
+<div class="sql-editor-widget" id="editor-a9">
+  <textarea class="sql-input" rows="7"></textarea>
+  <div class="sql-controls">
+    <button class="sql-run-btn" onclick="runSQL('editor-a9')">▶ Ausführen</button>
+    <span class="sql-db-status">Datenbank wird geladen …</span>
+  </div>
+  <div class="sql-output"></div>
+</div>
+```
+
+::: {.callout-warning title="Erwartetes Ergebnis (erste Zeilen)" collapse=true icon=false}
+| Name | Dichte |
+|---|---|
+| Macau | 21218 |
+| Hong Kong | 6516 |
+| Singapur | 6416 |
+:::
+
+
+::: {.callout-tip title="Musterlösung" collapse=true icon=false}
+```sql
+SELECT Name, Einwohner/"Fläche" AS Dichte
+FROM cia
+WHERE Region = 'Südostasien'
+  AND Einwohner/"Fläche" > (
+    SELECT AVG(Einwohner/"Fläche")
+    FROM cia
+    WHERE Region = 'Südostasien'
+)
+ORDER BY Dichte DESC;
+```
+:::
+:::
+
+
+
+
+::: {.callout-note title="Aufgabe 10" icon=true}
+Welche Länder haben eine Einwohnerzahl, die **grösser als die von Kenia** und gleichzeitig **kleiner als die von Kanada** ist?
+
+```{=html}
+<div class="sql-editor-widget" id="editor-a10">
+  <textarea class="sql-input" rows="7"></textarea>
+  <div class="sql-controls">
+    <button class="sql-run-btn" onclick="runSQL('editor-a10')">▶ Ausführen</button>
+    <span class="sql-db-status">Datenbank wird geladen …</span>
+  </div>
+  <div class="sql-output"></div>
+</div>
+```
+
+::: {.callout-warning title="Erwartetes Ergebnis (erste Zeilen)" collapse=true icon=false}
+| Name | Einwohner |
+|---|---|
+| Algerien | 31193917 |
+:::
+
+::: {.callout-tip title="Musterlösung" collapse=true icon=false}
+```sql
+SELECT Name, Einwohner
+FROM cia
+WHERE Einwohner > (
+    SELECT Einwohner FROM cia WHERE Name = 'Kenia'
+)
+  AND Einwohner < (
+    SELECT Einwohner FROM cia WHERE Name = 'Kanada'
+)
+ORDER BY Einwohner;
+```
+:::
+:::
+
+
+
