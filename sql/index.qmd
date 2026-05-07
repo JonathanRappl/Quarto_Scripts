@@ -512,6 +512,24 @@ Formuliere selbst eine Fragestellung in Alltagssprache, für die man eine korrek
 
 
 
+::: {.callout-note title="Aufgabe 9" icon=true}
+Definiere für dich selbst, was es bedeutet, ein **«attraktives»** Land zu sein. Schreibe anschliessend eine SQL-Abfrage, die dir die attraktivsten Länder nach deiner Definition ausgibt. Halte in einem Satz fest, was dein Kriterium ist.
+
+```{=html}
+<div class="sql-editor-widget" id="editor-a9">
+  <textarea class="sql-input" rows="7"></textarea>
+  <div class="sql-controls">
+    <button class="sql-run-btn" onclick="runSQL('editor-a9')">▶ Ausführen</button>
+    <span class="sql-db-status">Datenbank wird geladen …</span>
+  </div>
+  <div class="sql-output"></div>
+</div>
+```
+:::
+
+
+
+
 
 
 <!-- 
