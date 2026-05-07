@@ -495,6 +495,27 @@ ORDER BY BIP_pro_Kopf DESC;
 
 
 ::: {.callout-note title="Aufgabe 8" icon=true}
+Formuliere selbst eine Fragestellung in Alltagssprache, für die man eine korrekte SQL-Abfrage mit einer Unterabfrage schreiben kann – die aber **kein Ergebnis** zurückgibt. Schreibe anschliessend die passende Abfrage, führe sie aus, und erkläre in einem Satz, warum das Ergebnis leer ist.
+
+```{=html}
+<div class="sql-editor-widget" id="editor-a8">
+  <textarea class="sql-input" rows="7"></textarea>
+  <div class="sql-controls">
+    <button class="sql-run-btn" onclick="runSQL('editor-a8')">▶ Ausführen</button>
+    <span class="sql-db-status">Datenbank wird geladen …</span>
+  </div>
+  <div class="sql-output"></div>
+</div>
+```
+:::
+
+
+
+
+
+
+<!-- 
+::: {.callout-note title="Aufgabe 8" icon=true}
 Zeige alle Länder, die **derselben Region** angehören wie Armenien oder Iran.
 
 ```{=html}
@@ -611,7 +632,7 @@ WHERE Einwohner > (
 ORDER BY Einwohner;
 ```
 :::
-:::
+::: -->
 
 
 
