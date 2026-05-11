@@ -155,7 +155,7 @@ Die gute Nachricht: Die häufigsten Angriffe lassen sich mit grundlegenden Massn
 
 Der Webcomic XKCD hat die häufigste Schwachstelle in Sicherheitssystemen treffend illustriert:
 
-![XKCD #538: «Security» (Quelle: xkcd.com/538, CC BY-NC 2.5)](https://imgs.xkcd.com/comics/security.png){fig-align="center" width=50%}
+![XKCD #538: «Security» (Quelle: xkcd.com/538, CC BY-NC 2.5)](https://imgs.xkcd.com/comics/security.png){fig-align="center" width=100%}
 
 ::: {.callout-note icon=false}
 ## Aufgabe 5 — Comic erklären
