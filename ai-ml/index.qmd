@@ -264,5 +264,82 @@ Am Ende dieses Kapitels sollen Sie Folgendes vorliegen haben:
 - Schriftliche Antworten auf die Konzeptfragen in Aufgabe 3.
 - Eine Liste von mindestens 3 Grenzsituationen und eine Erklärung, warum das Modell dort versagt.
 
+## Auswertung: Was die Klasse beobachtet hat
+
+Auf den folgenden Seiten sehen Sie, was Schülerinnen und Schüler aus verschiedenen Klassen beim Experimentieren mit Teachable Machine beobachtet haben – und wie ihre Beobachtungen mit Konzepten aus der modernen ML-Forschung zusammenhängen.
+
+### Fehlerraten im Überblick
+
+Die Fehlerraten lagen je nach Klasse und Modell in einem breiten Bereich:
+
+| Klasse | Bereich der Fehlerraten | Häufigster Wert |
+|--------|------------------------|-----------------|
+| 28Mc | 0 % – 56 % | 30–40 % |
+| 28Mb | 0 % – 50 % | 10–40 % |
+| 28Md | 0 % – 70 % | 20–50 % |
+
+Nach dem Verbessern der Modelle sanken die Fehlerraten bei fast allen, die eine Strategie angewendet hatten.
+
+
+### Was die SuS beobachtet haben – und wie es in der ML-Forschung heisst
+
+Viele der Probleme, die Sie selbst entdeckt haben, sind aktive Forschungsfelder. Die folgende Tabelle zeigt den Zusammenhang:
+
+| Beobachtung | ML-Begriff | Erklärung |
+|-------------|------------|-----------|
+| «Das Modell erkennt den Hintergrund, nicht das Objekt» | **Spurious Correlation / Background Bias** | Das Modell lernt Merkmale, die mit dem Zielobjekt *korrelieren*, aber das Objekt selbst nicht beschreiben. Der Hintergrund ist ein klassisches Beispiel. |
+| «Bei einem anderen Winkel funktioniert es nicht mehr» | **Mangelnde Datenvielfalt** | Das Modell hat nur eine Perspektive gelernt. Es fehlt *Data Diversity*. |
+| «Die Farben sind zu ähnlich» | **Geringe Interklassen-Varianz** | Wenn sich zwei Klassen optisch stark ähneln, hat das Modell wenig Signal zur Unterscheidung. |
+| «Die Hand wird als Klassenmerkmal erkannt, nicht das Objekt» | **Konfundierender Faktor** | Ein Merkmal (die Hand), das nicht zur Klasse gehört, wird als Klassenmerkmal gelernt, weil es in allen Trainingsbildern einer Klasse vorkommt. |
+| «Aus grosser Distanz funktioniert es nicht» | **Fehlende Skaleninvarianz** | Das Modell wurde nicht mit Objekten in verschiedenen Grössen trainiert. |
+| «Wenn ich nichts halte, versucht es trotzdem etwas zuzuordnen» | **Closed-Set Classification** | Das Modell kann immer nur eine der gelernten Klassen ausgeben – es gibt kein «Nichts davon». In der ML-Praxis löst man das mit einer *Rejection Class* oder *Out-of-Distribution Detection*. |
+| «Mit wenigen Bildern war es sehr ungenau» | **Data Scarcity** | Zu wenige Beispiele bedeutet, dass das Modell keine robusten Merkmale lernen kann. |
+| «Wenn ein Teil verdeckt ist, erkennt es das Objekt nicht» | **Okklusionssensitivität** | Das Modell hat nur vollständige Objekte gesehen und kennt partielle Ansichten nicht. |
+| «Bei anderem Licht funktioniert es schlechter» | **Domain Shift** | Die Bedingungen beim Testen weichen von den Trainingsbedingungen ab. |
+| «Ähnliche Objekte einer anderen Klasse werden fälschlich erkannt» | **False Positive / Klassenüberschneidung** | Das Modell generalisiert zu stark und überträgt Klassen auf visuell ähnliche, aber andere Objekte. |
+
+### Was geholfen hat – und warum
+
+| Strategie | ML-Begriff | Wirkung |
+|-----------|------------|---------|
+| Mehr Bilder aufnehmen | **Erhöhung der Trainingsdatenmenge** | Hilft – aber **nur**, wenn die neuen Bilder auch mehr Vielfalt bringen. Mehr Bilder unter gleichen Bedingungen helfen kaum. |
+| Bilder aus verschiedenen Winkeln aufnehmen | **Data Augmentation / Datenvielfalt** | Direkte Verbesserung der Robustheit gegenüber Perspektivwechseln. |
+| Verschiedene Hintergründe verwenden | **Hintergrundvariation** | Reduziert Background Bias – das Modell lernt, sich auf das Objekt zu fokussieren. |
+| Einheitlichen Hintergrund verwenden | **Kontrollierte Trainingsbedingungen** | Senkt die Fehlerrate unter gleichen Bedingungen stark – erhöht aber die Empfindlichkeit gegenüber anderem Hintergrund. Tradeoff! |
+| Klasse «Nichts» / Fehlersituationen hinzufügen | **Rejection Class / Negative Class** | Konkrete ML-Lösung für das Closed-Set-Problem. |
+| Objekt auf dem Tisch statt in der Hand trainieren | **Reduktion konfundierender Merkmale** | Entfernt die Hand als störenden Faktor aus dem Trainingssignal. |
+
+### Kernaussagen
+
+::: {.callout-important icon=false}
+## Das Modell lernt, was in den Bildern vorhanden ist – nicht, was wir meinen
+
+Hintergrund, Hand, Licht: alles kann als Klassenmerkmal gelernt werden. Das Modell «weiss» nicht, was ein Objekt ist – es erkennt Muster.
+:::
+
+::: {.callout-important icon=false}
+## Mehr Daten helfen nur, wenn sie vielfältiger sind
+
+Wiederholte Bilder unter gleichen Bedingungen bringen wenig. Abwechslung in Winkel, Licht, Hintergrund und Position ist entscheidend.
+:::
+
+::: {.callout-important icon=false}
+## Kein Modell kann sagen: «Das kenne ich nicht»
+
+Solange keine Ablehnungsklasse trainiert wird, zwingt das Modell jeden Input in eine der gelernten Klassen – auch wenn der Input völlig unbekannt ist.
+:::
+
+::: {.callout-important icon=false}
+## Die Bedingungen beim Testen sollten den Trainingsbedingungen ähneln
+
+Wenn nicht, spricht man von *Domain Shift* – einem der häufigsten Probleme in realen ML-Systemen.
+:::
+
+::: {.callout-tip icon=false}
+## Das haben Sie selbst entdeckt
+
+Background Bias, Confounding Variables, Closed-Set Classification – das sind aktive Forschungsfelder der KI. Viele von Ihnen sind beim Experimentieren auf Probleme gestossen, über die Forscherinnen und Forscher seit Jahrzehnten nachdenken.
+:::
+
 
 {{< include linear-regression.qmd >}}
