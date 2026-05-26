@@ -21,3 +21,5 @@ Thumbs.db
 *.swo
 
 **/*.quarto_ipynb
+
+*.txt
