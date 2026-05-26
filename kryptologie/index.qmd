@@ -694,9 +694,9 @@ Setzen Sie die gefundenen Schlüsselbuchstaben zusammen und überprüfen Sie das
 
 :::
 
-<!-- {{< include modulare-arithmetik.qmd >}} -->
+{{< include modulare-arithmetik.qmd >}}
 
-<!-- # Das Schlüsselverteilungsproblem
+# Das Schlüsselverteilungsproblem
 
 Alle bisher betrachteten Verfahren — Caesar, Vigenère, monoalphabetische Substitution — sind **symmetrisch**: Alice und Bob müssen denselben Schlüssel verwenden. Das wirft eine fundamentale Frage auf:
 
@@ -1049,4 +1049,4 @@ a) Charlie beobachtet $p = 11$, $g = 2$, sowie die Werte $A$ und $B$ aus Aufgabe
 b) In der Praxis verwendet man Primzahlen der Grössenordnung $p \approx 2^{2048}$ (über 600 Stellen). Warum macht das den Angriff in der Praxis unmöglich, obwohl das Prinzip dasselbe bleibt?
 
 c) Diffie-Hellman löst das Schlüsselverteilungsproblem — aber es löst **nicht** alle Sicherheitsprobleme. Was passiert, wenn Charlie den Kanal aktiv manipuliert und sich gegenüber Alice als Bob ausgibt (und gegenüber Bob als Alice)? Diesen Angriff nennt man **Man-in-the-Middle-Angriff**. Wie könnte man ihn verhindern?
-::: -->
+:::
