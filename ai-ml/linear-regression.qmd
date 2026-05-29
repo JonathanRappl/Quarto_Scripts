@@ -148,7 +148,24 @@ Zwei weitere Personen haben Linien vorgeschlagen:
 x = [1.0, 2.0, 2.5, 3.0, 4.0, 5.5, 6.0, 7.5, 8.0, 9.5]
 y = [9.2, 12.3, 15.2, 15.9, 21.0, 24.8, 29.0, 32.9, 35.7, 40.2]
 
-# Dein Code hier
+def get_predictions(m, b):
+    y_hat = []
+
+    # TODO: Die Liste y_hat mit den Vorhersagen füllen
+
+    return y_hat
+
+def mse(y, y_hat):
+    n = len(y)
+    summe = 0
+
+    # TODO: Die Summe der quadrierten Fehler berechnen
+
+    return summe / n
+
+print("MSE für y = 3x + 6:")
+print(mse(y, get_predictions(3, 6)))
+# TODO: MSE für die zwei anderen Linien hier berechnen und ausgeben
 ```
 
 Notiere:
@@ -160,6 +177,37 @@ $$\text{MSE}_B = \underline{\hspace{3cm}} \qquad \text{MSE}_C = \underline{\hspa
 ## Aufgabe 6 — Beste Linie mit Python finden
 
 Versuche mithilfe eines Python-Programms die beste Linie zu finden, also eine Gerade $\hat{y} = mx + b$, die den MSE für die obigen Fahrrad-Daten *minimiert*. Starte mit sinnvollen Werten für $m$ und $b$ und verbessere sie.
+
+
+```python
+x = [1.0, 2.0, 2.5, 3.0, 4.0, 5.5, 6.0, 7.5, 8.0, 9.5]
+y = [9.2, 12.3, 15.2, 15.9, 21.0, 24.8, 29.0, 32.9, 35.7, 40.2]
+
+def get_predictions(m, b):
+    y_hat = []
+    # code aus Aufgabe 5 hier einfügen
+    return y_hat
+
+def mse(y, y_hat):
+    n = len(y)
+    summe = 0
+    # code aus Aufgabe 5 hier einfügen
+    return summe / n
+
+m = 3
+b = 6
+mse = mse(y, get_predictions(m, b))
+while True:
+    print(f"m = {m_start}, b = {b_start}, MSE = {mse(y, get_predictions(m_start, b_start))}")
+    m_neu += 0.1
+    # TODO: Neuen MSE berechnen und mit vorherigem vergleichen.
+    #       Wenn der neue MSE besser ist, aktualisiere m.
+    
+    # TODO: Das gleiche für m in die andere Richtung, sowie für b in beide Richtungen.
+
+    # Hinweis: Mit Ctrl+C kannst du die Endlosschleife jederzeit unterbrechen.
+
+```
 
 Beste gefundene Werte: $m =$ \_\_\_\_\_, $b =$ \_\_\_\_\_ $\quad$ mit MSE $=$ \_\_\_\_\_
 
