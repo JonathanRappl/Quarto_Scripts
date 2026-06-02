@@ -171,6 +171,43 @@ print(mse(y, get_predictions(3, 6)))
 Notiere:
 
 $$\text{MSE}_B = \underline{\hspace{3cm}} \qquad \text{MSE}_C = \underline{\hspace{3cm}}$$
+
+
+::: {.callout-tip icon=false collapse="true"}
+## Lösung
+```python
+x = [1.0, 2.0, 2.5, 3.0, 4.0, 5.5, 6.0, 7.5, 8.0, 9.5]
+y = [9.2, 12.3, 15.2, 15.9, 21.0, 24.8, 29.0, 32.9, 35.7, 40.2]
+
+def get_predictions(m, b):
+    y_hat = []
+
+    for x_i in x:
+        y_hat.append(m * x_i + b)
+
+    return y_hat
+
+def mse(y, y_hat):
+    n = len(y)
+    summe = 0
+
+    for i in range(n):
+        r_i = y[i] - y_hat[i]
+        summe += r_i ** 2
+
+    return summe / n
+
+print("MSE für y = 3x + 6:")
+print(mse(y, get_predictions(3, 6)))
+# TODO: MSE für die zwei anderen Linien hier berechnen und ausgeben
+print("MSE für y = 3.5x + 5:")
+print(mse(y, get_predictions(3.5, 5)))
+print("MSE für y = 4x + 4.5:")
+print(mse(y, get_predictions(4, 4.5)))
+```
+
+:::
+
 :::
 
 ::: {.callout-tip icon=false}
