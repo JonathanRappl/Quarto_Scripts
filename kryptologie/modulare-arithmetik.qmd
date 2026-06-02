@@ -124,7 +124,8 @@ Diskutieren Sie in Zweiergruppen:
 a) Können sich Alice und Bob trotzdem auf einen gemeinsamen geheimen Schlüssel einigen, den Charlie *nicht* kennt?
 b) Skizzieren Sie eine Idee — oder begründen Sie, warum es Ihrer Meinung nach unmöglich ist.
 :::
-<!--  
+
+
 ## Die Idee: Mischen statt Tauschen
 
 Die Lösung wirkt auf den ersten Blick paradox. Eine Analogie mit **Farben** macht sie greifbar:
@@ -197,4 +198,5 @@ a) Charlie kennt $a$ und $b$ nicht. Bestimmen Sie durch **Ausprobieren** ($5^1, 
 b) Wie viele Versuche mussten Sie maximal durchführen? Warum war der Angriff hier so einfach?
 c) In der Praxis hat $p$ mehrere **hundert Stellen**. Erklären Sie, warum Charlies Methode dann scheitert, obwohl Alice und Bob $s$ weiterhin mühelos berechnen können.
 :::
--->
+
+
