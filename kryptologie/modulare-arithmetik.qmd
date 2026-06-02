@@ -112,3 +112,89 @@ $$
 $$
 
 Solche Funktionen — leicht in eine Richtung, praktisch unmöglich rückwärts — nennt man **Einwegfunktionen** (*one-way functions*). Sie sind das Herzstück der modernen Kryptographie.
+
+# Schlüsselaustauschproblem
+Alle bisherigen Verfahren — Caesar, Vigenère und Co. — haben ein gemeinsames Problem: Alice und Bob müssen **denselben geheimen Schlüssel** $k$ besitzen. Doch wie einigen sie sich darauf, wenn Charlie von Anfang an jede Nachricht mitliest?
+
+::: {.callout-note title="Aufgabe 13: Das Schlüsselaustausch-Problem" icon=true}
+Alice und Bob haben sich noch nie getroffen. Sie können ausschliesslich über einen Kanal kommunizieren, den Charlie **vollständig mithört**. Ein Bote oder ein geheimes Treffen sind nicht möglich.
+
+Diskutieren Sie in Zweiergruppen:
+
+a) Können sich Alice und Bob trotzdem auf einen gemeinsamen geheimen Schlüssel einigen, den Charlie *nicht* kennt?
+b) Skizzieren Sie eine Idee — oder begründen Sie, warum es Ihrer Meinung nach unmöglich ist.
+:::
+<!--  
+## Die Idee: Mischen statt Tauschen
+
+Die Lösung wirkt auf den ersten Blick paradox. Eine Analogie mit **Farben** macht sie greifbar:
+
+1. Alice und Bob einigen sich **öffentlich** auf eine gemeinsame Grundfarbe (z.B. Gelb). Charlie kennt sie.
+2. Jeder mischt **heimlich** eine eigene Geheimfarbe dazu und behält diese für sich.
+3. Sie schicken sich die **Mischungen** zu. Charlie sieht die Mischungen — kann aber aus einer Mischung die einzelnen Anteile **nicht wieder heraustrennen**.
+4. Jeder gibt nun seine eigene Geheimfarbe zur *empfangenen* Mischung dazu.
+
+| | Alice | Charlie sieht | Bob |
+|:--|:--|:--:|:--|
+| Grundfarbe (öffentlich) | Gelb | Gelb | Gelb |
+| + Geheimfarbe | + Rot | — | + Blau |
+| gesendete Mischung | Orange → | Orange, Grün | ← Grün |
+| + eigene Geheimfarbe | Grün + Rot | — | Orange + Blau |
+| **Ergebnis** | **Braun** | ? | **Braun** |
+
+Am Ende besitzen beide dieselbe Mischung (Gelb + Rot + Blau = Braun), ohne sie je verschickt zu haben. Charlie kennt nur Gelb, Orange und Grün — und das Auftrennen einer Farbmischung ist praktisch unmöglich.
+
+::: {.callout-tip title="Der Trick" icon=true}
+Das «Mischen» ist eine **Einwegfunktion**: leicht in eine Richtung (mischen), praktisch unmöglich rückwärts (entmischen). Genau diese Rolle übernimmt in der Mathematik die Potenz $g^x \bmod p$ — der [diskrete Logarithmus](#einwegfunktionen-und-der-diskrete-logarithmus) ist die «Entmischung».
+:::
+
+## Vom Mischen zur Mathematik
+
+Wir ersetzen die Farben durch Zahlen. Öffentlich bekannt sind eine Primzahl $p$ und eine primitive Wurzel $g$ (das «Gelb»). Das «Mischen einer Geheimfarbe» wird zur modularen Exponentiation $g^x \bmod p$.
+
+Der **Diffie-Hellman-Schlüsselaustausch** läuft dann so ab:
+
+| Schritt | Alice | öffentlicher Kanal | Bob |
+|:--:|:--|:--:|:--|
+| 1 | wählt geheim $a$ | $p,\ g$ bekannt | wählt geheim $b$ |
+| 2 | $A = g^{a} \bmod p$ | $\;A \longrightarrow\;$ | |
+| 3 | | $\;\longleftarrow B\;$ | $B = g^{b} \bmod p$ |
+| 4 | $s = B^{a} \bmod p$ | | $s = A^{b} \bmod p$ |
+
+Beide berechnen denselben Wert, denn
+
+$$
+s = B^{a} = (g^{b})^{a} = g^{ab} = (g^{a})^{b} = A^{b} \pmod{p}.
+$$
+
+Charlie kennt nur $p$, $g$, $A$ und $B$. Um $s$ zu berechnen, bräuchte er $a$ oder $b$ — müsste also aus $A = g^a \bmod p$ den Exponenten $a$ bestimmen. Das ist das **Problem des diskreten Logarithmus** und für grosse $p$ praktisch unlösbar.
+
+::: {.callout-note title="Aufgabe 14: Selbst durchführen" icon=true}
+Öffentlich vereinbart: $p = 23$ und $g = 5$.
+
+**Teil 1 — Beispiel nachvollziehen.** Alice wählt $a = 4$, Bob wählt $b = 3$. Vervollständigen Sie:
+
+a) $A = 5^{4} \bmod 23 = \underline{\phantom{00}}$
+b) $B = 5^{3} \bmod 23 = \underline{\phantom{00}}$
+c) Alice rechnet $s = B^{4} \bmod 23 = \underline{\phantom{00}}$
+d) Bob rechnet $s = A^{3} \bmod 23 = \underline{\phantom{00}}$
+
+Erhalten beide denselben Wert $s$?
+
+**Teil 2 — In Zweiergruppen.** Einigen Sie sich auf die öffentlichen Werte $p = 23$, $g = 5$. Jede Person wählt **heimlich** eine eigene Zahl ($a$ bzw. $b$ zwischen $1$ und $22$), tauscht nur $A$ bzw. $B$ aus und berechnet daraus den gemeinsamen Schlüssel $s$. Vergleichen Sie am Ende: Stimmt Ihr $s$ überein?
+
+*Tipp: Rechnen Sie wie bei der [modularen Exponentiation](#rechengesetze-modulo-n) schrittweise und reduzieren Sie nach jedem Schritt modulo 23.*
+:::
+
+::: {.callout-warning title="Aufgabe 15: Charlie greift an" icon=true}
+Charlie hat den ganzen Austausch mit $p = 23$ und $g = 5$ belauscht und kennt:
+
+$$
+A = 5^{a} \bmod 23 = 19, \qquad B = 5^{b} \bmod 23 = 8.
+$$
+
+a) Charlie kennt $a$ und $b$ nicht. Bestimmen Sie durch **Ausprobieren** ($5^1, 5^2, 5^3, \ldots \bmod 23$) ein passendes $a$ und damit den geheimen Schlüssel $s$.
+b) Wie viele Versuche mussten Sie maximal durchführen? Warum war der Angriff hier so einfach?
+c) In der Praxis hat $p$ mehrere **hundert Stellen**. Erklären Sie, warum Charlies Methode dann scheitert, obwohl Alice und Bob $s$ weiterhin mühelos berechnen können.
+:::
+-->
