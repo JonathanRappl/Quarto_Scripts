@@ -215,3 +215,74 @@ Zeichne die gefundene Linie in das folgende Koordinatensystem ein:
 
 ![Koordinatensystem: Strecke (km) → Zeit (Minuten)](figures/koordinatensystem_fahrrad.png){width=100%}
 :::
+
+# Vom Linienschätzen zu ChatGPT
+
+## Was du gerade gemacht hast
+
+In Aufgabe 6 hast du eine Linie $\hat{y} = m \cdot x + b$ gesucht, die den MSE möglichst klein macht. Dein Vorgehen war:
+
+1. Mit **Startwerten** beginnen ($m = 3$, $b = 6$).
+2. Einen Parameter ein bisschen verändern (z. B. $m$ um $0.1$ erhöhen).
+3. Schauen, ob der MSE dadurch **kleiner** wird.
+4. Wenn ja: Änderung behalten. Wenn nein: andere Richtung probieren.
+5. Wiederholen, bis es nicht mehr besser wird.
+
+Dieses Verfahren hat einen Namen: **Gradient Descent** (Gradientenabstieg). Es ist das Herzstück davon, wie *praktisch alle* modernen KI-Modelle lernen — auch ChatGPT.
+
+## Lesen: Wie grosse Modelle «wachsen»
+
+Im Buch *If Anyone Builds It, Everyone Dies* (Yudkowsky & Soares, 2025) beschreibt **Kapitel 2 («Grown, Not Crafted»)**, wie ein grosses Sprachmodell (LLM) trainiert wird.
+
+::: {.callout-note icon=false}
+## Leseauftrag (20 Minuten)
+
+Lies den Anfang von Kapitel 2.
+
+Achte beim Lesen auf diese vier Wörter und unterstreiche sie im Text:
+
+- **parameter** / **weights** (die Zahlen im Modell)
+- **architecture** (wie Eingabe und Zahlen verrechnet werden)
+- **gradient descent** (wie die Zahlen verbessert werden)
+- **training data** (woraus gelernt wird)
+:::
+
+Die Autoren fassen das Ergebnis so zusammen:
+
+> «An AI is a pile of billions of gradient-descended numbers. Nobody understands *how* those numbers make these AIs talk.»
+
+
+::: {.callout-tip icon=false}
+## Aufgabe 7
+
+Im Buch geht es um Billionen Zahlen. Bei dir waren es **genau zwei**: $m$ und $b$. Das Verfahren ist aber dasselbe. Vervollständige die Tabelle:
+
+| Im Buch (grosses Sprachmodell) | Bei dir (lineare Regression) |
+|---|---|
+| Eingabe wird in Zahlen umgewandelt | $x$ (z. B. Strecke in km) |
+| Billionen **Parameter** (weights), zufällig gestartet | \_\_\_\_\_\_\_\_\_\_\_\_ |
+| **Architektur**: hunderte Milliarden Operationen | \_\_\_\_\_\_\_\_\_\_\_\_ |
+| Output = Vorhersage des nächsten Buchstabens | \_\_\_\_\_\_\_\_\_\_\_\_ |
+| messen, «wie falsch» die Vorhersage ist | \_\_\_\_\_\_\_\_\_\_\_\_ |
+| **Gradient Descent**: jedes Gewicht minimal ändern und behalten, wenn es besser wird | \_\_\_\_\_\_\_\_\_\_\_\_ |
+| Trillionen Wörter, Monate Rechenzeit, Millionen Dollar | \_\_\_\_\_\_\_\_\_\_\_\_ |
+:::
+
+<!-- ::: {.callout-important icon=false}
+## Gleiche Idee, andere Grösse
+
+Du hast **2 Zahlen von Hand** optimiert. Ein Sprachmodell optimiert **Billionen** — automatisch, über Monate. Aber der Trick ist identisch: Zahlen leicht verschieben, den Fehler messen, in die bessere Richtung gehen.
+:::
+
+::: {.callout-important icon=false}
+## «Grown, not crafted» — gezüchtet, nicht gebaut
+
+Bei deiner Linie weisst du **genau**, was die Zahlen bedeuten: $m$ ist die Steigung, $b$ der Achsenabschnitt. Bei Billionen Zahlen weiss das **niemand** mehr. Deshalb sagen die Autoren: Niemand *baut* die Bedeutung in ein grosses Modell hinein — Gradient Descent *stolpert* hinein. Das Modell wird gezüchtet, nicht konstruiert.
+::: 
+
+## Leitfragen
+
+1. Warum ist eine Linie mit 2 Parametern leicht zu verstehen, ein Modell mit Billionen Parametern aber nicht?
+2. Im Buch heisst es, niemand verstehe, *wie* die Zahlen das Modell zum Sprechen bringen. Bei deiner Linie verstehst du es. Wo genau geht dieses Verständnis verloren, wenn man von 2 auf Billionen Zahlen geht?
+3. Du hast in Aufgabe 6 mit Startwerten begonnen und sie verbessert. Was wäre bei deinem Programm das Gegenstück zu den «Trillionen Wörtern Trainingsdaten» aus dem Buch?
+-->
