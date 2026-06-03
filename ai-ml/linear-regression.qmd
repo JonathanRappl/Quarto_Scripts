@@ -233,13 +233,13 @@ def mse(y, y_hat):
 
 m = 3
 b = 6
-mse = mse(y, get_predictions(m, b))
+error = mse(y, get_predictions(m, b))
 while True:
-    print(f"m = {m_start}, b = {b_start}, MSE = {mse(y, get_predictions(m_start, b_start))}")
-    m_neu += 0.1
+    print(f"m = {m}, b = {b}, MSE = {mse(y, get_predictions(m, b))}")
+    m_neu = m + 0.1
     # TODO: Neuen MSE berechnen und mit vorherigem vergleichen.
     #       Wenn der neue MSE besser ist, aktualisiere m.
-    
+
     # TODO: Das gleiche für m in die andere Richtung, sowie für b in beide Richtungen.
 
     # Hinweis: Mit Ctrl+C kannst du die Endlosschleife jederzeit unterbrechen.
