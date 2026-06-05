@@ -271,6 +271,11 @@ Dieses Verfahren hat einen Namen: **Gradient Descent** (Gradientenabstieg). Es i
 
 Im Buch *If Anyone Builds It, Everyone Dies* (Yudkowsky & Soares, 2025) beschreibt **Kapitel 2 («Grown, Not Crafted»)**, wie ein grosses Sprachmodell (LLM) trainiert wird.
 
+| Sprache | Download |
+| - | - |
+| Englisch | [PDF](materials/IABIED_Chap2_excerpt_small.pdf) |
+| Deutsch | [PDF](materials/IABIED_Chap2_excerpt_small_de.pdf) |
+
 ::: {.callout-note icon=false}
 ## Leseauftrag (20 Minuten)
 
