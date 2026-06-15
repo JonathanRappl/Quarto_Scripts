@@ -698,3 +698,6 @@ Setzen Sie die gefundenen Schlüsselbuchstaben zusammen und überprüfen Sie das
 
 {{< include xor-stromchiffre.qmd >}}
 
+{{< include mitm.qmd >}}
+
+
