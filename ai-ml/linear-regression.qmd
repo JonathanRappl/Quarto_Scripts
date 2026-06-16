@@ -251,6 +251,59 @@ Beste gefundene Werte: $m =$ \_\_\_\_\_, $b =$ \_\_\_\_\_ $\quad$ mit MSE $=$ \_
 Zeichne die gefundene Linie in das folgende Koordinatensystem ein:
 
 ![Koordinatensystem: Strecke (km) → Zeit (Minuten)](figures/koordinatensystem_fahrrad.png){width=100%}
+
+::: {.callout-tip icon=false collapse="true"}
+## Lösung
+```python
+x = [1.0, 2.0, 2.5, 3.0, 4.0, 5.5, 6.0, 7.5, 8.0, 9.5]
+y = [9.2, 12.3, 15.2, 15.9, 21.0, 24.8, 29.0, 32.9, 35.7, 40.2]
+
+def get_predictions(m, b):
+    y_hat = []
+    for x_i in x:
+        y_hat.append(m * x_i + b)
+    return y_hat
+
+def mse(y, y_hat):
+    n = len(y)
+    summe = 0
+    for i in range(n):
+        r_i = y[i] - y_hat[i]
+        summe += r_i ** 2
+    return summe / n
+
+m = 3
+b = 6
+schritt = 0.1
+error = mse(y, get_predictions(m, b))
+
+while True:
+    print(f"m = {m}, b = {b}, MSE = {error}")
+    verbessert = False
+
+    # m in beide Richtungen probieren
+    for m_neu in [m + schritt, m - schritt]:
+        error_neu = mse(y, get_predictions(m_neu, b))
+        if error_neu < error:
+            m = m_neu
+            error = error_neu
+            verbessert = True
+
+    # b in beide Richtungen probieren
+    for b_neu in [b + schritt, b - schritt]:
+        error_neu = mse(y, get_predictions(m, b_neu))
+        if error_neu < error:
+            b = b_neu
+            error = error_neu
+            verbessert = True
+
+    # Wenn keine Richtung mehr besser ist: fertig
+    if not verbessert:
+        break
+
+print(f"Beste Werte: m = {m}, b = {b}, MSE = {error}")
+```
+:::
 :::
 
 # Vom Linienschätzen zu ChatGPT
@@ -352,6 +405,30 @@ Tragt eure Messwerte direkt als zwei Python-Listen ein:
 ```python
 x = [ ]  # mindestens 10, idealerweise 20 Werte
 y = [ ]
+```
+:::
+
+::: {.callout-note icon=false}
+## Tipp: Daten visualisieren
+
+Mit folgendem Code könnt ihr eure gesammelten Punkte als Streudiagramm anzeigen:
+
+```python
+x = [ ]  # eure Werte aus Aufgabe 8
+y = [ ]
+
+import matplotlib.pyplot as plt
+
+plt.scatter(x, y)
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
+```
+
+Falls `matplotlib` noch nicht installiert ist, im Terminal ausführen:
+
+```bash
+pip install matplotlib
 ```
 :::
 
