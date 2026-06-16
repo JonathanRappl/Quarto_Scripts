@@ -167,20 +167,24 @@ def decrypt(ciphertext, key) -> bytes:
     print("Schlüsselstrom: ", ks.hex())
     print("Klartext:       ", message)
     return message
+
+encrypt(b"Treffpunkt am Bahnhof", 1234)
 ```
 
 **So benutzen Sie das Programm:**
 
-1. Öffnen Sie ein **Terminal** und starten Sie Python: Tippen Sie `python` (oder `python3`) und drücken Sie Enter. Es erscheint die Eingabeaufforderung `>>>`.
-2. **Kopieren** Sie den gesamten Code oben und **fügen** Sie ihn ein. Drücken Sie Enter, bis Sie wieder `>>>` sehen. Jetzt sind die Funktionen `encrypt` und `decrypt` bereit.
-3. Verschlüsseln Sie eine Nachricht. Die Nachricht ist eine **Byte-Folge** (vorangestelltes `b`), der Schlüssel eine **Zahl**:
+Wir verwenden die Online-IDE **WebTigerPython** — Sie müssen nichts installieren, alles läuft direkt im Browser.
+
+1. Öffnen Sie [https://webtigerpython.ethz.ch/](https://webtigerpython.ethz.ch/){target="_blank"}.
+2. **Kopieren** Sie den gesamten Code oben in das Editor-Feld (linke Seite). Damit sind die Funktionen `encrypt` und `decrypt` definiert.
+3. Fügen Sie **ganz unten** — nach den Funktionen — eine Zeile hinzu, die eine Nachricht verschlüsselt. Die Nachricht ist eine **Byte-Folge** (vorangestelltes `b`), der Schlüssel eine **Zahl**:
 
    ```python
    encrypt(b"Treffpunkt am Bahnhof", 1234)
    ```
 
-   Python gibt Klartext, Schlüsselstrom und den Chiffretext aus. Den ausgegebenen Chiffretext (`b'\x...'`) kopieren Sie für den nächsten Schritt.
-4. Mit der **Pfeiltaste nach oben** holen Sie den letzten Befehl zurück, ändern `encrypt` zu `decrypt` und setzen den Chiffretext ein — so prüfen Sie, ob Sie den Klartext zurückbekommen:
+4. Klicken Sie auf **Ausführen** (das ▶-Symbol). Im **Terminal** (unten) erscheinen Klartext, Schlüsselstrom und Chiffretext. Den ausgegebenen Chiffretext (`b'\x...'`) kopieren Sie für den nächsten Schritt.
+5. Zum **Entschlüsseln** ändern Sie nur die letzte Zeile: Ersetzen Sie `encrypt` durch `decrypt` und setzen Sie den kopierten Chiffretext ein. Führen Sie erneut aus — so prüfen Sie, ob Sie den Klartext zurückbekommen:
 
    ```python
    decrypt(b'\xd6\x89\xe4\xd9...', 1234)
