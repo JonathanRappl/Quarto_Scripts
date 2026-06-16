@@ -328,3 +328,46 @@ Bei deiner Linie weisst du **genau**, was die Zahlen bedeuten: $m$ ist die Steig
 2. Im Buch heisst es, niemand verstehe, *wie* die Zahlen das Modell zum Sprechen bringen. Bei deiner Linie verstehst du es. Wo genau geht dieses Verständnis verloren, wenn man von 2 auf Billionen Zahlen geht?
 3. Du hast in Aufgabe 6 mit Startwerten begonnen und sie verbessert. Was wäre bei deinem Programm das Gegenstück zu den «Trillionen Wörtern Trainingsdaten» aus dem Buch?
 -->
+
+# Eigene Daten
+
+Bisher hast du mit vorgegebenen Daten gearbeitet. Jetzt sammelst du **deine eigenen** Daten und findest die beste Linie dafür.
+
+::: {.callout-tip icon=false}
+## Aufgabe 8 — Daten sammeln (Lektion 1)
+
+Wählt zu zweit **eines** der folgenden Beispiele oder findet ein eigenes. Sammelt mindestens **10**, idealerweise **20** Datenpunkte $(x, y)$.
+
+| Beispiel | $x$ (Eingabe) | $y$ (Ausgabe) | Wie messen |
+|---|---|---|---|
+| Glas mit Wasser | Füllstand (cm) | Tonhöhe (Hz) | Glas anschlagen, Frequenz mit einer Ton-/Tuner-App ablesen |
+| Sprint | Strecke (m): 10, 20, … | Zeit (s) | Eine Person rennt, eine stoppt |
+| Fallen lassen | Höhe (m) | Fallzeit (s) | Objekt aus verschiedenen Höhen fallen lassen, Zeit stoppen |
+| Wohnungen | Grösse (m²) | Miete (CHF) | ~20 Inserate auf einem Immo-Portal heraussuchen |
+| Gebrauchtwagen | Alter (Jahre) *oder* Kilometerstand | Preis (CHF) | ~20 Inserate auf einem Auto-Portal heraussuchen |
+| Lichtquelle / Lautsprecher | Abstand zur Quelle (cm) | Helligkeit (Lux) *oder* Lautstärke (dB) | Mit einer Sensor-App in verschiedenen Abständen messen |
+
+Tragt eure Messwerte direkt als zwei Python-Listen ein:
+
+```python
+x = [ ]  # mindestens 10, idealerweise 20 Werte
+y = [ ]
+```
+:::
+
+::: {.callout-tip icon=false}
+## Aufgabe 9 — Beste Linie finden (Lektion 2)
+
+Nutzt euren Code aus Aufgabe 5 und 6, um für eure eigenen Daten die beste Gerade $\hat{y} = m \cdot x + b$ zu finden.
+
+1. Ersetzt im Programm die Listen `x` und `y` durch eure Messwerte.
+2. Sucht mit Gradient Descent die besten Werte für $m$ und $b$.
+
+Beste gefundene Werte: $m =$ \_\_\_\_\_, $b =$ \_\_\_\_\_ $\quad$ mit MSE $=$ \_\_\_\_\_
+
+Beantwortet anschliessend:
+
+a) Was bedeuten $m$ und $b$ konkret für euer Beispiel (mit Einheit)?
+b) Passt eine **Gerade** gut zu euren Punkten, oder wäre eine **Kurve** besser?
+c) Was würde eure Linie für einen neuen $x$-Wert vorhersagen, den ihr **nicht** gemessen habt? Ist die Vorhersage glaubwürdig?
+:::

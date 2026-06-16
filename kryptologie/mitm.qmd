@@ -24,8 +24,6 @@ Halten wir kurz fest, wo wir stehen: Mit dem [Diffie-Hellman-Verfahren](#schlüs
 
 In der Realität läuft eine Nachricht aber über viele fremde Stationen, bevor sie ankommt: Router, WLAN-Hotspots, die Geräte des Internetanbieters. Was, wenn Charlie eine dieser Stationen kontrolliert — und nicht nur **mithört**, sondern jede Nachricht **abfangen, verändern und weiterleiten** kann?
 
-## Der ehrliche Ablauf
-
 ::: {.callout-note title="Aufgabe 21: Den normalen Ablauf zeichnen" icon=true}
 Bevor wir Charlie von der Leine lassen, halten wir fest, wie eine *ehrliche* Kommunikation aussieht.
 
@@ -38,8 +36,6 @@ Zeichnen Sie auf Papier ein Diagramm mit **Alice links** und **Bob rechts**. Ste
 - eine kurze Nachricht von Alice an Bob, die mit $s$ **XOR-verschlüsselt** übertragen wird. -->
 
 :::
-
-## Charlie übernimmt die Leitung
 
 Stellen Sie sich nun vor, **jede** Nachricht zwischen Alice und Bob geht zwingend durch Charlie hindurch. Bisher hat er alles brav weitergeleitet. Jetzt will er mehr: die Nachrichten **mitlesen** (und vielleicht sogar verändern), ohne dass Alice oder Bob etwas merken.
 

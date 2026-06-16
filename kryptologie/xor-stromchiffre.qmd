@@ -1,5 +1,4 @@
 ---
-title: "XOR-Stromchiffre"
 toc: true
 toc-location: right
 toc-depth: 3
