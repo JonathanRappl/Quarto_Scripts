@@ -307,7 +307,7 @@ $$
 | Schlüssel | $K = 19^6 \bmod 23 = \mathbf{2}$ | | $K = 8^{15} \bmod 23 = \mathbf{2}$ |
 
 Beide erhalten $K = 2$ — ohne dass Charlie ihren gemeinsamen Schlüssel kennt.
-
+<!-- 
 ```{=html}
 <style>
   .dh-widget {
@@ -507,4 +507,4 @@ Beide erhalten $K = 2$ — ohne dass Charlie ihren gemeinsamen Schlüssel kennt.
   update();
 })();
 </script>
-```
+``` -->
