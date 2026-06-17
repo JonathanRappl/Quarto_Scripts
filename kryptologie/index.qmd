@@ -700,7 +700,7 @@ Setzen Sie die gefundenen Schlüsselbuchstaben zusammen und überprüfen Sie das
 
 {{< include mitm.qmd >}}
 
-# Verschlüsselung im Internet
+<!-- # Verschlüsselung im Internet
 
 In diesem Skript haben Sie alle Bausteine kennengelernt, die moderne Verschlüsselung ausmachen. Im Thema **Netzwerke** wiederum haben Sie gesehen, wie Daten überhaupt von einem Computer zum anderen gelangen — über das Schichtenmodell, den TCP-Handschlag, Ports und Protokolle wie HTTP. Zeit, beide Themenblöcke zusammenzubringen und zu schauen, was *wirklich* passiert, wenn in Ihrem Browser das kleine Schloss-Symbol neben der Adresse erscheint.
 
@@ -775,5 +775,5 @@ Beantworten Sie für sich (oder zu zweit) in jeweils ein, zwei Sätzen:
 a) Warum reicht der Diffie-Hellman-Austausch allein nicht aus, um eine ganze Webseite zu übertragen?
 b) Welches Problem löst das **Schloss-Symbol** 🔒, das der reine Diffie-Hellman-Austausch *nicht* löst?
 c) Auf welcher Schicht des TCP/IP-Modells passiert der TLS-Handschlag — und weshalb erst *nach* dem TCP-Handschlag?
-:::
+::: -->
 
