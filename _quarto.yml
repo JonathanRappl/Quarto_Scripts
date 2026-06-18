@@ -9,15 +9,13 @@ website:
       - href: index.qmd
         text: Home
       - href: ai-ml/index.qmd
-        text: Programmieren
+        text: AI & ML
       - href: networking/index.qmd
         text: Netzwerke
       - href: pygame/index.qmd
         text: Pygame
       - href: kryptologie/index.qmd
         text: Kryptologie
-      - href: sql/index.qmd
-        text: SQL
   page-footer:
     center: "Informatik Skripte — Built with [Quarto](https://quarto.org)"
 
