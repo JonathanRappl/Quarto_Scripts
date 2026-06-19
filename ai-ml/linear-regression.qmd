@@ -408,6 +408,58 @@ y = [ ]
 ```
 :::
 
+::: {.callout-tip icon=false}
+## Tipp: Fertiger Datensatz (falls ihr keine eigenen Daten habt)
+
+Falls ihr aus Aufgabe 8 keine eigenen Daten habt, könnt ihr stattdessen einen fertigen Datensatz mit **Berufserfahrung** und **Gehalt** verwenden:
+
+[salary_data.csv herunterladen](materials/salary_data.csv)
+
+Speichert die Datei in denselben Ordner wie euer Python-Programm. Die Datei hat eine Kopfzeile und mehrere Spalten:
+
+```
+Age,Gender,Education Level,Job Title,Years of Experience,Salary
+32,Male,Bachelor's,Software Engineer,5,90000
+28,Female,Master's,Data Analyst,3,65000
+...
+```
+
+Für die lineare Regression interessieren uns nur zwei Spalten:
+
+- $x$ = **Years of Experience** (Berufserfahrung in Jahren)
+- $y$ = **Salary** (Gehalt)
+
+So lest ihr die CSV-Datei ein und baut daraus die zwei Listen `x` und `y`:
+
+```python
+import csv
+
+x = []  # Berufserfahrung (Jahre)
+y = []  # Gehalt
+
+with open("salary_data.csv", encoding="utf-8-sig") as f:
+    reader = csv.DictReader(f)
+    for zeile in reader:
+        erfahrung = zeile["Years of Experience"]
+        gehalt = zeile["Salary"]
+
+        # Zeilen mit fehlenden Werten überspringen
+        if erfahrung == "" or gehalt == "":
+            continue
+
+        x.append(float(erfahrung))
+        y.append(float(gehalt))
+
+print(f"{len(x)} Datenpunkte eingelesen")
+print("x:", x[:5], "...")
+print("y:", y[:5], "...")
+```
+
+`csv.DictReader` liest jede Zeile als Wörterbuch ein, sodass ihr die Spalten über ihren Namen (z. B. `zeile["Salary"]`) ansprechen könnt. Mit `float(...)` werden die Texte in Zahlen umgewandelt, damit ihr damit rechnen könnt.
+
+Diese Listen `x` und `y` könnt ihr nun genauso weiterverwenden wie eure eigenen Messwerte — z. B. mit dem Visualisierungs-Code unten oder mit eurem Programm aus Aufgabe 9.
+:::
+
 ::: {.callout-note icon=false}
 ## Tipp: Daten visualisieren
 
